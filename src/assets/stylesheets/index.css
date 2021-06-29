@@ -14,9 +14,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.nav-option > a{
+  transition: all 0.4s ease;
+}
 .nav-option > a:hover {
   opacity:0.9;
-  transform: scale(1.2)
+  transform: scale(1.4)
 }
 .card-option{
   width: 60%;
