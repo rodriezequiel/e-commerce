@@ -13,7 +13,7 @@ export default function Info() {
           </p>
         </div>
         <div className="col-7">
-          <div className=' d-flex justify-content-center cards my-5 me-2'>
+          <div className='container-fluid d-flex justify-content-center cards my-5 me-2'>
             <div className="card card-option bg-dark text-black mx-0">
               <img
                 className="card-img zindex-tooltip"
