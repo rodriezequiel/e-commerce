@@ -26,10 +26,12 @@ code {
 }
 .cards {
   transition: all 0.2s ease;
+  margin: 0;
 }
 
 .cards:hover {
-  transform: scale(1.1)
+  transform: scale(1.05);
+  filter:brightness(75%);
 }
 
 .footer-dark {

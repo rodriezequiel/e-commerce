@@ -21,7 +21,7 @@ export default function Carroussel() {
             src="https://images.unsplash.com/photo-1516173124899-0e420692b06c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&h=730&q=80"
             className="d-block w-100"
             alt="..."
-            style={{ width: "auto", height: "100vh" }}
+            style={{ width: "auto", height: "100vh"}}
           />
           {/* <div  class="carousel-caption d-none d-md-block">
             <h2>First slide label</h2>
