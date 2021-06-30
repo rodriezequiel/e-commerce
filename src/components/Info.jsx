@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Info() {
   return (
-    <div className="container-fluid bg-dark">
+    <div id='aboutUs' className="container-fluid bg-dark pt-5">
       <div className="row justify-content-center">
         <div className="col-10 my-5 bg-dark text-white rounded px-3 py-3">
           <h2 className="tituloAU">About us</h2>

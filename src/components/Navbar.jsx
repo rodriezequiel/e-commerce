@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import navbarChange from "../utils/navbarChange";
 
-export default function Nav() {
+export default function Nav({transparent = true}) {
     useEffect(() =>{
       navbarChange();
     }, [])
   return (
     <div>
-      <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-trasparent">
+      <nav className={`navbar navbar-expand-lg navbar-dark ${(transparent) ? `bg-trasparent fixed-top` : `bg-dark shadow`}`}>
         <div className="container-fluid">
           <img
             className="ms-4 mt-3"
@@ -17,7 +18,7 @@ export default function Nav() {
             height="60"
           />
           <h2 className="navbar-brand ms-3 my-0 fs-1">
-            BOARD<span style={{ color: "red", fontSize:'3.2rem'}}>4</span>LIFE
+            board<span style={{ color: "red", fontSize:'3.2rem'}}>4</span>life
           </h2>
           <button
             className="navbar-toggler"
@@ -36,19 +37,19 @@ export default function Nav() {
           >
             <ul className="navbar-nav mt-2">
               <li className="nav-item nav-option mx-4 fs-3">
-                <a className="nav-link active" href="#">
+                <Link className="nav-link active" to='/home'>
                   Home
+                </Link>
+              </li>
+              <li className="nav-item nav-option mx-4 my-auto fs-3">
+                <a className="nav-link active" href="/home#aboutUs">
+                  About Us
                 </a>
               </li>
               <li className="nav-item nav-option mx-4 my-auto fs-3">
-                <a className="nav-link active" href="#">
-                  Abaut Us
-                </a>
-              </li>
-              <li className="nav-item nav-option mx-4 my-auto fs-3">
-                <a  style={{color: 'red'}} className="nav-link active" href="#">
+                <Link  style={{color: 'red'}} className="nav-link active" to="/shop">
                   Shop
-                </a>
+                </Link>
               </li>
               <li className="nav-item nav-option mx-4 my-auto fs-3">
                 <a className="nav-link active" href="#">

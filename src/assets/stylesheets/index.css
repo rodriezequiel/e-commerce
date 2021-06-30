@@ -12,14 +12,19 @@ body {
   overflow-x: hidden !important;
 }
 
+.textoBlanco li, .textoBlanco a{
+  color: #fff !important;
+  text-decoration: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.nav-option > a{
+.nav-option > a, .textoBlanco .nonActive{
   transition: all 0.4s ease;
 }
-.nav-option > a:hover {
+.nav-option > a:hover, .textoBlanco .nonActive:hover {
   opacity:0.9;
   transform: scale(1.4)
 }
