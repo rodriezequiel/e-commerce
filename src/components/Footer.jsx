@@ -2,11 +2,11 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div class="footer-dark">
+    <div className="footer-dark">
       <footer>
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-6 col-md-3 item">
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-6 col-md-3 item">
               <h3>Services</h3>
               <ul>
                 <li>
@@ -20,7 +20,7 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div class="col-sm-6 col-md-3 item">
+            <div className="col-sm-6 col-md-3 item">
               <h3>About</h3>
               <ul>
                 <li>
@@ -34,7 +34,7 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div class="col-md-6 item text">
+            <div className="col-md-6 item text">
               <h3>Company Name</h3>
               <p>
                 Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut
@@ -42,22 +42,22 @@ export default function Footer() {
                 pulvinar dictum vel in justo.
               </p>
             </div>
-            <div class="col item social">
+            <div className="col item social">
               <a href="#">
-              <i class="bi bi-facebook"></i>
+              <i className="bi bi-facebook"></i>
               </a>
               <a href="#">
-              <i class="bi bi-twitter"></i>
+              <i className="bi bi-twitter"></i>
               </a>
               <a href="#">
-                <i class="bi bi-whatsapp"></i>
+                <i className="bi bi-whatsapp"></i>
               </a>
               <a href="#">
-              <i class="bi bi-instagram"></i>
+              <i className="bi bi-instagram"></i>
               </a>
             </div>
           </div>
-          <p class="copyright">Powered by Board4Life © 2018</p>
+          <p className="copyright">Powered by Board4Life © 2018</p>
         </div>
       </footer>
     </div>

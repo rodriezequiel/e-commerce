@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
+import navbarChange from "../utils/navbarChange";
 
 export default function Nav() {
+    useEffect(() =>{
+      navbarChange();
+    }, [])
   return (
     <div>
       <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-trasparent">
