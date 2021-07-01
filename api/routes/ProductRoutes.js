@@ -14,6 +14,7 @@ router.get('/all', (req, res) => {
     })
   })
 })
+
 router.get('/single/:id', (req, res) => {
   Product.findOne(req.params.id).then((product) => res.send(product))
 })
