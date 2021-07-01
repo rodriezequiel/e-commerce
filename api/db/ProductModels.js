@@ -30,7 +30,7 @@ Product.init(
       type: DataTypes.STRING,
     },
     picture: {
-      type: DataTypes.ARRAY,
+      type: DataTypes.ARRAY(DataTypes.TEXT),
     },
   },
   {
