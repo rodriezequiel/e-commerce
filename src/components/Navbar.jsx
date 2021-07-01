@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
+import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import navbarChange from "../utils/navbarChange";
 
 export default function Nav({transparent = true}) {
+  const location = useLocation();
     useEffect(() =>{
-      navbarChange();
+      if(location.pathname === '/home') navbarChange();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
   return (
     <div>
