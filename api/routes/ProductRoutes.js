@@ -22,10 +22,12 @@ router.get('/all', (req, res) => {
     })
     .then(() => res.send([filteredProducts, imgProduct]))
 })
+
 router.get('/single/:name', (req, res) => {
   Product.findAll({ where: { name: req.params.name } }).then((product) =>
     res.send(product)
   )
+
 })
 
 module.exports = router
