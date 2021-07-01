@@ -18,7 +18,7 @@ app.use("/api/cart", cartRoutes);
 app.use("/api/order", orderRoutes);
 app.use("/api/products", productRoutes);
 
-db.sync({ force: false }).then(() => {
+db.sync({ force: true }).then(() => {
   app.listen(port, () => {
     console.log(`server running on  http://localhost:${port}`);
   });
