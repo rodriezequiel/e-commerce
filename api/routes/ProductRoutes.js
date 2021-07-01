@@ -5,8 +5,17 @@ const Product = require('../db/ProductModels')
 const User = require('../db/UserModels')
 const CartItems = require('../db/CartItemsModels')
 
-router.get('/', (req, res) => {
-  Product.findAll().then((products) => res.send(products))
+router.get('/all', (req, res) => {
+  const filteredProducts = {}
+  Product.findAll().then((products) => {
+    products.map((product) => {
+      if (filteredProducts[product.name])
+        filteredProducts[product.name].push(product)
+    })
+  })
+})
+router.get('/single/:id', (req, res) => {
+  Product.findOne(req.params.id).then((product) => res.send(product))
 })
 
 module.exports = router

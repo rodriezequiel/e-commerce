@@ -9,3 +9,6 @@ agrego un producto: si el producto no eixste en el carrito, lo agrego al carrito
 
 pasos de la orden:
 1) cuando un carrito se confirma, genero una orden con la info del carrito (cambio el estado del carrito actual a completed y creo uno nuevo con el estaod "inProgress"?) + info de direccion/envio/etc
+
+Productos:
+Mismo nombre de un producto con diferentes campos se considera el mismo producto en la agrupacion de vistas
