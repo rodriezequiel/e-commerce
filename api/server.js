@@ -1,25 +1,26 @@
-const db = require("./db/connection");
+
 const express = require("express");
-const { User, Product, Order, Cart } = require("./db/index");
-const { Op } = require("sequelize");
+const routes = require('./routes/index')
+const volleyball = require('volleyball');
+const cors = require('cors')
 
-//routes
-const cartRoutes = require("./routes/cartRoutes");
-const orderRoutes = require("./routes/orderRoutes");
-const productRoutes = require("./routes/ProductRoutes");
+const models = require("./db/index");
+const db = require("./db/connection");
 
-const app = express();
-const port = 3001;
+const app = express()
+const port = 3001
 
+app.use(express.json())
+app.use(cors())
+
+app.use(volleyball);
 app.use(express.json());
+
 // app.use(express.urlencoded{extend:})
+app.use('/api', routes);
 
-app.use("/api/cart", cartRoutes);
-app.use("/api/order", orderRoutes);
-app.use("/api/products", productRoutes);
-
-db.sync({ force: true }).then(() => {
+db.sync({ force: false }).then(() => {
   app.listen(port, () => {
-    console.log(`server running on  http://localhost:${port}`);
-  });
-});
+    console.log(`server running on  http://localhost:${port}`)
+  })
+})
