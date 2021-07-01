@@ -3,15 +3,19 @@ import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import navbarChange from "../utils/navbarChange";
 
-export default function Nav({transparent = true}) {
+export default function Nav({ transparent = true }) {
   const location = useLocation();
-    useEffect(() =>{
-      if(location.pathname === '/home') navbarChange();
+  useEffect(() => {
+    if (location.pathname === "/home") navbarChange();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+  }, []);
   return (
     <div>
-      <nav className={`navbar navbar-expand-lg navbar-dark ${(transparent) ? `bg-trasparent fixed-top` : `bg-dark shadow`}`}>
+      <nav
+        className={`navbar navbar-expand-lg navbar-dark ${
+          transparent ? `bg-trasparent fixed-top` : `bg-dark shadow`
+        }`}
+      >
         <div className="container-fluid">
           <img
             className="ms-4 mt-3"
@@ -21,7 +25,7 @@ export default function Nav({transparent = true}) {
             height="60"
           />
           <h2 className="navbar-brand ms-3 my-0 fs-1">
-            board<span style={{ color: "red", fontSize:'3.2rem'}}>4</span>life
+            board<span style={{ color: "red", fontSize: "3.2rem" }}>4</span>life
           </h2>
           <button
             className="navbar-toggler"
@@ -40,7 +44,7 @@ export default function Nav({transparent = true}) {
           >
             <ul className="navbar-nav mt-2">
               <li className="nav-item nav-option mx-4 fs-3">
-                <Link className="nav-link active" to='/home'>
+                <Link className="nav-link active" to="/home">
                   Home
                 </Link>
               </li>
@@ -50,14 +54,18 @@ export default function Nav({transparent = true}) {
                 </a>
               </li>
               <li className="nav-item nav-option mx-4 my-auto fs-3">
-                <Link  style={{color: 'red'}} className="nav-link active" to="/shop">
+                <Link
+                  style={{ color: "red" }}
+                  className="nav-link active"
+                  to="/shop"
+                >
                   Shop
                 </Link>
               </li>
               <li className="nav-item nav-option mx-4 my-auto fs-3">
-                <a className="nav-link active" href="#">
-                  Log In
-                </a>
+                <Link className="nav-link active" to="/signin">
+                  Sign In
+                </Link>
               </li>
               <li className="nav-item nav-option ms-5 my-auto fs-3">
                 <a className="nav-link active" href="#">
