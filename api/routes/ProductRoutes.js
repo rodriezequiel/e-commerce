@@ -7,16 +7,27 @@ const CartItems = require('../db/CartItemsModels')
 
 router.get('/all', (req, res) => {
   const filteredProducts = {}
-  Product.findAll().then((products) => {
-    products.map((product) => {
-      if (filteredProducts[product.name])
-        filteredProducts[product.name].push(product)
+  let imgProduct = []
+  // Product.findAll().then((products) => res.send(products))
+  Product.findAll()
+    .then((products) => {
+      products.map((product) => {
+        if (filteredProducts[product.name])
+          filteredProducts[product.name].push(product)
+        else {
+          filteredProducts[product.name] = [product]
+          imgProduct = [...imgProduct, product.picture[0]]
+        }
+      })
     })
-  })
+    .then(() => res.send([filteredProducts, imgProduct]))
 })
 
-router.get('/single/:id', (req, res) => {
-  Product.findOne(req.params.id).then((product) => res.send(product))
+router.get('/single/:name', (req, res) => {
+  Product.findAll({ where: { name: req.params.name } }).then((product) =>
+    res.send(product)
+  )
+
 })
 
 module.exports = router

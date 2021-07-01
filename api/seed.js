@@ -1,25 +1,25 @@
-const { User, Product, Order, Cart, Category } = require("./db/index");
+const { User, Product, Order, Cart, Category } = require('./db/index')
 
 const categorys = [
-  { name: "surf" },
-  { name: "skate" },
-  { name: "hombre" },
-  { name: "mujer" },
-];
+  { name: 'surf' },
+  { name: 'skate' },
+  { name: 'hombre' },
+  { name: 'mujer' },
+]
 
 const user = [
   {
-    firstName: "Julian",
-    lastName: "Perez",
-    email: "julian@test.com",
-    password: "1234",
+    firstName: 'Julian',
+    lastName: 'Perez',
+    email: 'julian@test.com',
+    password: '1234',
     isAdmin: false,
   },
   {
-    firstName: "Ivan",
-    lastName: "Moroni",
-    email: "ivan@test.com",
-    password: "12345",
+    firstName: 'Ivan',
+    lastName: 'Moroni',
+    email: 'ivan@test.com',
+    password: '12345',
     isAdmin: false,
   },
   {
@@ -29,7 +29,7 @@ const user = [
     password: 'rodri',
     isAdmin: true,
   },
-];
+]
 
 const product = [
   {
@@ -144,22 +144,22 @@ const product = [
       'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8amFja2V0fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60',
     ],
   },
-];
+]
 
-const cart = [{ state: "inProgress" }, { state: "inProgress" }];
+const cart = [{ state: 'inProgress' }, { state: 'inProgress' }]
 User.bulkCreate(user, { returning: true }).then(
-  (user) => console.log("usuarios creados")
+  (user) => console.log('usuarios creados')
   // process.exit()
-);
+)
 Product.bulkCreate(product, { returning: true }).then(
-  (product) => console.log("product creados")
+  (product) => console.log('product creados')
   // process.exit()
-);
+)
 
 Category.bulkCreate(categorys, { returning: true }).then(
-  (product) => console.log("categorys creados")
+  (product) => console.log('categorys creados')
   // process.exit()
-);
+)
 
 // Cart.bulkCreate(cart, { returning: true }).then((cart) =>
 //   console.log('carritos creados ok')
