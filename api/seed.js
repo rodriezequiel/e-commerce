@@ -23,31 +23,19 @@ const user = [
     isAdmin: false,
   },
   {
-<<<<<<< HEAD
-    firstName: "Rodri",
-    lastName: "Bacigalupo",
-    email: "rodri@test.com",
-    password: "rodri",
-    isAdmin: false,
-=======
     firstName: 'Rodri',
     lastName: 'Bacigalupo',
     email: 'rodri@test.com',
     password: 'rodri',
     isAdmin: true,
->>>>>>> 25cff5afb0e33eac7eb8f1878b4cc4b7a9ce35b9
   },
 ];
 
 const product = [
   {
-<<<<<<< HEAD
-    name: "campera de prueba",
-=======
     name: 'campera de prueba',
     description:
       'Esta es una descripcion de prueba que muestra la informacion de campera',
->>>>>>> 25cff5afb0e33eac7eb8f1878b4cc4b7a9ce35b9
     price: 100,
     stock: 50,
     size: 'L',
@@ -77,13 +65,9 @@ const product = [
     ],
   },
   {
-<<<<<<< HEAD
-    name: "mochila",
-=======
     name: 'campera CUERO extra slim',
     description:
       'Esta es una descripcion de prueba que muestra la informacion de campera',
->>>>>>> 25cff5afb0e33eac7eb8f1878b4cc4b7a9ce35b9
     price: 200,
     stock: 20,
     size: 'M',
@@ -97,11 +81,6 @@ const product = [
     ],
   },
   {
-<<<<<<< HEAD
-    name: "tabla de surf",
-    price: 150,
-    stock: 2,
-=======
     name: 'campera CUERO extra slim',
     description:
       'Esta es una descripcion de prueba que muestra la informacion de campera',
@@ -164,7 +143,6 @@ const product = [
       'https://images.unsplash.com/photo-1551028719-00167b16eac5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80',
       'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8amFja2V0fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60',
     ],
->>>>>>> 25cff5afb0e33eac7eb8f1878b4cc4b7a9ce35b9
   },
 ];
 
