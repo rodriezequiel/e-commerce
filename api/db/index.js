@@ -1,8 +1,9 @@
-const User = require('./UserModels')
-const Product = require('./ProductModels')
-const Cart = require('./CartModels')
-const Order = require('./OrderModels')
-const CartItem = require('./CartItemsModels')
+const User = require("./UserModels");
+const Product = require("./ProductModels");
+const Cart = require("./CartModels");
+const Order = require("./OrderModels");
+const CartItem = require("./CartItemsModels");
+const Category = require("./CategoryModels");
 
 //associations
 
@@ -19,24 +20,27 @@ const CartItem = require('./CartItemsModels')
 /////////////de repo
 Product.belongsTo(User, {
   constraints: true,
-  onDelete: 'CASCADE',
-})
+  onDelete: "CASCADE",
+});
 
-User.hasMany(Product)
+User.hasMany(Product);
 
-User.hasMany(Cart)
+User.hasMany(Cart);
 // User.hasOne(Cart)
-Cart.belongsTo(User)
+Cart.belongsTo(User);
 
 Cart.belongsToMany(Product, {
   through: CartItem,
-})
+});
 Product.belongsToMany(Cart, {
   through: CartItem,
-})
+});
 
-Cart.hasOne(Order)
-Order.belongsTo(Cart)
+Cart.hasOne(Order);
+Order.belongsTo(Cart);
+
+Product.belongsToMany(Category, { through: "Product_Category" });
+Category.belongsToMany(Product, { through: "Product_Category" });
 
 // Order.hasOne(Cart)
 // Cart.belongsTo(Order)
@@ -51,4 +55,4 @@ Order.belongsTo(Cart)
 //   through: 'cart_product',
 // })
 
-module.exports = { User, Product, Order, Cart, CartItem }
+module.exports = { User, Product, Order, Cart, CartItem, Category };
