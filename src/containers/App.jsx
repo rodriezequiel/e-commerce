@@ -15,16 +15,7 @@ function App() {
     dispatch(getCart())
   }, [dispatch])
   return (
-    <div>            <div className="mb-3 form-check">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="exampleCheck1"
-              />
-              <label className="form-check-label" for="exampleCheck1">
-                Check me out
-              </label>
-            </div>
+    <div>            
       <Switch>
         <Route exact path='/home' component={Home} />
         <Route path='/shop/:name' render={() => <SingleProduct />} />
