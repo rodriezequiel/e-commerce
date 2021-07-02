@@ -80,6 +80,7 @@ router.delete('/remove', (req, res) => {
 
 router.delete('/vaciarcarrito', (req, res) => {
   const { userId } = req.body
+  console.log(req.body)
   let userCart
 
   User.findByPk(userId).then((user) =>

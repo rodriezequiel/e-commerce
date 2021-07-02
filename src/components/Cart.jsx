@@ -1,19 +1,31 @@
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCart } from '../state/cart'
 import Navbar from './Navbar'
-import { clearCart } from '../utils/index'
+import { Link } from 'react-router-dom'
+import { clearCart, removeProduct } from '../utils/index'
 
 function Cart() {
   const cart = useSelector((state) => state.cart)
+  const dispatch = useDispatch()
 
-  useEffect(() => {}, [cart])
+  useEffect(() => {
+    dispatch(getCart())
+  }, [dispatch])
+
+  useEffect(() => {
+    console.log('should re render')
+  }, [cart])
+
   return (
     <div>
       <Navbar transparent={false} />
+
+      {!cart.Products.length && <h1>You have no products...</h1>}
       {cart &&
         cart.Products.map((product) => {
-          console.log(product)
-          const { name, brand, color, picture, price, size, CartItem } = product
+          const { name, brand, color, picture, price, size, CartItem, id } =
+            product
           return (
             <div>
               <h1>{name}</h1>
@@ -23,13 +35,24 @@ function Cart() {
               <h2>{price}</h2>
               <h2>{size}</h2>
               <img style={{ width: '100px' }} src={picture[0]} alt={name}></img>
-              <button> Quitar producto </button>
+              <button onClick={() => removeProduct(cart.UserId, id)}>
+                {' '}
+                Quitar producto{' '}
+              </button>
               <button> Editar producto </button>
             </div>
           )
         })}
-      <button onClick={() => clearCart(cart.UserId)}>Vaciar Carrito</button>
-      <button>Confirmar Compra</button>
+      <button
+        onClick={() => {
+          clearCart(cart.UserId)
+        }}
+      >
+        Vaciar Carrito
+      </button>
+      <Link to='/checkout'>
+        <button>Confirmar Compra</button>
+      </Link>
     </div>
   )
 }

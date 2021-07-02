@@ -9,6 +9,7 @@ import SignUp from './SignUp'
 import SingleProduct from '../components/SingleProduct'
 import Footer from '../components/Footer'
 import Cart from '../components/Cart'
+import Checkout from '../components/Checkout'
 
 function App() {
   const dispatch = useDispatch()
@@ -24,6 +25,7 @@ function App() {
         <Route exact path='/signin' component={SignIn} />
         <Route exact path='/signup' component={SignUp} />
         <Route exact path='/cart' component={Cart} />
+        <Route exact path='/checkout' component={Checkout} />
         <Redirect from='/' to='/home' />
       </Switch>
       <Footer />

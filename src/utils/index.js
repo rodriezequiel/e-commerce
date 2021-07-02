@@ -19,15 +19,45 @@ export const addProductToCartBD = (products) => {
     .post(`http://localhost:3001/api/cart/add`, products)
     .then((res) => res.data)
     .then((response) => {
-      alert('producto agrefado')
+      alert('producto agregado al carrito')
       return response
     })
 }
 
 export const clearCart = (userId) => {
-  console.log(userId)
   return axios
-    .delete(`http://localhost:3001/api/cart/vaciarcarrito`, { userId: userId })
+    .delete(`http://localhost:3001/api/cart/vaciarcarrito`, {
+      data: { userId: userId },
+    })
     .then((res) => res.data)
-    .then((response) => response)
+    .then((response) => {
+      return response
+    })
 }
+export const removeProduct = (userId, id) => {
+  return axios
+    .delete(`http://localhost:3001/api/cart/remove`, {
+      data: { userId: userId, productid: id },
+    })
+    .then((res) => res.data)
+    .then((response) => {
+      return response
+    })
+}
+export const confirmOrder = (orderInfo) => {
+  return axios
+    .delete(`http://localhost:3001/api/cart/remove`, {
+      data: {},
+    })
+    .then((res) => res.data)
+    .then((response) => {
+      return response
+    })
+}
+
+// userId,
+// telephone,
+// address,
+// shipCost,
+// paymentMethod,
+// additionalInfo,
