@@ -5,8 +5,8 @@ export default function SignIn() {
   return (
     <div>
       <Navbar transparent={false} />
-      <div className="container-fluid pt-3 d-flex d-flex justify-content-between">
-        <div className=" flex-column  position-absolute top-50 start-50 translate-middle">
+      <div className="container-fluid py-4 d-grid gap-3 d-flex justify-content-center">
+        <div className="col-4 bg-light border align-center p-3">
           <h1 className="text-center">Sign In</h1>
           <form className="form-style justify-content-between">
             <div className="mb-3">
@@ -31,15 +31,15 @@ export default function SignIn() {
                 Check me out
               </label>
             </div>
-            <button type="submit" className="btn btn-dark">
+            <button type="submit" className="btn btn-dark my-2">
               Submit
             </button>
             <h3 className="text-center">Or</h3>
             <div className="mb-3">
-              <button type="submit" className="btn btn-danger">
+              <button type="submit" className="btn btn-danger my-2">
                 Google
               </button>
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn btn-primary my-2">
                 Facebook
               </button>
             </div>
