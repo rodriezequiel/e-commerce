@@ -21,43 +21,23 @@ router.post('/newCart/:id', (req, res) => {
 //agregando productos a un carrito de un usuario
 router.post('/add', (req, res) => {
   let fetchedCart
-  let quantity
 
-  // return user
-  //   .getCart({
-  //     where: {
-  //       state: 'InProgress',
-  //     },
-  // })
+  const { UserId, id, quantity } = req.body
 
-  const { userId, productid } = req.body
-
-  User.findByPk(userId).then((user) => {
+  User.findByPk(UserId).then((user) => {
     return Cart.findOne({
       where: {
-        UserId: userId,
+        UserId: UserId,
         state: 'InProgress',
       },
     })
       .then((cart) => {
         fetchedCart = cart
-        return cart.getProducts({
-          where: {
-            id: productid,
-          },
-        })
+        return Product.findByPk(id)
       })
+
       .then((product) => {
-        if (!product.length) {
-          quantity = 1
-          return Product.findByPk(productid)
-        } else {
-          quantity = product[0].dataValues.CartItem.quantity + 1
-          return product
-        }
-      })
-      .then((alteredproduct) => {
-        return fetchedCart.addProduct(alteredproduct, {
+        return fetchedCart.addProduct(product, {
           through: {
             quantity: quantity,
           },
@@ -73,8 +53,6 @@ router.post('/add', (req, res) => {
 
 router.delete('/remove', (req, res) => {
   let fetchedCart
-  let quantity
-
   const { userId, productid } = req.body
 
   User.findByPk(userId).then((user) =>
@@ -93,21 +71,9 @@ router.delete('/remove', (req, res) => {
         })
       })
       .then((product) => {
-        quantity = product[0].dataValues.CartItem.quantity
-        if (quantity === 1) {
-          fetchedCart.removeProduct(product).then(() => {
-            res.send(fetchedCart)
-          })
-        } else {
-          quantity = product[0].dataValues.CartItem.quantity - 1
-          fetchedCart
-            .addProduct(product, {
-              through: {
-                quantity: quantity,
-              },
-            })
-            .then((cart) => res.send(cart))
-        }
+        fetchedCart.removeProduct(product).then(() => {
+          res.send(fetchedCart)
+        })
       })
   )
 })

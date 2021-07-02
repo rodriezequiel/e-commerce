@@ -4,10 +4,11 @@ import { useDispatch } from 'react-redux'
 import { getCart } from '../state/cart'
 import Home from './Home'
 import Shop from './Shop'
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
+import SignIn from './SignIn'
+import SignUp from './SignUp'
 import SingleProduct from '../components/SingleProduct'
 import Footer from '../components/Footer'
+import Cart from '../components/Cart'
 
 function App() {
   const dispatch = useDispatch()
@@ -15,18 +16,19 @@ function App() {
     dispatch(getCart())
   }, [dispatch])
   return (
-    <div>            
+    <div>
       <Switch>
         <Route exact path='/home' component={Home} />
         <Route path='/shop/:name' render={() => <SingleProduct />} />
         <Route exct path='/shop' component={Shop} />
-        <Route exact path="/signin" component={SignIn} />
-        <Route exact path="/signup" component={SignUp} />
+        <Route exact path='/signin' component={SignIn} />
+        <Route exact path='/signup' component={SignUp} />
+        <Route exact path='/cart' component={Cart} />
         <Redirect from='/' to='/home' />
       </Switch>
       <Footer />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
