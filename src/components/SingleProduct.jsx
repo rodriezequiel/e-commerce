@@ -4,6 +4,7 @@ import { useParams } from 'react-router'
 import { useHistory } from 'react-router-dom'
 import { getOneProduct } from '../utils/index'
 import { addToCart } from '../state/cart'
+import { addProductToCartBD } from '../utils/index'
 import Navbar from '../components/Navbar'
 
 function SingleProduct() {
@@ -23,10 +24,10 @@ function SingleProduct() {
   const [size, setSize] = useState([])
   const [color, setColor] = useState([])
   const [stock, setStock] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
   const [selectedColor, setSelectedColor] = useState('')
   const [selectedSize, setSelectedSize] = useState('')
   const [productToAdd, setProductToAdd] = useState('')
+  const [counter, setCounter] = useState(1)
 
   useEffect(() => {
     getOneProduct(param.name)
@@ -41,9 +42,6 @@ function SingleProduct() {
         setBrand(brand)
         setPicture(picture)
         setPrice(price)
-      })
-      .then(() => {
-        setIsLoading(false)
       })
   }, [])
   useEffect(() => {
@@ -63,22 +61,8 @@ function SingleProduct() {
 
   const addProduct = () => {
     let productToAdd = searchProductId()
-    const cartProducts = cart.Products
-
-    const validatedProducts = cartProducts.map((product) => {
-      return product
-      // if (product.id === productToAdd.id) {
-      //   let productoNuevo = product
-      //   productoNuevo.quantity = 2
-      //   setProductToAdd((prod) => [...prod, productoNuevo])
-      // }
-    })
-
-    if (!validatedProducts.length) {
-      dispatch(addToCart({ ...productToAdd, quantity: 1 }))
-    } else {
-      dispatch(addToCart(productToAdd))
-    }
+    productToAdd = { ...productToAdd, quantity: counter, UserId: cart.UserId }
+    addProductToCartBD(productToAdd)
   }
 
   const searchProductId = () => {
@@ -115,8 +99,10 @@ function SingleProduct() {
     <div>
       <Navbar transparent={false} />
       <h1>Add to cart: </h1>
-      <button onClick={() => addProduct(color, size)}>+</button>
-      <button>-</button>
+      <button onClick={() => setCounter(counter + 1)}>+</button>
+      <h4>{counter}</h4>
+      <button onClick={() => setCounter(counter - 1)}>-</button>
+      <button onClick={() => addProduct()}>Add to cart</button>
 
       <h1>{name}</h1>
       <p>{description}</p>
