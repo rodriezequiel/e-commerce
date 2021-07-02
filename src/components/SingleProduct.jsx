@@ -169,7 +169,7 @@ function SingleProduct() {
 
           <div className='col-6 d-flex  ps-5'>
             <div className='container-fluid  ps-5'>
-              <p>solo para la demo ver que cambiaa el stock: {stock}</p>
+              {/* <p>solo para la demo ver que cambia el stock: {stock}</p> */}
               <h1>{name}</h1>
               <h2>${price}</h2>
               <h3>{brand}</h3>
