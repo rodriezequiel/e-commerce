@@ -5,8 +5,8 @@ export default function SignUp() {
   return (
     <div>
       <Navbar transparent={false} />
-      <div className="container-fluid pt-3 d-flex d-flex justify-content-between">
-        <div className=" d-flex row  position-absolute top-50 start-50 translate-middle">
+      <div className="container-fluid py-4 d-grid gap-3  d-flex justify-content-center">
+        <div className="col-4 bg-light border align-center p-3">
           <h1 className="text-center">Sing Up</h1>
           <form className="form-style justify-content-between">
             <div className="mb-3">
