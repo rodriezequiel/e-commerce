@@ -45,12 +45,12 @@ export const removeProduct = (userId, id) => {
     })
 }
 export const confirmOrder = (orderInfo) => {
+  console.log(orderInfo)
   return axios
-    .delete(`http://localhost:3001/api/cart/remove`, {
-      data: {},
-    })
+    .post(`http://localhost:3001/api/order/checkout`, orderInfo)
     .then((res) => res.data)
     .then((response) => {
+      alert('Orden de compra creada ok')
       return response
     })
 }

@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { confirmOrder } from '../utils/index'
 import Navbar from './Navbar'
 
 function Checkout() {
   const cart = useSelector((state) => state.cart)
   const [medioDePago, setMedioDePago] = useState('')
   const [total, setTotal] = useState(0)
+  const [order, setOrder] = useState({})
 
-  console.log(cart)
   const handlePayment = (e) => {
     const { value } = e.target
     setMedioDePago(value)
+  }
+
+  const handleChange = (e) => {
+    const { value, name } = e.target
+    setOrder({ ...order, [name]: value })
   }
 
   useEffect(() => {
@@ -20,12 +26,7 @@ function Checkout() {
     }, 0)
 
     setTotal(totalCart)
-  }, [cart]) //   userId,
-  // telephone,
-  // address,
-  // shipCost,
-  // paymentMethod,
-  // additionalInfo,
+  }, [cart])
   return (
     <>
       <Navbar transparent={false} />
@@ -64,16 +65,16 @@ function Checkout() {
           placeholder='Telefono...'
           name='telephone'
           // value={}
-          // onChange={}
+          onChange={handleChange}
         />
         <label className='to be completed'>Direccion de envio: </label>
         <input
           type='text'
           className='form-control'
           placeholder='Direccion de envio...'
-          name='adress'
+          name='address'
           // value={}
-          // onChange={}
+          onChange={handleChange}
         />
         <label className='to be completed'>
           Agrega informacion adicional:{' '}
@@ -84,14 +85,19 @@ function Checkout() {
           placeholder='+ info...'
           name='additionalInfo'
           // value={}
-          // onChange={}
+          onChange={handleChange}
         />
         <h5>
           Costo de envio: <span>$500</span>
         </h5>
         <label>Elegi un metodo de pago</label>
 
-        <select onChange={handlePayment} name='paymentMethod'>
+        <select
+          onChange={(e) => {
+            handlePayment(e)
+          }}
+          name='paymentMethod'
+        >
           <option value='mercadopago'>MercadoPago</option>
           <option value='tarjeta'>Tarjeta</option>
           <option value='contado'>Efectivo/Transferencia</option>
@@ -113,7 +119,9 @@ function Checkout() {
           <button> Pagar con MercadoPago</button>
         )}
       </div>
-      <button>Confirmar compra</button>
+      <button onClick={() => confirmOrder({ ...order, userId: 1 })}>
+        Confirmar compra
+      </button>
     </>
   )
 }

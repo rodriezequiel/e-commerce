@@ -44,6 +44,7 @@ function Cart() {
           )
         })}
       <button
+        disabled={!cart.Products.length}
         onClick={() => {
           clearCart(cart.UserId)
         }}
@@ -51,7 +52,7 @@ function Cart() {
         Vaciar Carrito
       </button>
       <Link to='/checkout'>
-        <button>Confirmar Compra</button>
+        <button disabled={!cart.Products.length}>Confirmar Compra</button>
       </Link>
     </div>
   )
