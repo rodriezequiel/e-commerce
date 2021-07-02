@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router'
 import { confirmOrder } from '../utils/index'
 import Navbar from './Navbar'
 
@@ -8,6 +9,7 @@ function Checkout() {
   const [medioDePago, setMedioDePago] = useState('')
   const [total, setTotal] = useState(0)
   const [order, setOrder] = useState({})
+  const history = useHistory()
 
   const handlePayment = (e) => {
     const { value } = e.target
@@ -119,7 +121,13 @@ function Checkout() {
           <button> Pagar con MercadoPago</button>
         )}
       </div>
-      <button onClick={() => confirmOrder({ ...order, userId: 1 })}>
+      <button
+        onClick={() =>
+          confirmOrder({ ...order, userId: 1 })
+            .then(() => history.push('/home'))
+            .then(() => alert('Gracias por su compra'))
+        }
+      >
         Confirmar compra
       </button>
     </>
