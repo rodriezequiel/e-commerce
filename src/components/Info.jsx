@@ -52,7 +52,7 @@ export default function Info() {
       </div>
       <div className="row justify-content-center">
         <div className="col-11">
-          <div className="container-fluid d-flex justify-content-right cards">
+          <div className="container-fluid d-flex justify-content-center cards">
             <div className="card card-option bg-dark mb-5">
               <img
                 className="card-img zindex-tooltip"
