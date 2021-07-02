@@ -12,11 +12,12 @@ function Cart() {
       <Navbar transparent={false} />
       {cart &&
         cart.Products.map((product) => {
-          const { name, brand, color, picture, price, size, quantity } = product
+          console.log(product)
+          const { name, brand, color, picture, price, size, CartItem } = product
           return (
             <div>
               <h1>{name}</h1>
-              <h1>{quantity}</h1>
+              <h1>{CartItem.quantity}</h1>
               <h2>{brand}</h2>
               <h2>{color}</h2>
               <h2>{price}</h2>
