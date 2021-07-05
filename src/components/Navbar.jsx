@@ -63,6 +63,15 @@ export default function Nav({ transparent = true }) {
                 </Link>
               </li>
               <li className='nav-item nav-option mx-4 my-auto fs-3'>
+                <Link
+                  
+                  className='nav-link active'
+                  to='/admin'
+                >
+                  ADMIN
+                </Link>
+              </li>
+              <li className='nav-item nav-option mx-4 my-auto fs-3'>
                 <Link className='nav-link active' to='/signin'>
                   Sign In
                 </Link>

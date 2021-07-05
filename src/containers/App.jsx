@@ -10,12 +10,15 @@ import SingleProduct from '../components/SingleProduct'
 import Footer from '../components/Footer'
 import Cart from '../components/Cart'
 import Checkout from '../components/Checkout'
+import AdminContainer from '../containers/AdminContainer'
+import AdminProducts from '../components/Admin/AdminProducts'
 
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getCart())
   }, [dispatch])
+
   return (
     <div>
       <Switch>
@@ -26,6 +29,8 @@ function App() {
         <Route exact path='/signup' component={SignUp} />
         <Route exact path='/cart' component={Cart} />
         <Route exact path='/checkout' component={Checkout} />
+        <Route exact path='/admin' component={AdminContainer} />
+        <Route exact path='/admin/productos' component={AdminProducts} />
         <Redirect from='/' to='/home' />
       </Switch>
       <Footer />
