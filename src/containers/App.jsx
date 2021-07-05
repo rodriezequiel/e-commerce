@@ -18,18 +18,20 @@ import { getUser } from '../state/user'
 function App() {
   const user = useSelector(state => state.user)
   const dispatch = useDispatch()
-  useEffect(() => {
-    if(user.id){
-    dispatch(getCart())
-    }
-  }, [dispatch, user])
-
+  
   useEffect(() =>{
     axios.get('/api/auth/me')
       .then(res=> res.data)
       .then(user => dispatch(getUser(user)))
       .catch(err => console.log(err))
   }, [dispatch])
+
+  useEffect(() => {
+    if(user.id){
+    dispatch(getCart())
+    }
+  }, [dispatch, user])
+
 
   return (
     <div>

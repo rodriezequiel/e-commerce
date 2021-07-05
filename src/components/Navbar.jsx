@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router'
 import { Link } from 'react-router-dom'
 import navbarChange from '../utils/navbarChange'
 
 export default function Nav({ transparent = true }) {
+  const user = useSelector(state => state.user)
   const location = useLocation()
   useEffect(() => {
     if (location.pathname === '/home') navbarChange()
@@ -77,7 +79,7 @@ export default function Nav({ transparent = true }) {
                 </Link>
               </li>
               <li className='nav-item nav-option ms-5 my-auto fs-3'>
-                <Link className='nav-link active' to='/cart'>
+                <Link className='nav-link active' to={`${(user.id) ? '/cart': '/signin'}`}>
                   <i className='bi bi-cart3'></i>
                 </Link>
               </li>

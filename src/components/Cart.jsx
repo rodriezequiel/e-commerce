@@ -1,28 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCart } from "../state/cart";
-import { deleteProducFromCart } from "../state/cart";
-import Navbar from "./Navbar";
+import { Link } from "react-router-dom";
+
 import Table from "../components/Table";
-import { Link, useHistory } from "react-router-dom";
+import Navbar from "./Navbar";
+import { deleteProducFromCart } from "../state/cart";
 import { clearCart } from "../utils/index";
 
 function Cart() {
-  let cart = useSelector((state) => state.cart);
+  let {cart} = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const deleteProduct = (user, item) => {
     dispatch(deleteProducFromCart({ userId: user, product: item }));
   };
-  useEffect(() => {
-    dispatch(getCart());
-  }, [dispatch]);
 
   return (
     <div>
       <Navbar transparent={false} />
-      {!cart.Products.length && <h1>You have no products...</h1>}
-      {cart && (
+      {(cart.Products && !cart.Products.length) && <h1>You have no products...</h1>}
+      {cart.Products && (
         <Table
           items={cart.Products}
           user={cart.UserId}
@@ -30,7 +27,7 @@ function Cart() {
         />
       )}
       <button
-        disabled={!cart.Products.length}
+        disabled={cart.Products && !cart.Products.length}
         onClick={() => {
           clearCart(cart.UserId);
         }}
@@ -38,7 +35,7 @@ function Cart() {
         Vaciar Carrito
       </button>
       <Link to="/checkout">
-        <button disabled={!cart.Products.length}>Confirmar Compra</button>
+        <button disabled={cart.Products && !cart.Products.length}>Confirmar Compra</button>
       </Link>
     </div>
   );
