@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 
 import navbarChange from "../utils/navbarChange";
@@ -10,18 +10,21 @@ import { removeUser } from "../state/user";
 export default function Nav({ transparent = true }) {
   const user = useSelector(state => state.user);
   const location = useLocation();
+  const history = useHistory();
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     if (location.pathname === "/home") navbarChange();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const signOut = (event) =>{
+  const signOut = event => {
     event.preventDefault();
-    axios.put('/api/auth/logout')
+    axios
+      .put("/api/auth/logout")
       .then(res => dispatch(removeUser()))
-  }
+      .then(res => history.push("/home"));
+  };
 
   return (
     <div>
@@ -38,10 +41,10 @@ export default function Nav({ transparent = true }) {
             width="60"
             height="60"
           />
-          <Link className='nav-link active' to="/home" >
-          <h2 className="navbar-brand ms-1 my-0 fs-1">
-            board<span style={{ color: "red", fontSize: "3.2rem" }}>4</span>life
-          </h2>
+          <Link className="nav-link active" to="/home">
+            <h2 className="navbar-brand ms-1 my-0 fs-1">
+              board<span style={{ color: "red", fontSize: "3.2rem" }}>4</span>life
+            </h2>
           </Link>
           <button
             className="navbar-toggler"
@@ -71,11 +74,14 @@ export default function Nav({ transparent = true }) {
                   Shop
                 </Link>
               </li>
-              <li className="nav-item nav-option mx-4 my-auto fs-3">
-                <Link className="nav-link active" to="/admin">
-                  ADMIN
-                </Link>
-              </li>
+              {user.isAdmin === 'true' && (
+                <li className="nav-item nav-option mx-4 my-auto fs-3">
+                  <Link className="nav-link active" to="/admin">
+                    ADMIN
+                  </Link>
+                </li>
+              )}
+
               {!user.id ? (
                 <li className="nav-item nav-option mx-4 my-auto fs-3">
                   <Link className="nav-link active" to="/signin">
