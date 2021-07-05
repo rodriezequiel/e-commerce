@@ -13,7 +13,6 @@ export default function SignIn() {
   }); 
   const history = useHistory();
   const dispatch= useDispatch();
-  console.log(input);
 
   const changeHandler = event => {
     const { target } = event;
