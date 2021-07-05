@@ -55,9 +55,31 @@ export const confirmOrder = (orderInfo) => {
     })
 }
 
-// userId,
-// telephone,
-// address,
-// shipCost,
-// paymentMethod,
-// additionalInfo,
+export const getAllProducts = () => {
+  return axios
+    .get(`http://localhost:3001/api/admin/allproducts`)
+    .then((res) => res.data)
+    .then((response) => response)
+}
+
+export const updateProduct = (products) => {
+  const updatedProducts = products.map((product) =>
+    axios.put(`http://localhost:3001/api/admin/update`, product)
+  )
+  return Promise.all(updatedProducts)
+    .then((res) => res.data)
+    .then((updatedProducts) => updatedProducts)
+}
+
+export const addProduct = (product) => {
+  return axios
+    .post(`http://localhost:3001/api/admin/add`, product)
+    .then((res) => res.data)
+    .then((response) => response)
+}
+export const removeProductFromBD = (product) => {
+  // return axios
+  //   .post(`http://localhost:3001/api/admin/add`, product)
+  //   .then((res) => res.data)
+  //   .then((response) => response)
+}
