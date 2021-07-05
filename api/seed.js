@@ -1,30 +1,30 @@
-const { User, Product, Order, Cart, Category } = require("./db/index");
+const { User, Product, Category } = require("./db/index");
 
 const categorys = [{ name: "surf" }, { name: "skate" }, { name: "hombre" }, { name: "mujer" }];
 
-const user = [
-  {
-    firstName: "Julian",
-    lastName: "Perez",
-    email: "julian@test.com",
-    password: "1234",
-    isAdmin: false,
-  },
-  {
-    firstName: "Ivan",
-    lastName: "Moroni",
-    email: "ivan@test.com",
-    password: "12345",
-    isAdmin: false,
-  },
-  {
-    firstName: "Rodri",
-    lastName: "Bacigalupo",
-    email: "rodri@test.com",
-    password: "rodri",
-    isAdmin: true,
-  },
-];
+// const user = [
+//   {
+//     firstName: "Julian",
+//     lastName: "Perez",
+//     email: "julian@test.com",
+//     password: "1234",
+//     isAdmin: false,
+//   },
+//   {
+//     firstName: "Ivan",
+//     lastName: "Moroni",
+//     email: "ivan@test.com",
+//     password: "12345",
+//     isAdmin: false,
+//   },
+//   {
+//     firstName: "Rodri",
+//     lastName: "Bacigalupo",
+//     email: "rodri@test.com",
+//     password: "rodri",
+//     isAdmin: true,
+//   },
+// ];
 
 const product = [
   {
@@ -134,7 +134,7 @@ const product = [
   },
 ];
 
-const cart = [{ state: "inProgress" }, { state: "inProgress" }];
+// const cart = [{ state: "inProgress" }, { state: "inProgress" }];
 // User.bulkCreate(user, { returning: true }).then(
 //   (user) => console.log('usuarios creados')
 // process.exit()

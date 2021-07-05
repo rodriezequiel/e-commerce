@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
-const {User, Cart} = require("../db/index");
+const {User} = require("../db/index");
 
 const secret = "$2b$10$/skdhli/rZNMa9uRsSOdX.";
 
