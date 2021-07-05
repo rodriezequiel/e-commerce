@@ -29,7 +29,7 @@ router.post("/register", (req, res) => {
     });
 });
 
-router.post('/logout', (req, res) =>{
+router.put('/logout', (req, res) =>{
     res.clearCookie('access');
     res.sendStatus(200);
 })
