@@ -2,21 +2,21 @@ import axios from 'axios'
 
 export const getProducts = () => {
   return axios
-    .get('http://localhost:3001/api/products/all')
+    .get('/api/products/all')
     .then((res) => res.data)
     .then((products) => products)
 }
 
 export const getOneProduct = (name) => {
   return axios
-    .get(`http://localhost:3001/api/products/single/${name}`)
+    .get(`/api/products/single/${name}`)
     .then((res) => res.data)
     .then((singleProduct) => singleProduct)
 }
 
 export const addProductToCartBD = (products) => {
   return axios
-    .post(`http://localhost:3001/api/cart/add`, products)
+    .post(`/api/cart/add`, products)
     .then((res) => res.data)
     .then((response) => {
       alert('producto agregado al carrito')
@@ -26,7 +26,7 @@ export const addProductToCartBD = (products) => {
 
 export const clearCart = (userId) => {
   return axios
-    .delete(`http://localhost:3001/api/cart/vaciarcarrito`, {
+    .delete(`/api/cart/vaciarcarrito`, {
       data: { userId: userId },
     })
     .then((res) => res.data)
@@ -36,7 +36,7 @@ export const clearCart = (userId) => {
 }
 export const removeProduct = (userId, id) => {
   return axios
-    .delete(`http://localhost:3001/api/cart/remove`, {
+    .delete(`/api/cart/remove`, {
       data: { userId: userId, productid: id },
     })
     .then((res) => res.data)
@@ -47,7 +47,7 @@ export const removeProduct = (userId, id) => {
 export const confirmOrder = (orderInfo) => {
   console.log(orderInfo)
   return axios
-    .post(`http://localhost:3001/api/order/checkout`, orderInfo)
+    .post(`/api/order/checkout`, orderInfo)
     .then((res) => res.data)
     .then((response) => {
       alert('Orden de compra creada ok')
@@ -57,14 +57,14 @@ export const confirmOrder = (orderInfo) => {
 
 export const getAllProducts = () => {
   return axios
-    .get(`http://localhost:3001/api/admin/allproducts`)
+    .get(`/api/admin/allproducts`)
     .then((res) => res.data)
     .then((response) => response)
 }
 
 export const updateProduct = (products) => {
   const updatedProducts = products.map((product) =>
-    axios.put(`http://localhost:3001/api/admin/update`, product)
+    axios.put(`/api/admin/update`, product)
   )
   return Promise.all(updatedProducts)
     .then((res) => res.data)
@@ -73,13 +73,13 @@ export const updateProduct = (products) => {
 
 export const addProduct = (product) => {
   return axios
-    .post(`http://localhost:3001/api/admin/add`, product)
+    .post(`/api/admin/add`, product)
     .then((res) => res.data)
     .then((response) => response)
 }
 export const removeProductFromBD = (products) => {
   return axios
-    .delete(`http://localhost:3001/api/admin/delete`, {
+    .delete(`/api/admin/delete`, {
       data: products,
     })
     .then((res) => res.data)
@@ -88,14 +88,14 @@ export const removeProductFromBD = (products) => {
 
 export const getAllUsersfromBD = () => {
   return axios
-    .get(`http://localhost:3001/api/admin/allusers`)
+    .get(`/api/admin/allusers`)
     .then((res) => res.data)
     .then((response) => response)
 }
 
 export const updateUserfromBD = (users) => {
   const updatedusers = users.map((user) =>
-    axios.put(`http://localhost:3001/api/admin/updateuser`, user)
+    axios.put(`/api/admin/updateuser`, user)
   )
   return Promise.all(updatedusers)
     .then((res) => res.data)
@@ -104,7 +104,7 @@ export const updateUserfromBD = (users) => {
 
 export const removeUserfromBD = (users) => {
   return axios
-    .delete(`http://localhost:3001/api/admin/deleteuser`, {
+    .delete(`/api/admin/deleteuser`, {
       data: users,
     })
     .then((res) => res.data)
@@ -113,21 +113,21 @@ export const removeUserfromBD = (users) => {
 
 export const addUserToBD = (user) => {
   return axios
-    .post(`http://localhost:3001/api/admin/adduser`, user)
+    .post(`/api/admin/adduser`, user)
     .then((res) => res.data)
     .then((response) => response)
 }
 
 export const getOrdersFromBD = () => {
   return axios
-    .get(`http://localhost:3001/api/admin/getorders`)
+    .get(`/api/admin/getorders`)
     .then((res) => res.data)
     .then((response) => response)
 }
 
 export const removeOrderfromBD = (orders) => {
   return axios
-    .delete(`http://localhost:3001/api/admin/deleteorder`, {
+    .delete(`/api/admin/deleteorder`, {
       data: orders,
     })
     .then((res) => res.data)
@@ -136,7 +136,7 @@ export const removeOrderfromBD = (orders) => {
 
 export const updateOrderfromBD = (orders) => {
   const updatedOrder = orders.map((order) =>
-    axios.put(`http://localhost:3001/api/admin/updateorder`, order)
+    axios.put(`/api/admin/updateorder`, order)
   )
   return Promise.all(updatedOrder)
     .then((res) => res.data)
@@ -145,7 +145,7 @@ export const updateOrderfromBD = (orders) => {
 
 export const addOrderToBD = (order) => {
   return axios
-    .post(`http://localhost:3001/api/admin/addorder`, order)
+    .post(`/api/admin/addorder`, order)
     .then((res) => res.data)
     .then((response) => response)
 }
