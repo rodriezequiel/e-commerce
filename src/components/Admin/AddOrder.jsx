@@ -1,62 +1,59 @@
 import React, { useState } from 'react'
-import { addProduct } from '../../utils/index'
+import { addOrderToBD } from '../../utils/index'
 
-function AddProduct({ setNewProduct }) {
-  const [product, setProduct] = useState({})
+function AddOrder({ setNewProduct }) {
+  const [order, setOrder] = useState({})
   const handleChange = (e) => {
     const { value, name } = e.target
-    setProduct({ ...product, [name]: value })
+    setOrder({ ...order, [name]: value })
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    addProduct(product).then(() => setNewProduct(false))
+    addOrderToBD(order).then(() => setNewProduct(false))
   }
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <input
           type='text'
-          placeholder='nombre'
-          name='name'
+          placeholder='Telefono'
+          name='telephone'
           onChange={handleChange}
         />
         <input
           type='text'
-          placeholder='descripcion'
-          name='description'
+          placeholder='Direccion_de_Envio'
+          name='address'
           onChange={handleChange}
         />
         <input
           type='text'
-          placeholder='stock'
-          name='stock'
+          placeholder='Fecha'
+          name='date'
           onChange={handleChange}
         />
         <input
           type='text'
-          placeholder='talle'
-          name='size'
+          placeholder='Estado'
+          name='state'
           onChange={handleChange}
         />
         <input
-          type='text'
-          placeholder='precio'
-          name='price'
+          placeholder='Costo de Envio'
+          name='shipCost'
           onChange={handleChange}
         />
         <input
-          type='text'
-          placeholder='color'
-          name='color'
+          placeholder='Medio_De_Pago'
+          name='paymentMethod'
           onChange={handleChange}
         />
         <input
-          type='text'
-          placeholder='imageURLS'
-          name='picture'
-          defaultValue='https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg'
+          placeholder='+ Info'
+          name='additionalInfo'
           onChange={handleChange}
         />
+
         <button
           onClick={(e) => {
             handleSubmit(e)
@@ -77,4 +74,4 @@ function AddProduct({ setNewProduct }) {
   )
 }
 
-export default AddProduct
+export default AddOrder

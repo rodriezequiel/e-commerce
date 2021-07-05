@@ -77,9 +77,75 @@ export const addProduct = (product) => {
     .then((res) => res.data)
     .then((response) => response)
 }
-export const removeProductFromBD = (product) => {
-  // return axios
-  //   .post(`http://localhost:3001/api/admin/add`, product)
-  //   .then((res) => res.data)
-  //   .then((response) => response)
+export const removeProductFromBD = (products) => {
+  return axios
+    .delete(`http://localhost:3001/api/admin/delete`, {
+      data: products,
+    })
+    .then((res) => res.data)
+    .then((response) => response)
+}
+
+export const getAllUsersfromBD = () => {
+  return axios
+    .get(`http://localhost:3001/api/admin/allusers`)
+    .then((res) => res.data)
+    .then((response) => response)
+}
+
+export const updateUserfromBD = (users) => {
+  const updatedusers = users.map((user) =>
+    axios.put(`http://localhost:3001/api/admin/updateuser`, user)
+  )
+  return Promise.all(updatedusers)
+    .then((res) => res.data)
+    .then((updatedusers) => updatedusers)
+}
+
+export const removeUserfromBD = (users) => {
+  return axios
+    .delete(`http://localhost:3001/api/admin/deleteuser`, {
+      data: users,
+    })
+    .then((res) => res.data)
+    .then((response) => response)
+}
+
+export const addUserToBD = (user) => {
+  return axios
+    .post(`http://localhost:3001/api/admin/adduser`, user)
+    .then((res) => res.data)
+    .then((response) => response)
+}
+
+export const getOrdersFromBD = () => {
+  return axios
+    .get(`http://localhost:3001/api/admin/getorders`)
+    .then((res) => res.data)
+    .then((response) => response)
+}
+
+export const removeOrderfromBD = (orders) => {
+  return axios
+    .delete(`http://localhost:3001/api/admin/deleteorder`, {
+      data: orders,
+    })
+    .then((res) => res.data)
+    .then((response) => response)
+}
+
+export const updateOrderfromBD = (orders) => {
+  const updatedOrder = orders.map((order) =>
+    axios.put(`http://localhost:3001/api/admin/updateorder`, order)
+  )
+  return Promise.all(updatedOrder)
+    .then((res) => res.data)
+    .then((updatedusers) => updatedusers)
+}
+
+export const addOrderToBD = (order) => {
+  return axios
+    .post(`http://localhost:3001/api/admin/addorder`, order)
+    .then((res) => res.data)
+    .then((response) => response)
 }
