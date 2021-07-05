@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { getAllProducts } from '../../utils/index'
 import AddProduct from './AddProduct'
 import { Styles } from './Styles'
-import Table from './TestTable'
+import Table from './Table'
+import { updateProduct } from '../../utils/index'
+import { removeProductFromBD } from '../../utils/index'
+import AddNewItem from './AddNewItem'
 
 function AdminSingleProduct() {
   const columns = React.useMemo(
@@ -43,6 +46,10 @@ function AdminSingleProduct() {
             Header: 'color',
             accessor: 'color',
           },
+          {
+            Header: 'Categories???',
+            accessor: 'Categories',
+          },
         ],
       },
     ],
@@ -50,7 +57,6 @@ function AdminSingleProduct() {
   )
   const [data, setData] = useState([])
   const [updatedProduct, setUpdatedProduct] = useState([])
-  const [newProduct, setNewProduct] = useState(false)
   const [skipPageReset, setSkipPageReset] = React.useState(false)
 
   useEffect(() => {
@@ -75,42 +81,23 @@ function AdminSingleProduct() {
     })
   }
 
-  const handleAction = (e) => {
-    const { value } = e.target
-    if (e.key === 'Enter') {
-      const newData = data.filter((product) => {
-        if (product.name.toUpperCase().includes(value.toUpperCase()))
-          return true
-        else return false
-      })
-      setData(newData)
-    }
-  }
-
-  const handleAddProduct = () => {
-    setNewProduct(true)
-  }
-
   return (
     <>
-      <button onClick={handleAddProduct}>Agregar Producto</button>
-      <button
-        onClick={() => getAllProducts().then((products) => setData(products))}
-      >
-        Remover filtro
-      </button>
-      <input type='text' onKeyPress={handleAction} />
-      {newProduct && (
-        <div>
-          <AddProduct setNewProduct={setNewProduct} newProduct={newProduct} />
-        </div>
-      )}
       <Styles>
+        <AddNewItem
+          handleRemoveFilter={getAllProducts}
+          AddComponent={AddProduct}
+          data={data}
+          setData={setData}
+          filterOption='name'
+        />
         <Table
           columns={columns}
           data={data}
           updateMyData={updateMyData}
           skipPageReset={skipPageReset}
+          handleUpdate={updateProduct}
+          handleDelete={removeProductFromBD}
         />
       </Styles>
     </>

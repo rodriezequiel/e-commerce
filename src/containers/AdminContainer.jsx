@@ -1,10 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Navbar from '../components/Navbar'
 function AdminContainer() {
   return (
-    <div>
+    <div className='admin-view-container'>
+      <Navbar transparent={false} />
+
       <Link to='/admin/productos'>Productos</Link>
-      <h1>Soy Admin</h1>
+      <Link to='/admin/users'>Usuarios</Link>
+      <Link to='/admin/orders'>Ordenes de Compra</Link>
+      <Link to='/admin/categories'>Categorias</Link>
     </div>
   )
 }

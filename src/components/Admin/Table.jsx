@@ -1,8 +1,23 @@
-import { useTable, usePagination } from 'react-table'
-
 import React from 'react'
+import { useTable, useRowSelect } from 'react-table'
 
-// Create an editable cell renderer
+const IndeterminateCheckbox = React.forwardRef(
+  ({ indeterminate, ...rest }, ref) => {
+    const defaultRef = React.useRef()
+    const resolvedRef = ref || defaultRef
+
+    React.useEffect(() => {
+      resolvedRef.current.indeterminate = indeterminate
+    }, [resolvedRef, indeterminate])
+
+    return (
+      <>
+        <input type='checkbox' ref={resolvedRef} {...rest} />
+      </>
+    )
+  }
+)
+
 const EditableCell = ({
   value: initialValue,
   row: { index },
@@ -33,36 +48,61 @@ const defaultColumn = {
   Cell: EditableCell,
 }
 
-function Table({ columns, data, updateMyData, skipPageReset }) {
+function Table({ columns, data, updateMyData, handleUpdate, handleDelete }) {
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
+    rows,
     prepareRow,
-    page,
-    canPreviousPage,
-    canNextPage,
-    pageOptions,
-    pageCount,
-    gotoPage,
-    nextPage,
-    previousPage,
-    setPageSize,
-    state: { pageIndex, pageSize },
+    selectedFlatRows,
+    state: { selectedRowIds },
   } = useTable(
     {
       columns,
-      data,
       defaultColumn,
-      autoResetPage: !skipPageReset,
+      data,
       updateMyData,
     },
-    usePagination
+    useRowSelect,
+    (hooks) => {
+      hooks.visibleColumns.push((columns) => [
+        // Let's make a column for selection
+        {
+          id: 'selection',
+          // The header can use the table's getToggleAllRowsSelectedProps method
+          // to render a checkbox
+          Header: ({ getToggleAllRowsSelectedProps }) => (
+            <div>
+              <IndeterminateCheckbox {...getToggleAllRowsSelectedProps()} />
+            </div>
+          ),
+          // The cell can use the individual row's getToggleRowSelectedProps method
+          // to the render a checkbox
+          Cell: ({ row }) => (
+            <div>
+              <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
+            </div>
+          ),
+        },
+        ...columns,
+      ])
+    }
   )
 
+  const confirmUpdate = (funcUpdate) => {
+    const updatedProducts = selectedFlatRows.map((d) => d.original)
+    funcUpdate(updatedProducts).then(() => window.location.reload())
+  }
+  const deleteFunc = (funcUpdate) => {
+    const updatedProducts = selectedFlatRows.map((d) => d.original)
+    funcUpdate(updatedProducts).then(() => window.location.reload())
+  }
+
+  // Render the UI for your table
   return (
     <>
-      <table {...getTableProps()}>
+      <table className='admin-table-container' {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -73,7 +113,7 @@ function Table({ columns, data, updateMyData, skipPageReset }) {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {page.map((row, i) => {
+          {rows.slice(0, 10).map((row, i) => {
             prepareRow(row)
             return (
               <tr {...row.getRowProps()}>
@@ -85,50 +125,21 @@ function Table({ columns, data, updateMyData, skipPageReset }) {
           })}
         </tbody>
       </table>
-      <div className='pagination'>
-        <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-          {'<<'}
-        </button>{' '}
-        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-          {'<'}
-        </button>{' '}
-        <button onClick={() => nextPage()} disabled={!canNextPage}>
-          {'>'}
-        </button>{' '}
-        <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-          {'>>'}
-        </button>{' '}
-        <span>
-          Pagina{' '}
-          <strong>
-            {pageIndex + 1} de {pageOptions.length}
-          </strong>{' '}
-        </span>
-        <span>
-          | Ir a pagina:{' '}
-          <input
-            type='number'
-            defaultValue={pageIndex + 1}
-            onChange={(e) => {
-              const page = e.target.value ? Number(e.target.value) - 1 : 0
-              gotoPage(page)
-            }}
-            style={{ width: '100px' }}
-          />
-        </span>{' '}
-        <select
-          value={pageSize}
-          onChange={(e) => {
-            setPageSize(Number(e.target.value))
-          }}
+      <p>Filas seleccionadas: {Object.keys(selectedRowIds).length}</p>
+      <pre>
+        <button
+          className='admin-table-button'
+          onClick={() => confirmUpdate(handleUpdate)}
         >
-          {[10, 20, 30, 40, 50].map((pageSize) => (
-            <option key={pageSize} value={pageSize}>
-              mostrar {pageSize}
-            </option>
-          ))}
-        </select>
-      </div>
+          Confirmar cambios
+        </button>
+        <button
+          className='admin-table-button'
+          onClick={() => deleteFunc(handleDelete)}
+        >
+          Eliminar seleccionado/s
+        </button>
+      </pre>
     </>
   )
 }

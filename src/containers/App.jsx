@@ -14,6 +14,8 @@ import AdminContainer from '../containers/AdminContainer'
 import AdminProducts from '../components/Admin/AdminProducts'
 import axios from 'axios'
 import { getUser } from '../state/user'
+import Users from '../components/Admin/Users'
+import Orders from '../components/Admin/Orders'
 
 function App() {
   const user = useSelector(state => state.user)
@@ -45,6 +47,8 @@ function App() {
         <Route exact path='/checkout' component={Checkout} />
         <Route exact path='/admin' component={AdminContainer} />
         <Route exact path='/admin/productos' component={AdminProducts} />
+        <Route exact path='/admin/users' component={Users} />
+        <Route exact path='/admin/orders' component={Orders} />
         <Redirect from='/' to='/home' />
       </Switch>
       <Footer />
