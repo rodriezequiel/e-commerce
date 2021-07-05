@@ -10,15 +10,12 @@ const initialState = {};
 
 export const getCart = createAsyncThunk("getCart", (id, thunkAPI) => {
   const { user } = thunkAPI.getState();
-
-  // if (user) {
-  const userId = 1;
   return axios
-    .get(`http://localhost:3001/api/cart/${userId}`)
+    .get(`http://localhost:3001/api/cart/${user.id}`)
     .then((res) => res.data)
     .then((cart) => cart[0])
     .catch((err) => console.log("error", err));
-  // }
+  
 });
 
 export const addToCart = createAction("addToCart", (product) => {

@@ -1,7 +1,9 @@
 import { Link, useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
 import axios from 'axios'
 import { useState } from 'react';
 import Navbar from '../components/Navbar'
+import { getUser } from '../state/user';
 
 export default function SignIn() {
 
@@ -10,6 +12,7 @@ export default function SignIn() {
     email: "",
   }); 
   const history = useHistory();
+  const dispatch= useDispatch();
   console.log(input);
 
   const changeHandler = event => {
@@ -20,7 +23,9 @@ export default function SignIn() {
   const submitHandler = event => {
     event.preventDefault();
     return axios.post("/api/auth/login", input)
-    .then(user => history.push("/home"))
+    .then(res => res.data)
+    .then(user=> dispatch(getUser(user)))
+    .then(res => history.push("/home"))
     .catch(err => alert('datos incorrectos')) 
   };
 

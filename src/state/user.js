@@ -1,16 +1,9 @@
-import { createReducer, createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
+import { createReducer, createAction } from '@reduxjs/toolkit'
 
 const initialState = {}
 
-export const getUser = createAsyncThunk('getUser', (id, thunkAPI) => {
-  // return axios
-  //   .get()
-  //   .then((res) => res.data)
-  //   .then((allUsers) => allUsers)
-  //   .catch((err) => console.log('error', err))
-})
+export const getUser = createAction('getUser')
 
 export const userReducer = createReducer(initialState, {
-  [getUser.fulfilled]: (state, action) => action.payload,
+  [getUser]: (state, action) => action.payload
 })
