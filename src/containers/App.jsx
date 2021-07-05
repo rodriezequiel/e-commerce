@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Route, Switch, Redirect } from 'react-router'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getCart } from '../state/cart'
 import Home from './Home'
 import Shop from './Shop'
@@ -12,14 +12,28 @@ import Cart from '../components/Cart'
 import Checkout from '../components/Checkout'
 import AdminContainer from '../containers/AdminContainer'
 import AdminProducts from '../components/Admin/AdminProducts'
+import axios from 'axios'
+import { getUser } from '../state/user'
 import Users from '../components/Admin/Users'
 import Orders from '../components/Admin/Orders'
 
 function App() {
+  const user = useSelector(state => state.user)
   const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getCart())
+  
+  useEffect(() =>{
+    axios.get('/api/auth/me')
+      .then(res=> res.data)
+      .then(user => dispatch(getUser(user)))
+      .catch(err => console.log(err))
   }, [dispatch])
+
+  useEffect(() => {
+    if(user.id){
+    dispatch(getCart())
+    }
+  }, [dispatch, user])
+
 
   return (
     <div>

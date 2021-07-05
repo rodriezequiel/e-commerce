@@ -22,8 +22,20 @@ router.post('/login', (req, res) => {
     .catch((err) => res.sendStatus(404))
 })
 
-router.post('/register', (req, res) => {
-  console.log(req.body)
+router.post("/login", (req, res) => {
+  const { email, password } = req.body;
+  return User.findOne({ where: { email } }).then(user => {
+    user.isValidPassword(password).then(bool => {
+      if (bool) {
+        const accessToken = jwt.sign({ id: user.id, isAdmin: user.isAdmin}, secret);
+        res.cookie('access', accessToken, {httpOnly:true});
+        return res.json(user);
+      } else return res.send("username or password incorrect");
+    })
+  }).catch(err => console.log(err))
+});
+
+router.post("/register", (req, res) => {
   return User.create(req.body)
     .then((user) =>
       user
@@ -36,9 +48,17 @@ router.post('/register', (req, res) => {
     })
 })
 
-router.post('/logout', (req, res) => {
-  res.clearCookie('access')
-  res.sendStatus(200)
+router.put('/logout', (req, res) =>{
+    res.clearCookie('access');
+    res.sendStatus(200);
 })
 
-module.exports = router
+router.get('/me', (req, res) =>{
+    return jwt.verify(req.cookies.access, secret, (err, data) =>{
+        if(err) res.sendStatus(401);
+        return User.findByPk(data.id)
+            .then(user => res.status(200).send(user))
+    })
+})
+
+module.exports = router;
