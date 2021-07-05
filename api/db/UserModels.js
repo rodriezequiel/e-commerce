@@ -1,4 +1,5 @@
-const { Sequelize, DataTypes, Model } = require('sequelize')
+const {DataTypes, Model } = require('sequelize')
+const bcrypt = require('bcrypt')
 const db = require('../db/connection')
 
 class User extends Model {}
@@ -23,6 +24,9 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    salt: {
+      type: DataTypes.STRING,
+    },
     isAdmin: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -35,3 +39,19 @@ User.init(
 )
 
 module.exports = User
+
+User.addHook('beforeCreate', (usuario) => {
+  return bcrypt.genSalt()
+       .then((salt) =>{
+           usuario.salt = salt;
+           return bcrypt.hash(usuario.password, usuario.salt)
+       })
+       .then((hashed)=> usuario.password = hashed)
+})
+
+User.prototype.isValidPassword = function(password){
+   return bcrypt.hash(password, this.salt)
+         .then(result =>{
+             return result === this.password;
+       }).catch(err => console.log(err))
+}

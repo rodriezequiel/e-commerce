@@ -1,25 +1,47 @@
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import axios from 'axios'
+import { useState } from 'react';
 import Navbar from '../components/Navbar'
 
 export default function SignIn() {
+
+  const [input, setInput] = useState({
+    password: "",
+    email: "",
+  }); 
+  const history = useHistory();
+  console.log(input);
+
+  const changeHandler = event => {
+    const { target } = event;
+    setInput({ ...input, [target.name]: target.value });
+  };
+
+  const submitHandler = event => {
+    event.preventDefault();
+    return axios.post("/api/auth/login", input)
+    .then(user => history.push("/home"))
+    .catch(err => alert('datos incorrectos')) 
+  };
+
   return (
     <div>
       <Navbar transparent={false} />
       <div className='container-fluid py-4 d-grid gap-3 d-flex justify-content-center'>
         <div className='col-4 bg-light border align-center p-3'>
           <h1 className='text-center'>Sign In</h1>
-          <form className='form-style justify-content-between'>
+          <form className='form-style justify-content-between' onChange={changeHandler} onSubmit={submitHandler}>
             <div className='mb-3'>
-              <label for='email' className='form-label'>
+              <label htmlFor='email' className='form-label'>
                 Email*
               </label>
-              <input type='text' className='form-control' id='email' />
+              <input type='text' className='form-control' id='email' name='email'/>
             </div>
             <div className='mb-3'>
-              <label for='password' className='form-label'>
+              <label htmlFor='password' className='form-label'>
                 Password *
               </label>
-              <input type='password' className='form-control' id='password' />
+              <input type='password' className='form-control' id='password' name='password'/>
             </div>
             <div className='mb-3 form-check'>
               <input
@@ -27,7 +49,7 @@ export default function SignIn() {
                 className='form-check-input'
                 id='exampleCheck1'
               />
-              <label className='form-check-label' for='exampleCheck1'>
+              <label className='form-check-label' htmlFor='exampleCheck1'>
                 Check me out
               </label>
             </div>

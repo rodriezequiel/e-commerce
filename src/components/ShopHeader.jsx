@@ -18,9 +18,9 @@ export default function ShopHeader() {
           </nav>
         </div>
         <div className='d-flex col-5 justify-content-end me-5'>
-          <div class='dropdown'>
+          <div className='dropdown'>
             <button
-              class='btn btn-secondary dropdown-toggle'
+              className='btn btn-secondary dropdown-toggle'
               type='button'
               id='dropdownMenuButton1'
               data-bs-toggle='dropdown'
@@ -28,19 +28,19 @@ export default function ShopHeader() {
             >
               Dropdown button
             </button>
-            <ul class='dropdown-menu' aria-labelledby='dropdownMenuButton1'>
+            <ul className='dropdown-menu' aria-labelledby='dropdownMenuButton1'>
               <li>
-                <a class='dropdown-item' href='#'>
+                <a className='dropdown-item' href='#'>
                   Action
                 </a>
               </li>
               <li>
-                <a class='dropdown-item' href='#'>
+                <a className='dropdown-item' href='#'>
                   Another action
                 </a>
               </li>
               <li>
-                <a class='dropdown-item' href='#'>
+                <a className='dropdown-item' href='#'>
                   Something else here
                 </a>
               </li>
