@@ -1,60 +1,47 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getCart } from '../state/cart'
-import Navbar from './Navbar'
-import { Link, useHistory } from 'react-router-dom'
-import { clearCart, removeProduct } from '../utils/index'
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCart } from "../state/cart";
+import { deleteProducFromCart } from "../state/cart";
+import Navbar from "./Navbar";
+import Table from "../components/Table";
+import { Link, useHistory } from "react-router-dom";
+import { clearCart } from "../utils/index";
 
 function Cart() {
-  const cart = useSelector((state) => state.cart)
-  const dispatch = useDispatch()
+  let cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
+  const deleteProduct = (user, item) => {
+    dispatch(deleteProducFromCart({ userId: user, product: item }));
+  };
   useEffect(() => {
-    dispatch(getCart())
-  }, [dispatch])
+    dispatch(getCart());
+  }, [dispatch, cart]);
 
   return (
     <div>
       <Navbar transparent={false} />
       {!cart.Products.length && <h1>You have no products...</h1>}
-      {cart &&
-        cart.Products.map((product) => {
-          const { name, brand, color, picture, price, size, CartItem, id } =
-            product
-          return (
-            <div className='myCart'>
-              <h1>{name}</h1>
-              <h1>{CartItem.quantity}</h1>
-              <h2>{brand}</h2>
-              <h2>{color}</h2>
-              <h2>{price}</h2>
-              <h2>{size}</h2>
-              <img style={{ width: '100px' }} src={picture[0]} alt={name}></img>
-              <button
-                onClick={() => {
-                  removeProduct(cart.UserId, id)
-                }}
-              >
-                {' '}
-                Quitar producto{' '}
-              </button>
-              <button> Editar producto </button>
-            </div>
-          )
-        })}
+      {cart && (
+        <Table
+          items={cart.Products}
+          user={cart.UserId}
+          deleteItem={deleteProduct}
+        />
+      )}
       <button
         disabled={!cart.Products.length}
         onClick={() => {
-          clearCart(cart.UserId)
+          clearCart(cart.UserId);
         }}
       >
         Vaciar Carrito
       </button>
-      <Link to='/checkout'>
+      <Link to="/checkout">
         <button disabled={!cart.Products.length}>Confirmar Compra</button>
       </Link>
     </div>
-  )
+  );
 }
 
-export default Cart
+export default Cart;
