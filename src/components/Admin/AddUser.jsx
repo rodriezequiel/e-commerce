@@ -1,62 +1,50 @@
 import React, { useState } from 'react'
-import { addProduct } from '../../utils/index'
+import { addUserToBD } from '../../utils/index'
 
-function AddProduct({ setNewProduct }) {
-  const [product, setProduct] = useState({})
+function AddUser({ setNewProduct }) {
+  const [user, setUser] = useState({})
   const handleChange = (e) => {
     const { value, name } = e.target
-    setProduct({ ...product, [name]: value })
+    setUser({ ...user, [name]: value })
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    addProduct(product).then(() => setNewProduct(false))
+    addUserToBD(user).then(() => setNewProduct(false))
   }
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <input
           type='text'
-          placeholder='nombre'
-          name='name'
+          placeholder='Nombre'
+          name='firstName'
           onChange={handleChange}
         />
         <input
           type='text'
-          placeholder='descripcion'
-          name='description'
+          placeholder='Apellido'
+          name='lastName'
           onChange={handleChange}
         />
         <input
           type='text'
-          placeholder='stock'
-          name='stock'
+          placeholder='email'
+          name='email'
           onChange={handleChange}
         />
         <input
           type='text'
-          placeholder='talle'
-          name='size'
+          placeholder='password'
+          name='password'
           onChange={handleChange}
         />
         <input
-          type='text'
-          placeholder='precio'
-          name='price'
+          checked
+          placeholder='isAdmin'
+          name='isAdmin'
           onChange={handleChange}
         />
-        <input
-          type='text'
-          placeholder='color'
-          name='color'
-          onChange={handleChange}
-        />
-        <input
-          type='text'
-          placeholder='imageURLS'
-          name='picture'
-          defaultValue='https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg'
-          onChange={handleChange}
-        />
+
         <button
           onClick={(e) => {
             handleSubmit(e)
@@ -77,4 +65,4 @@ function AddProduct({ setNewProduct }) {
   )
 }
 
-export default AddProduct
+export default AddUser

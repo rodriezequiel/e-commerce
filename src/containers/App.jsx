@@ -12,6 +12,8 @@ import Cart from '../components/Cart'
 import Checkout from '../components/Checkout'
 import AdminContainer from '../containers/AdminContainer'
 import AdminProducts from '../components/Admin/AdminProducts'
+import Users from '../components/Admin/Users'
+import Orders from '../components/Admin/Orders'
 
 function App() {
   const dispatch = useDispatch()
@@ -31,6 +33,8 @@ function App() {
         <Route exact path='/checkout' component={Checkout} />
         <Route exact path='/admin' component={AdminContainer} />
         <Route exact path='/admin/productos' component={AdminProducts} />
+        <Route exact path='/admin/users' component={Users} />
+        <Route exact path='/admin/orders' component={Orders} />
         <Redirect from='/' to='/home' />
       </Switch>
       <Footer />

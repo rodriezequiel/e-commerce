@@ -158,3 +158,39 @@ code {
 .admin-product-container {
   display: flex;
 }
+
+.admin-view-container {
+  display: flex;
+  flex-direction: column;
+}
+.admin-view-container > a {
+  font-size: 30px;
+  padding-left: 10%;
+  padding-top: 5%;
+  text-decoration: none;
+  color: black;
+  opacity: 0.7;
+  width: 400px;
+}
+
+.admin-view-container > a:hover {
+  transform: translate(0px);
+  text-decoration: underline;
+  font-size: 32px;
+  opacity: 1;
+}
+
+.admin-table-container {
+  margin: 3%;
+}
+
+.admin-table-button {
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+.admin-table-button:hover {
+  text-decoration: underline;
+  transform: scale(1.05);
+  background-color: rgb(164, 159, 159);
+}
