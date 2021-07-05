@@ -60,38 +60,40 @@ function SingleProduct() {
   }, [singleProduct])
 
   const addProduct = () => {
-    let productToAdd = searchProductId()
+    let productToAdd = selectedProduct()
     productToAdd = { ...productToAdd, quantity: counter, UserId: cart.UserId }
     addProductToCartBD(productToAdd)
   }
 
-  const searchProductId = () => {
-    const prod = singleProduct.filter((product) => {
+  const selectedProduct = () => {
+    const selected = singleProduct.filter((product) => {
       return product.color === selectedColor && product.size === selectedSize
     })
-    return prod[0]
+    return selected[0]
   }
 
   //limpiar esta funcion
   const handleChange = (e) => {
     const { value, name } = e.target
     if (name === 'color') {
-      setSelectedColor(value)
+      setSelectedColor((state) => value)
       const AvailableSizes = singleProduct.reduce((acum, item) => {
         if (item.color === value) acum.push(item.size)
         return acum
       }, [])
 
       setSize(AvailableSizes)
+      setSelectedSize(AvailableSizes[0])
     }
     if (name === 'size') {
-      setSelectedSize(value)
+      setSelectedSize((state) => value)
       const AvailableColors = singleProduct.reduce((acum, item) => {
         if (item.size === value) acum.push(item.color)
         return acum
       }, [])
 
       setColor(AvailableColors)
+      setSelectedColor(AvailableColors[0])
     }
   }
 

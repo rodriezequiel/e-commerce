@@ -194,3 +194,9 @@ code {
   transform: scale(1.05);
   background-color: rgb(164, 159, 159);
 }
+
+.bi-trash-fill:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  color: red;
+}
