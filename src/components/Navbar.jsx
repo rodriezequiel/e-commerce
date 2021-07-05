@@ -74,14 +74,20 @@ export default function Nav({ transparent = true }) {
                   Shop
                 </Link>
               </li>
-              {user.isAdmin === 'true' && (
+              {user.isAdmin && (
                 <li className="nav-item nav-option mx-4 my-auto fs-3">
                   <Link className="nav-link active" to="/admin">
                     ADMIN
                   </Link>
                 </li>
               )}
-
+              {user.id && !user.isAdmin && (
+                <li className="nav-item nav-option mx-4 my-auto fs-3">
+                  <Link className="nav-link active" to="/orders">
+                    Orders
+                  </Link>
+                </li>
+              )}
               {!user.id ? (
                 <li className="nav-item nav-option mx-4 my-auto fs-3">
                   <Link className="nav-link active" to="/signin">

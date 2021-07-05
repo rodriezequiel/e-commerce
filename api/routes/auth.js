@@ -9,7 +9,7 @@ router.post("/login", (req, res) => {
   return User.findOne({ where: { email } }).then(user => {
     user.isValidPassword(password).then(bool => {
       if (bool) {
-        const accessToken = jwt.sign({ id: user.id}, secret);
+        const accessToken = jwt.sign({ id: user.id, isAdmin: user.isAdmin}, secret);
         res.cookie('access', accessToken, {httpOnly:true});
         return res.json(user);
       } else return res.send("username or password incorrect");
