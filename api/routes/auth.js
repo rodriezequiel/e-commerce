@@ -14,8 +14,8 @@ router.post("/login", (req, res) => {
         res.cookie('access', accessToken, {httpOnly:true});
         return res.json(user);
       } else return res.send("username or password incorrect");
-    });
-  }).catch(err => res.sendStatus(404))
+    })
+  }).catch(err => console.log(err))
 });
 
 router.post("/register", (req, res) => {
@@ -36,7 +36,7 @@ router.put('/logout', (req, res) =>{
 
 router.get('/me', (req, res) =>{
     return jwt.verify(req.cookies.access, secret, (err, data) =>{
-        if(err) console.log(err);
+        if(err) res.sendStatus(401);
         return User.findByPk(data.id)
             .then(user => res.status(200).send(user))
     })

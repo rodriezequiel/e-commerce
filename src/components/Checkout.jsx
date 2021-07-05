@@ -5,7 +5,7 @@ import { confirmOrder } from '../utils/index'
 import Navbar from './Navbar'
 
 function Checkout() {
-  const cart = useSelector((state) => state.cart)
+  const {cart, user} = useSelector((state) => state)
   const [medioDePago, setMedioDePago] = useState('')
   const [total, setTotal] = useState(0)
   const [order, setOrder] = useState({})
@@ -22,19 +22,20 @@ function Checkout() {
   }
 
   useEffect(() => {
+    if(cart.Products){
     const totalCart = cart.Products.reduce((acum, item) => {
       acum += item.price * item.CartItem.quantity
       return acum
     }, 0)
-
     setTotal(totalCart)
+  }
   }, [cart])
   return (
     <>
       <Navbar transparent={false} />
       <div>
         <h1>Mis productos: </h1>
-        {cart &&
+        {cart.Products &&
           cart.Products.map((product) => {
             const { name, brand, color, picture, price, size, CartItem, id } =
               product
@@ -123,7 +124,7 @@ function Checkout() {
       </div>
       <button
         onClick={() =>
-          confirmOrder({ ...order, userId: 1 })
+          confirmOrder({ ...order, userId: user.id })
             .then(() => history.push('/home'))
             .then(() => alert('Gracias por su compra'))
         }
