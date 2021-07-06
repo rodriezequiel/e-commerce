@@ -196,8 +196,8 @@ function SingleProduct() {
                 onChange={handleChange}
                 id="color"
               >
-                {color.map( => (
-                  <option key={color(color)} value={color}>
+                {color.map((color) => (
+                  <option key={color} value={color}>
                     {color}
                   </option>
                 ))}

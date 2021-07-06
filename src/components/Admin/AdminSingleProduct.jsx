@@ -58,9 +58,18 @@ function AdminSingleProduct() {
   const [data, setData] = useState([]);
   const [updatedProduct, setUpdatedProduct] = useState([]);
   const [skipPageReset, setSkipPageReset] = React.useState(false);
-
+    console.log(data);
   useEffect(() => {
-    getAllProducts().then((products) => setData(products));
+    getAllProducts().then((products) =>{
+      console.log(products);
+        return products.map(product =>{
+           product.Categories = product.Categories.reduce((acum, item) =>{
+            acum += item.name;
+            return acum;
+          }, '')
+          return product
+        })
+    }).then(filteredProducts => setData(filteredProducts))
   }, []);
 
   /// PREGUNTAR

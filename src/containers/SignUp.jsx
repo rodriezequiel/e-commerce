@@ -39,8 +39,8 @@ export default function SignUp() {
             onChange={changeHandler}
             onSubmit={submitHandler}
           >
-            <div className='mb-3'>
-              <label htmlFor='firstname' className='form-label'>
+            <div className='mb-2'>
+              <label htmlFor='firstname' className='form-label descripcionAU fs-6'>
                 First name *
               </label>
               <input
@@ -51,8 +51,8 @@ export default function SignUp() {
                 value={input.fisrtName}
               />
             </div>
-            <div className='mb-3'>
-              <label htmlFor='lastName' className='form-label'>
+            <div className='mb-2'>
+              <label htmlFor='lastName' className='form-label descripcionAU fs-6'>
                 Last name *
               </label>
               <input
@@ -63,8 +63,8 @@ export default function SignUp() {
                 value={input.lastName}
               />
             </div>
-            <div className='mb-3'>
-              <label htmlFor='email' className='form-label'>
+            <div className='mb-2'>
+              <label htmlFor='email' className='form-label descripcionAU fs-6'>
                 Email *
               </label>
               <input
@@ -75,8 +75,8 @@ export default function SignUp() {
                 value={input.email}
               />
             </div>
-            <div className='mb-3'>
-              <label htmlFor='InputPassword' className='form-label'>
+            <div className='mb-2'>
+              <label htmlFor='InputPassword' className='form-label descripcionAU fs-6'>
                 Password *
               </label>
               <input
@@ -87,7 +87,7 @@ export default function SignUp() {
                 value={input.password}
               />
             </div>
-            <button type='submit' className='btn btn-dark'>
+            <button type='submit' className='btn btn-dark mt-4'>
               Submit
             </button>
             <Link
