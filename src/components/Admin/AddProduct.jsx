@@ -11,8 +11,6 @@ function AddProduct({ setNewProduct }) {
     getAllCategoriesfromBD().then((categories) => setCategories(categories));
   }, []);
 
-  console.log("ACAAAA-->", categories); // borrar
-
   const handleChange = (e) => {
     const { value, name } = e.target;
     setProduct({ ...product, [name]: value });

@@ -1,5 +1,5 @@
 import axios from "axios";
-
+/// preguntar  por getPTofucts
 export const getProducts = () => {
   return axios
     .get("http://localhost:3001/api/products/all")
@@ -54,6 +54,8 @@ export const confirmOrder = (orderInfo) => {
       return response;
     });
 };
+
+// preguntar por estoooo
 
 export const getAllProducts = () => {
   return axios

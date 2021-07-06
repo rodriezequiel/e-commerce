@@ -5,10 +5,12 @@ const Product = require("../db/ProductModels");
 const User = require("../db/UserModels");
 const CartItems = require("../db/CartItemsModels");
 const Order = require("../db/OrderModels");
+const Category = require("../db/CategoryModels");
 
 //find all carts
+//modificado por ivan agregue el include para traer las categorias
 router.get("/allproducts", (req, res) => {
-  Product.findAll().then((products) => res.send(products));
+  Product.findAll({ include: Category }).then((products) => res.send(products));
 });
 router.get("/allusers", (req, res) => {
   User.findAll().then((products) => res.send(products));
@@ -24,14 +26,22 @@ router.put("/updateuser", (req, res) => {
   );
 });
 
+//modificado por ivan
 router.post("/add", (req, res) => {
-  Product.create(req.body).then((product) => res.send(product));
+  const { categories } = req.body;
+  Category.findOne({ were: { name: categories } }).then((category) => {
+    Product.create(req.body).then((product) => {
+      product.addCategory(category);
+      res.send(product);
+    });
+  });
 });
 router.post("/adduser", (req, res) => {
   User.create(req.body).then((product) => res.send(product));
 });
 router.delete("/delete", (req, res) => {
   const productsToRemove = req.body;
+
   productsToRemove.map((product) =>
     Product.destroy({ where: { id: product.id } })
       .then((product) => res.sendStatus(200))
