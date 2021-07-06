@@ -16,18 +16,19 @@ import axios from "axios";
 import { getUser } from "../state/user";
 import Users from "../components/Admin/Users";
 import Orders from "../components/Admin/Orders";
-import Category from "../components/Admin/AdminCategory";
+
+import UserOrders from "./UserOrders";
 
 function App() {
-  const user = useSelector((state) => state.user);
+  const user = useSelector(state => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
     axios
       .get("/api/auth/me")
-      .then((res) => res.data)
-      .then((user) => dispatch(getUser(user)))
-      .catch((err) => console.log(err));
+      .then(res => res.data)
+      .then(user => dispatch(getUser(user)))
+      .catch(err => console.log(err));
   }, [dispatch]);
 
   useEffect(() => {
@@ -44,13 +45,18 @@ function App() {
         <Route exct path="/shop" component={Shop} />
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/cart" component={Cart} />
-        <Route exact path="/checkout" component={Checkout} />
-        <Route exact path="/admin" component={AdminContainer} />
-        <Route exact path="/admin/productos" component={AdminProducts} />
-        <Route exact path="/admin/users" component={Users} />
-        <Route exact path="/admin/orders" component={Orders} />
-        <Route exact path="/admin/categories" component={Category} />
+        {user.id && (
+          <>
+            <Route exact path="/cart" component={Cart} />
+            <Route exact path="/checkout" component={Checkout} />
+            <Route exact path="/orders" component={UserOrders} />
+            
+            <Route exact path="/admin/productos" component={AdminProducts} />
+            <Route exact path="/admin" component={AdminContainer} />
+            <Route exact path="/admin/users" component={Users} />
+            <Route exact path="/admin/orders" component={Orders} />
+          </>
+        )}
         <Redirect from="/" to="/home" />
       </Switch>
       <Footer />

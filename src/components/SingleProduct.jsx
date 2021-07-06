@@ -67,38 +67,42 @@ function SingleProduct() {
   }, [singleProduct]);
 
   const addProduct = () => {
-    let productToAdd = searchProductId();
-    productToAdd = { ...productToAdd, quantity: counter, UserId: cart.UserId };
-    addProductToCartBD(productToAdd);
-  };
+    let productToAdd = selectedProduct()
+    productToAdd = { ...productToAdd, quantity: counter, UserId: cart.UserId }
+    addProductToCartBD(productToAdd)
+  }
 
-  const searchProductId = () => {
-    const prod = singleProduct.filter((product) => {
-      return product.color === selectedColor && product.size === selectedSize;
-    });
-    return prod[0];
-  };
+  const selectedProduct = () => {
+    const selected = singleProduct.filter((product) => {
+      return product.color === selectedColor && product.size === selectedSize
+    })
+    return selected[0]
+  }
 
   //limpiar esta funcion
   const handleChange = (e) => {
-    const { value, name } = e.target;
-    if (name === "color") {
-      setSelectedColor(value);
+    const { value, name } = e.target
+    if (name === 'color') {
+      setSelectedColor((state) => value)
       const AvailableSizes = singleProduct.reduce((acum, item) => {
         if (item.color === value) acum.push(item.size);
         return acum;
       }, []);
 
-      setSize(AvailableSizes);
+      setSize(AvailableSizes)
+      setSelectedSize(AvailableSizes[0])
     }
-    if (name === "size") {
-      setSelectedSize(value);
+    if (name === 'size') {
+      setSelectedSize((state) => value)
+
       const AvailableColors = singleProduct.reduce((acum, item) => {
         if (item.size === value) acum.push(item.color);
         return acum;
       }, []);
 
-      setColor(AvailableColors);
+      setColor(AvailableColors)
+      setSelectedColor(AvailableColors[0])
+
     }
   };
 
@@ -192,8 +196,8 @@ function SingleProduct() {
                 onChange={handleChange}
                 id="color"
               >
-                {color.map((color) => (
-                  <option key={color} value={color}>
+                {color.map( => (
+                  <option key={color(color)} value={color}>
                     {color}
                   </option>
                 ))}

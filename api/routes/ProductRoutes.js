@@ -5,6 +5,7 @@ const Product = require("../db/ProductModels");
 const User = require("../db/UserModels");
 const CartItems = require("../db/CartItemsModels");
 
+
 // PREGUNTAR ????
 
 router.get("/all", (req, res) => {
@@ -13,7 +14,6 @@ router.get("/all", (req, res) => {
   // Product.findAll().then((products) => res.send(products))
   Product.findAll()
     .then((products) => {
-      console.log(products);
       products.map((product) => {
         if (filteredProducts[product.name])
           filteredProducts[product.name].push(product);

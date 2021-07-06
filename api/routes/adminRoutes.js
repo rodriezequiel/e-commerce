@@ -1,12 +1,29 @@
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
 const Cart = require("../db/CartModels");
 const Product = require("../db/ProductModels");
 const User = require("../db/UserModels");
 const CartItems = require("../db/CartItemsModels");
 const Order = require("../db/OrderModels");
 const Category = require("../db/CategoryModels");
+const jwt = require("jsonwebtoken");
 
+
+//authentication middleware
+const authAdmin = (req, res, next) => {
+  const token = req.cookies.access;
+
+  if (token) {
+    jwt.verify(token, "$2b$10$/skdhli/rZNMa9uRsSOdX.", (err, data) => {
+      if (err) return res.sendStatus(403);
+      if(data.isAdmin) next();
+      else res.sendStatus(401);
+    });
+  }else{
+    res.sendStatus(401)
+  }
+};
+
+router.use(authAdmin);
 //find all carts
 //modificado por ivan agregue el include para traer las categorias
 router.get("/allproducts", (req, res) => {
@@ -50,28 +67,26 @@ router.delete("/delete", (req, res) => {
 });
 router.delete("/deleteuser", (req, res) => {
   const usersToRemove = req.body;
-  usersToRemove.map((user) =>
+  usersToRemove.map(user =>
     User.destroy({ where: { id: user.id } })
       .then(() => res.sendStatus(200))
-      .catch((err) => console.log(err))
+      .catch(err => console.log(err))
   );
 });
 
 router.get("/getorders", (req, res) => {
-  Order.findAll().then((order) => res.send(order));
+  Order.findAll().then(order => res.send(order));
 });
 router.get("/deleteorder", (req, res) => {
   const orderToRemove = req.body;
-  orderToRemove.map((order) =>
+  orderToRemove.map(order =>
     Order.destroy({ where: { id: order.id } })
       .then(() => res.sendStatus(200))
-      .catch((err) => console.log(err))
+      .catch(err => console.log(err))
   );
 });
 router.get("/updateorder", (req, res) => {
-  Order.update(req.body, { where: { id: req.body.id } }).then((orders) =>
-    res.send(orders)
-  );
+  Order.update(req.body, { where: { id: req.body.id } }).then(orders => res.send(orders));
 });
 
 module.exports = router;

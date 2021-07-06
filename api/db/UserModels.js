@@ -28,7 +28,7 @@ User.init(
       type: DataTypes.STRING,
     },
     isAdmin: {
-      type: DataTypes.STRING,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
     },
   },
