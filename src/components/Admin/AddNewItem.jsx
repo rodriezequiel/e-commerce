@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 //tengo q pasarle para traeer:
 // para traer todos los productos
@@ -11,23 +11,23 @@ function AddNewItem({
   setData,
   filterOption,
 }) {
-  const [newProduct, setNewProduct] = useState(false)
+  const [newProduct, setNewProduct] = useState(false);
 
   const handleAddProduct = () => {
-    setNewProduct(true)
-  }
+    setNewProduct(true);
+  };
 
   const handleAction = (e) => {
-    const { value } = e.target
-    if (e.key === 'Enter') {
+    const { value } = e.target;
+    if (e.key === "Enter") {
       const newData = data.filter((items) => {
         if (items[filterOption].toUpperCase().includes(value.toUpperCase()))
-          return true
-        else return false
-      })
-      setData(newData)
+          return true;
+        else return false;
+      });
+      setData(newData);
     }
-  }
+  };
 
   return (
     <div>
@@ -39,14 +39,14 @@ function AddNewItem({
       >
         Remover filtro
       </button>
-      <input type='text' onKeyPress={handleAction} />
+      <input type="text" onKeyPress={handleAction} />
       {newProduct && (
         <div>
           <AddComponent setNewProduct={setNewProduct} newProduct={newProduct} />
         </div>
       )}
     </div>
-  )
+  );
 }
 
-export default AddNewItem
+export default AddNewItem;
