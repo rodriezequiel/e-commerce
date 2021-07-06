@@ -5,13 +5,21 @@ const Order = require('../db/OrderModels')
 const User = require('../db/UserModels')
 const Product = require('../db/ProductModels')
 
-router.get('/', (req, res) => {
-  Order.findAll().then((order) => res.send(order))
-})
+// router.get('/', (req, res) => {
+//   Order.findAll({ include: Cart }).then((order) => res.send(order))
+// })
 
-router.get('/:id', (req, res) => {
+router.get('/misordenes/:id', (req, res) => {
   const id = req.params.id
-  Order.findByPk(id, { include: Cart }).then((order) => res.send(order))
+  Cart.findAll({ where: { UserId: id, state: 'completed' } })
+    .then((carts) => {
+      const resultArray = []
+      for (let cart of carts) {
+        resultArray.push(cart.getOrder())
+      }
+      return Promise.all(resultArray)
+    })
+    .then((data) => res.send(data))
 })
 
 //boton confirmar del frontEnd
