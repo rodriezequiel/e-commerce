@@ -1,85 +1,86 @@
-import React, { useEffect, useState } from 'react'
-import { getAllProducts } from '../../utils/index'
-import AddProduct from './AddProduct'
-import { Styles } from './Styles'
-import Table from './Table'
-import { updateProduct } from '../../utils/index'
-import { removeProductFromBD } from '../../utils/index'
-import AddNewItem from './AddNewItem'
+import React, { useEffect, useState } from "react";
+import { getAllProducts } from "../../utils/index";
+import AddProduct from "./AddProduct";
+import { Styles } from "./Styles";
+import Table from "./Table";
+import { updateProduct } from "../../utils/index";
+import { removeProductFromBD } from "../../utils/index";
+import AddNewItem from "./AddNewItem";
 
 function AdminSingleProduct() {
   const columns = React.useMemo(
     () => [
       {
-        Header: 'Info general',
+        Header: "Info general",
         columns: [
           {
-            Header: 'ID',
-            accessor: 'id',
+            Header: "ID",
+            accessor: "id",
           },
           {
-            Header: 'Name',
-            accessor: 'name',
+            Header: "Name",
+            accessor: "name",
           },
         ],
       },
       {
-        Header: 'Info',
+        Header: "Info",
         columns: [
           {
-            Header: 'description',
-            accessor: 'description',
+            Header: "description",
+            accessor: "description",
           },
           {
-            Header: 'stock',
-            accessor: 'stock',
+            Header: "stock",
+            accessor: "stock",
           },
           {
-            Header: 'size',
-            accessor: 'size',
+            Header: "size",
+            accessor: "size",
           },
           {
-            Header: 'price',
-            accessor: 'price',
+            Header: "price",
+            accessor: "price",
           },
           {
-            Header: 'color',
-            accessor: 'color',
+            Header: "color",
+            accessor: "color",
           },
           {
-            Header: 'Categories???',
-            accessor: 'Categories',
+            Header: "Categories",
+            accessor: "Categories",
           },
         ],
       },
     ],
     []
-  )
-  const [data, setData] = useState([])
-  const [updatedProduct, setUpdatedProduct] = useState([])
-  const [skipPageReset, setSkipPageReset] = React.useState(false)
+  );
+  const [data, setData] = useState([]);
+  const [updatedProduct, setUpdatedProduct] = useState([]);
+  const [skipPageReset, setSkipPageReset] = React.useState(false);
 
   useEffect(() => {
-    getAllProducts().then((products) => setData(products))
-  }, [])
+    getAllProducts().then((products) => setData(products));
+  }, []);
 
+  /// PREGUNTAR
   const updateMyData = (rowIndex, columnId, value) => {
-    setSkipPageReset(true)
+    setSkipPageReset(true);
     setData((old) => {
       return old.map((row, index) => {
         if (index === rowIndex) {
           const returnVal = {
             ...old[rowIndex],
             [columnId]: value,
-          }
-          setUpdatedProduct(returnVal)
+          };
+          setUpdatedProduct(returnVal);
 
-          return returnVal
+          return returnVal;
         }
-        return row
-      })
-    })
-  }
+        return row;
+      });
+    });
+  };
 
   return (
     <>
@@ -89,7 +90,7 @@ function AdminSingleProduct() {
           AddComponent={AddProduct}
           data={data}
           setData={setData}
-          filterOption='name'
+          filterOption="name"
         />
         <Table
           columns={columns}
@@ -101,7 +102,7 @@ function AdminSingleProduct() {
         />
       </Styles>
     </>
-  )
+  );
 }
 
-export default AdminSingleProduct
+export default AdminSingleProduct;

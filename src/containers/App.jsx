@@ -16,6 +16,7 @@ import axios from "axios";
 import { getUser } from "../state/user";
 import Users from "../components/Admin/Users";
 import Orders from "../components/Admin/Orders";
+
 import UserOrders from "./UserOrders";
 
 function App() {
@@ -56,7 +57,6 @@ function App() {
             <Route exact path="/admin/orders" component={Orders} />
           </>
         )}
-
         <Redirect from="/" to="/home" />
       </Switch>
       <Footer />
