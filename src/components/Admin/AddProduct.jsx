@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { addProduct } from "../../utils/index";
 import { getAllCategoriesfromBD } from "../../utils/index";
+const arr = [];
 
 function AddProduct({ setNewProduct }) {
   const [product, setProduct] = useState({});
@@ -17,16 +18,26 @@ function AddProduct({ setNewProduct }) {
   };
 
   const handleOnclick = (e) => {
-    console.log(e.target.name);
     const { value, name } = e.target;
-    setProduct({ ...product, [name]: value });
+    console.log(arr.includes(value));
+    if (arr.includes(value)) {
+      for (var i = arr.length; i--; ) {
+        if (arr[i] === value) {
+          arr.splice(i, 1);
+        }
+      }
+    } else {
+      arr.push(value);
+    }
+
+    console.log(arr);
+    setProduct({ ...product, categorias: arr });
   };
 
-  console.log("PRODUCTO FINAL --->", product);
-
+  console.log("PRODUCTOS EN PROCESO->>>", product);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("ACA ESTAN LOS PRODUCTOS -->>", product);
+    console.log(" PRODUCTOS  CREADOOOO-->>", product);
     addProduct(product).then(() => setNewProduct(false));
   };
   return (
@@ -75,13 +86,23 @@ function AddProduct({ setNewProduct }) {
           defaultValue="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
           onChange={handleChange}
         />
-        <select name="categories" id="categories" onChange={handleChange}>
+        <br />
+        <div>
           {categories.map((category) => (
-            <option key={category.id} value={category.name}>
+            <label>
+              <input
+                className="ms-2"
+                type="checkbox"
+                name={category.name}
+                value={category.name}
+                onChange={handleOnclick}
+              />
               {category.name}
-            </option>
+            </label>
           ))}
-        </select>
+        </div>
+        <br />
+
         <button
           onClick={(e) => {
             handleSubmit(e);

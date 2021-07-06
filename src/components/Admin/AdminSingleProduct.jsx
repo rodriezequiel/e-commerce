@@ -59,15 +59,17 @@ function AdminSingleProduct() {
   const [updatedProduct, setUpdatedProduct] = useState([]);
   const [skipPageReset, setSkipPageReset] = React.useState(false);
   useEffect(() => {
-    getAllProducts().then((products) =>{
-        return products.map(product =>{
-           product.Categories = product.Categories.reduce((acum, item) =>{
-            acum += item.name;
+    getAllProducts()
+      .then((products) => {
+        return products.map((product) => {
+          product.Categories = product.Categories.reduce((acum, item) => {
+            acum += " - " + item.name;
             return acum;
-          }, '')
-          return product
-        })
-    }).then(filteredProducts => setData(filteredProducts))
+          }, "");
+          return product;
+        });
+      })
+      .then((filteredProducts) => setData(filteredProducts));
   }, []);
 
   /// PREGUNTAR
