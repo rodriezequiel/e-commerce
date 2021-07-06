@@ -13,7 +13,7 @@ export default function Card() {
       setProducts(keys)
       setImgs(img)
     })
-  }, [])
+  }, []) 
 
   return (
     <>
