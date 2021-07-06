@@ -46,8 +46,7 @@ function App() {
         <Route exct path="/shop" component={Shop} />
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/signup" component={SignUp} />
-        {user.id && (
-          <>
+      
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/checkout" component={Checkout} />
             <Route exact path="/orders" component={UserOrders} />
@@ -57,8 +56,7 @@ function App() {
             <Route exact path="/admin/users" component={Users} />
             <Route exact path="/admin/orders" component={Orders} />
             <Route exact path="/admin/categories" component={Category} />
-          </>
-        )}
+     
         <Redirect from="/" to="/home" />
       </Switch>
       <Footer />
