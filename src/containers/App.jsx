@@ -59,6 +59,7 @@ function App() {
         <Route exact='/orders/cart/:cartID' render={() => <CartProducts />} />
 
         <Redirect from='/' to='/home' />
+
       </Switch>
       <Footer />
     </div>
