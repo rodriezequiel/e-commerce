@@ -33,16 +33,16 @@ export default function SignIn() {
       <Navbar transparent={false} />
       <div className='container-fluid py-4 d-grid gap-3 d-flex justify-content-center'>
         <div className='col-4 bg-light border align-center p-3'>
-          <h1 className='text-center'>Sign In</h1>
+          <h1 className='text-center fs-2'>Sign In</h1>
           <form className='form-style justify-content-between' onChange={changeHandler} onSubmit={submitHandler}>
             <div className='mb-3'>
-              <label htmlFor='email' className='form-label'>
+              <label htmlFor='email' className='form-label descripcionAU fs-6'>
                 Email*
               </label>
-              <input type='text' className='form-control' id='email' name='email'/>
+              <input type='text' className='form-control descripcionAU fs-7' id='email' name='email'/>
             </div>
             <div className='mb-3'>
-              <label htmlFor='password' className='form-label'>
+              <label htmlFor='password' className='form-label descripcionAU fs-6'>
                 Password *
               </label>
               <input type='password' className='form-control' id='password' name='password'/>
@@ -53,14 +53,14 @@ export default function SignIn() {
                 className='form-check-input'
                 id='exampleCheck1'
               />
-              <label className='form-check-label' htmlFor='exampleCheck1'>
+              <label className='form-check-label fs-4' htmlFor='exampleCheck1'>
                 Check me out
               </label>
             </div>
-            <button type='submit' className='btn btn-dark my-2'>
+            <button type='submit' className='btn btn-dark'>
               Submit
             </button>
-            <h3 className='text-center'>Or</h3>
+            <h3 className='text-center descripcionAU fs-6 mt-2'>Or</h3>
             <div className='mb-3'>
               <button type='submit' className='btn btn-danger my-2'>
                 Google
@@ -70,10 +70,10 @@ export default function SignIn() {
               </button>
             </div>
 
-            <h3>Don't have an account?</h3>
+            <h3 className="">Don't have an account?</h3>
             <Link
               style={{ color: 'red' }}
-              className='nav-link active text-center'
+              className='nav-link active text-center descripcionAU fs-6'
               to='/signup'
             >
               Sign Up

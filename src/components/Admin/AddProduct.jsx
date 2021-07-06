@@ -75,7 +75,7 @@ function AddProduct({ setNewProduct }) {
           defaultValue="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg"
           onChange={handleChange}
         />
-        <select name="categories" id="categories" onClick={handleOnclick}>
+        <select name="categories" id="categories" onChange={handleChange}>
           {categories.map((category) => (
             <option key={category.id} value={category.name}>
               {category.name}

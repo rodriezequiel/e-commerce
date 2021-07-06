@@ -34,8 +34,8 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div className="col-md-6 item text">
-              <h3>Company Name</h3>
+            <div className="col-md-6 item text descripcionAU">
+              <h4>Company Name</h4>
               <p>
                 Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut
                 vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit

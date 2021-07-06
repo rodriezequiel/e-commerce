@@ -46,7 +46,7 @@ router.put("/updateuser", (req, res) => {
 //modificado por ivan
 router.post("/add", (req, res) => {
   const { categories } = req.body;
-  Category.findOne({ were: { name: categories } }).then((category) => {
+  Category.findOne({ where: { name: categories } }).then((category) => {
     Product.create(req.body).then((product) => {
       product.addCategory(category);
       res.send(product);

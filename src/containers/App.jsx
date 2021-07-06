@@ -16,6 +16,7 @@ import axios from "axios";
 import { getUser } from "../state/user";
 import Users from "../components/Admin/Users";
 import Orders from "../components/Admin/Orders";
+import Category from '../components/Admin/AdminCategory'
 
 import UserOrders from "./UserOrders";
 
@@ -55,6 +56,7 @@ function App() {
             <Route exact path="/admin" component={AdminContainer} />
             <Route exact path="/admin/users" component={Users} />
             <Route exact path="/admin/orders" component={Orders} />
+            <Route exact path="/admin/categories" component={Category} />
           </>
         )}
         <Redirect from="/" to="/home" />
