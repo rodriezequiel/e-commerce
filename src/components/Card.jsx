@@ -1,43 +1,44 @@
-import React, { useEffect, useState } from 'react'
-import { getProducts } from '../utils/index'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getProducts } from "../utils/index";
 
 export default function Card() {
-  const [products, setProducts] = useState([])
-  const [imgs, setImgs] = useState([])
-  useEffect(() => {
-    getProducts().then((products) => {
-      const [name, img] = products
-      const keys = Object.keys(name)
+  const [products, setProducts] = useState([]);
+  const [names, setNames] = useState([]);
+  const query = new RegExp(useSelector(state => state.query), "i");
 
-      setProducts(keys)
-      setImgs(img)
-    })
-  }, [])
+  useEffect(() => {
+    getProducts().then(products => {
+      const keys = Object.keys(products);
+      setNames(keys);
+      setProducts(products)
+    });
+  }, []);
 
   return (
     <>
-      {products.map((product, index) => {
+      {names.filter(name => name.match(query)).map((product, index) => {
         return (
-          <div className='col-lg-4 col-sm-6 pb-4' key={index}>
-            <Link to={`/shop/${product}`}>
+          <div className="col-lg-4 col-sm-6 pb-4" key={index}>
+            <Link to={`/shop/${product}`} style={{ textDecoration: "none", color: "black" }}>
               <div
-                className='card mx-4 shadow-lg mt-3 bg-body rounded'
-                style={{ width: 'auto', minWidth: 'auto', maxWidth: '300px' }}
+                className="card mx-4 shadow-lg mt-3 bg-body rounded"
+                style={{ width: "auto", minWidth: "auto", maxWidth: "300px" }}
               >
                 <img
-                  src={imgs[index]}
-                  className='card-img-top'
-                  alt='Movie poster'
-                  style={{ maxHeight: '35vh', minHeight: '35vh' }}
+                  src={(products[product]) && products[product][0].picture[0]}
+                  className="card-img-top"
+                  alt="Movie poster"
+                  style={{ maxHeight: "35vh", minHeight: "35vh" }}
                 />
-                <div className='card-body pb-0'>
+                <div className="card-body pb-0">
                   <p
                     style={{
-                      fontSize: '1.5rem',
-                      lineHeight: '1rem',
-                      margin: '1%',
-                      padding: '1%',
+                      fontSize: "1.5rem",
+                      lineHeight: "1rem",
+                      margin: "1%",
+                      paddingBottom: "6%",
                     }}
                   >
                     {product}
@@ -46,8 +47,8 @@ export default function Card() {
               </div>
             </Link>
           </div>
-        )
+        );
       })}
     </>
-  )
+  );
 }

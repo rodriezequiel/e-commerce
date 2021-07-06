@@ -10,7 +10,6 @@ const CartItems = require("../db/CartItemsModels");
 
 router.get("/all", (req, res) => {
   const filteredProducts = {};
-  let imgProduct = [];
   // Product.findAll().then((products) => res.send(products))
   Product.findAll()
     .then((products) => {
@@ -19,11 +18,10 @@ router.get("/all", (req, res) => {
           filteredProducts[product.name].push(product);
         else {
           filteredProducts[product.name] = [product];
-          imgProduct = [...imgProduct, product.picture[0]];
         }
       });
     })
-    .then(() => res.send([filteredProducts, imgProduct]));
+    .then(() => res.send(filteredProducts));
 });
 
 router.get("/single/:name", (req, res) => {
