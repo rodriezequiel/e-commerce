@@ -89,7 +89,7 @@ function Users() {
         updateMyData={updateMyData}
         handleUpdate={updateUserfromBD}
         handleDelete={removeUserfromBD}
-      />{' '}
+      />
       <button onClick={() => history.goBack()}>Volver</button>
     </div>
   )
