@@ -17,11 +17,11 @@ const user = [
     isAdmin: false,
   },
   {
-    firstName: "Ivan",
+    firstName: "admin",
     lastName: "Moroni",
-    email: "ivan@test.com",
-    password: "12345",
-    isAdmin: false,
+    email: "admin@test.com",
+    password: "asdasd",
+    isAdmin: true,
   },
   {
     firstName: "Rodri",
@@ -34,7 +34,9 @@ const user = [
 
 const product = [
   {
+
     name: "campera de cuero",
+
     description:
       "Esta es una descripcion de prueba que muestra la informacion de campera",
     price: 100,
@@ -59,6 +61,7 @@ const product = [
     size: "S",
     color: "Verde",
     brand: "Puma",
+
     picture: [
       "https://images.unsplash.com/photo-1495105787522-5334e3ffa0ef?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
       "https://images.unsplash.com/photo-1542847957-80a6beffcbde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&h=1200&q=80",
