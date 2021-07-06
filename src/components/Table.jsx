@@ -1,13 +1,16 @@
 export default function Tables({ items, user, deleteItem }) {
   return (
-    <table className="table">
+    <table className='table' style={{ 'font-size': '25px' }}>
       <thead>
         <tr>
-          <th scope="col">Product</th>
-          <th scope="col">Price</th>
-          <th scope="col">Count</th>
-          <th scope="col">Subtotal</th>
-          <th scope="col"> </th>
+          <th scope='col'>Producto</th>
+          <th scope='col'>Precio Unitario</th>
+          <th scope='col'>Marca</th>
+          <th scope='col'>Color</th>
+          <th scope='col'>Talle</th>
+          <th scope='col'>Cantidad</th>
+          <th scope='col'>Subtotal</th>
+          <th scope='col'> </th>
         </tr>
       </thead>
       <tbody>
@@ -16,7 +19,7 @@ export default function Tables({ items, user, deleteItem }) {
             <td>
               <div>
                 <img
-                  style={{ width: "100px" }}
+                  style={{ width: '100px' }}
                   src={item.picture[0]}
                   alt={item.name}
                 ></img>
@@ -24,13 +27,16 @@ export default function Tables({ items, user, deleteItem }) {
               <p> {item.name}</p>
             </td>
             <td>${item.price}</td>
+            <td>{item.brand}</td>
+            <td>{item.color}</td>
+            <td>{item.size}</td>
             <td>{item.CartItem.quantity}</td>
             <td>{item.CartItem.quantity * item.price}</td>
-            <td scope="col">
+            <td scope='col'>
               <i
-                className="bi bi-trash-fill"
+                className='bi bi-trash-fill'
                 onClick={() => {
-                  deleteItem(user, item);
+                  deleteItem(user, item)
                 }}
               ></i>
             </td>
@@ -38,5 +44,5 @@ export default function Tables({ items, user, deleteItem }) {
         ))}
       </tbody>
     </table>
-  );
+  )
 }

@@ -1,15 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
-@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css');
-@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css');
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Yellowtail&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
 
 body {
   margin: 0;
-  font-family: 'Amatic SC', cursive;
+  /* font-family: 'Amatic SC', cursive; */
+  font-family: "Oswald", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden !important;
+  font-size: 25px;
 }
 
 .textoBlanco li,
@@ -19,7 +22,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 .nav-option > a,
@@ -32,10 +35,10 @@ code {
   transform: scale(1.4);
 }
 .tituloAU {
-  font-family: 'Yellowtail', cursive;
+  font-family: "Yellowtail", cursive;
 }
 .descripcionAU {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 .card-option {
   width: 100%;
@@ -157,46 +160,4 @@ code {
 
 .admin-product-container {
   display: flex;
-}
-
-.admin-view-container {
-  display: flex;
-  flex-direction: column;
-}
-.admin-view-container > a {
-  font-size: 30px;
-  padding-left: 10%;
-  padding-top: 5%;
-  text-decoration: none;
-  color: black;
-  opacity: 0.7;
-  width: 400px;
-}
-
-.admin-view-container > a:hover {
-  transform: translate(0px);
-  text-decoration: underline;
-  font-size: 32px;
-  opacity: 1;
-}
-
-.admin-table-container {
-  margin: 3%;
-}
-
-.admin-table-button {
-  text-decoration: none;
-  font-size: 16px;
-  cursor: pointer;
-}
-.admin-table-button:hover {
-  text-decoration: underline;
-  transform: scale(1.05);
-  background-color: rgb(164, 159, 159);
-}
-
-.bi-trash-fill:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-  color: red;
 }

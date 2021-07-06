@@ -7,6 +7,8 @@ const CartItems = require("../db/CartItemsModels");
 const Category = require("../db/CategoryModels");
 const { route } = require("./adminRoutes");
 
+/* ESTOY EN LA RUTA http://localhost:3001/api/category  */
+
 router.get("/", (req, res) => {
   Category.findAll().then((category) => res.send(category));
 });
@@ -27,11 +29,25 @@ router.get("/:id", (req, res) => {
 });
 
 router.delete("/", (req, res) => {
-  Category.destroy({
-    where: {
-      name: req.body.name,
-    },
-  }).then(() => res.sendStatus(200));
+  const categoriesRemove = req.body;
+  categoriesRemove.map((category) => {
+    Category.destroy({
+      where: {
+        id: category.id,
+      },
+    })
+      .then(() => res.sendStatus(200))
+      .catch((err) => console.log(err));
+  });
+});
+
+//REVISAR  ivan
+//  la info viene de src/utils/idex de la funcion updateCategoryfromBD()
+router.put("/", (req, res) => {
+  console.log("BODYYY->>>", req.body);
+  Category.update(req.body, { where: { id: req.body.id } }).then((category) =>
+    res.send(category)
+  );
 });
 
 module.exports = router;

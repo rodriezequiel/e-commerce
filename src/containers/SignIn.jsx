@@ -16,6 +16,7 @@ export default function SignIn() {
   const dispatch = useDispatch();
   console.log(input);
 
+
   const changeHandler = (event) => {
  
    
@@ -78,16 +79,17 @@ export default function SignIn() {
                 className="form-check-input"
                 id="exampleCheck1"
               />
-              <label className="form-check-label" htmlFor="exampleCheck1">
+
+              <label className='form-check-label fs-4' htmlFor='exampleCheck1'>
                 Check me out
               </label>
             </div>
-            <button type="submit" className="btn btn-dark my-2">
+            <button type='submit' className='btn btn-dark'>
               Submit
             </button>
-            <h3 className="text-center">Or</h3>
-            <div className="mb-3">
-              <button type="submit" className="btn btn-danger my-2">
+            <h3 className='text-center descripcionAU fs-6 mt-2'>Or</h3>
+            <div className='mb-3'>
+              <button type='submit' className='btn btn-danger my-2'>
                 Google
               </button>
               <button type="submit" className="btn btn-primary my-2">
@@ -95,11 +97,12 @@ export default function SignIn() {
               </button>
             </div>
 
-            <h3>Don't have an account?</h3>
+            <h3 className="">Don't have an account?</h3>
             <Link
-              style={{ color: "red" }}
-              className="nav-link active text-center"
-              to="/signup"
+
+              style={{ color: 'red' }}
+              className='nav-link active text-center descripcionAU fs-6'
+              to='/signup'
             >
               Sign Up
             </Link>

@@ -11,7 +11,7 @@ Category.init(
   },
   {
     sequelize: db, // We need to pass the connection instance
-    modelName: "Categoy", // We need to choose the model name
+    modelName: "Category", // We need to choose the model name
   }
 );
 
