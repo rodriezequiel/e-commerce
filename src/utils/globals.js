@@ -8,3 +8,8 @@ export const talleClass = {
   empty: "bi bi-circle fs-4 mx-2",
   fill: "bi bi-check-circle fs-4 mx-2",
 };
+
+export const statusShopClass = {
+  empty: "bi bi-circle fs-3",
+  fill: "bi bi-circle-fill fs-3",
+};

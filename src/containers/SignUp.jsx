@@ -11,37 +11,26 @@ export default function SignUp() {
     lastName: "",
     password: "",
     email: "",
-  });  
-  
-  
-  
-
+  });
   const history = useHistory();
 
-  const changeHandler = (event) => { 
-    
+  const changeHandler = (event) => {
     const { target } = event;
     setInput({ ...input, [target.name]: target.value });
   };
 
-  
-   
-
   const submitHandler = (event) => {
     event.preventDefault();
-    
     return axios
       .post("/api/auth/register", input)
       .then((res) => history.push("/signin"))
       .catch((err) => alert("error al crear el usuario, revise los datos"));
   };
 
-
-
   return (
     <div>
       <Navbar transparent={false} />
-      <div className="container-fluid py-4 d-grid gap-3  d-flex justify-content-center ">
+      <div className="container-fluid py-4 d-grid gap-3  d-flex justify-content-center">
         <div className="col-4 bg-light border align-center p-3">
           <h1 className="text-center">Register</h1>
           <form
@@ -49,9 +38,8 @@ export default function SignUp() {
             onChange={changeHandler}
             onSubmit={submitHandler}
           >
-
-            <div className='mb-2'>
-              <label htmlFor='firstname' className='form-label descripcionAU fs-6'>
+            <div className="mb-2">
+              <label htmlFor="firstname" className="form-label  fs-6">
                 First name *
               </label>
               <input
@@ -62,9 +50,8 @@ export default function SignUp() {
                 value={input.fisrtName}
               />
             </div>
-
-            <div className='mb-2'>
-              <label htmlFor='lastName' className='form-label descripcionAU fs-6'>
+            <div className="mb-2">
+              <label htmlFor="lastName" className="form-label  fs-6">
                 Last name *
               </label>
               <input
@@ -75,23 +62,21 @@ export default function SignUp() {
                 value={input.lastName}
               />
             </div>
-
-            <div className='mb-2'>
-              <label htmlFor='email' className='form-label descripcionAU fs-6'>
+            <div className="mb-2">
+              <label htmlFor="email" className="form-label  fs-6">
                 Email *
               </label>
               <input
                 type="email"
-                className="form-control is-valid"
+                className="form-control"
                 id="email"
                 name="email"
                 value={input.email}
               />
               
             </div>
-
-            <div className='mb-2'>
-              <label htmlFor='InputPassword' className='form-label descripcionAU fs-6'>
+            <div className="mb-2">
+              <label htmlFor="InputPassword" className="form-label  fs-6">
                 Password *
               </label>
               <input
@@ -102,8 +87,7 @@ export default function SignUp() {
                 value={input.password}
               />
             </div>
-
-            <button type='submit' className='btn btn-dark mt-4'>
+            <button type="submit" className="btn btn-dark mt-4">
               Submit
             </button>
             <Link

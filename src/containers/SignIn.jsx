@@ -2,7 +2,6 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { useState } from "react";
-
 import Navbar from "../components/Navbar";
 import { getUser } from "../state/user";
 
@@ -11,57 +10,49 @@ export default function SignIn() {
     password: "",
     email: "",
   });
- 
   const history = useHistory();
   const dispatch = useDispatch();
-  console.log(input);
-
 
   const changeHandler = (event) => {
- 
-   
     const { target } = event;
     setInput({ ...input, [target.name]: target.value });
   };
 
   const submitHandler = (event) => {
-    event.preventDefault(); 
-   return axios
-        .post("/api/auth/login", input)
-        .then((res) => res.data)
-        .then((user) => dispatch(getUser(user)))
-        .then((res) => history.push("/home"))
-        .catch((err) => alert("tus datos son incorrectos"));
+    event.preventDefault();
+    return axios
+      .post("/api/auth/login", input)
+      .then((res) => res.data)
+      .then((user) => dispatch(getUser(user)))
+      .then((res) => history.push("/home"))
+      .catch((err) => alert("datos incorrectos"));
   };
 
 
   return (
     <div>
       <Navbar transparent={false} />
-      <div className="container-fluid py-4 d-grid gap-3 d-flex justify-content-center">
-        <div className="col-4 bg-light border align-center p-3">
-          <h1 className="text-center">Sign In</h1>
+      <div className="container-fluid py-4 d-grid gap-3 d-flex justify-content-center ">
+        <div className="col-4 bg-light border rounded align-center p-3">
+          <h1 className="text-center fs-2">Sign In</h1>
           <form
-            id="form"
             className="form-style justify-content-between"
+            onChange={changeHandler}
             onSubmit={submitHandler}
           >
             <div className="mb-3">
-              <label htmlFor="email" className="form-label">
+              <label htmlFor="email" className="form-label  fs-6">
                 Email*
               </label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control  fs-7"
                 id="email"
                 name="email"
-                onChange={changeHandler}
               />
-            
             </div>
-
             <div className="mb-3">
-              <label htmlFor="password" className="form-label">
+              <label htmlFor="password" className="form-label  fs-6">
                 Password *
               </label>
               <input
@@ -69,9 +60,7 @@ export default function SignIn() {
                 className="form-control"
                 id="password"
                 name="password"
-                onChange={changeHandler}
               />
-            
             </div>
             <div className="mb-3 form-check">
               <input
@@ -79,17 +68,16 @@ export default function SignIn() {
                 className="form-check-input"
                 id="exampleCheck1"
               />
-
-              <label className='form-check-label fs-4' htmlFor='exampleCheck1'>
+              <label className="form-check-label fs-6" htmlFor="exampleCheck1">
                 Check me out
               </label>
             </div>
-            <button type='submit' className='btn btn-dark'>
+            <button type="submit" className="btn btn-dark">
               Submit
             </button>
-            <h3 className='text-center descripcionAU fs-6 mt-2'>Or</h3>
-            <div className='mb-3'>
-              <button type='submit' className='btn btn-danger my-2'>
+            <h3 className="text-center  fs-6 mt-2">Or</h3>
+            <div className="mb-3">
+              <button type="submit" className="btn btn-danger my-2">
                 Google
               </button>
               <button type="submit" className="btn btn-primary my-2">
@@ -97,12 +85,11 @@ export default function SignIn() {
               </button>
             </div>
 
-            <h3 className="">Don't have an account?</h3>
+            <h3 className="text-center  fs-6 mt-2">Don't have an account?</h3>
             <Link
-
-              style={{ color: 'red' }}
-              className='nav-link active text-center descripcionAU fs-6'
-              to='/signup'
+              style={{ color: "red" }}
+              className="nav-link active text-center  fs-5"
+              to="/signup"
             >
               Sign Up
             </Link>

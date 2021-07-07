@@ -34,26 +34,27 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div className="col-md-6 item text descripcionAU">
+            <div className="col-md-6 item text">
               <h4>Company Name</h4>
               <p>
-                Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut
-                vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit
-                pulvinar dictum vel in justo.
+                Praesent sed lobortis mi. Suspendisse vel placerat ligula.
+                Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis
+                tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel
+                in justo.
               </p>
             </div>
             <div className="col item social">
               <a href="#">
-              <i className="bi bi-facebook"></i>
+                <i className="bi bi-facebook"></i>
               </a>
               <a href="#">
-              <i className="bi bi-twitter"></i>
+                <i className="bi bi-twitter"></i>
               </a>
               <a href="#">
                 <i className="bi bi-whatsapp"></i>
               </a>
               <a href="#">
-              <i className="bi bi-instagram"></i>
+                <i className="bi bi-instagram"></i>
               </a>
             </div>
           </div>
