@@ -35,7 +35,7 @@ function Checkout() {
       }, 0);
       setTotal(totalCart);
     }
-    if (cart.Products.length !== 0)
+    if (cart.Products && cart.Products.length !== 0)
       changeShopState({
         ...statusShopClass,
         id: "status02",
@@ -148,10 +148,12 @@ function Checkout() {
               <button
                 type="submit"
                 className="btn btn-dark"
-                onClick={() =>
-                  confirmOrder({ ...order, userId: user.id })
+                onClick={(e) =>{
+                  e.preventDefault()
+                  return confirmOrder({ ...order, userId: user.id })
                     .then(() => history.push("/home"))
                     .then(() => alert("Gracias por su compra"))
+                }
                 }
               >
                 Confirmar compra

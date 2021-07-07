@@ -20,6 +20,9 @@ body {
   color: #fff !important;
   text-decoration: none;
 }
+.amatic{
+  font-family: 'Amatic SC', cursive;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

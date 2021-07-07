@@ -10,7 +10,7 @@ export default function ShopHeader() {
       <div className='row d-flex justify-content-between pt-5 ms-5'>
         <div className=' ms-5 col-4'>
           <nav aria-label='breadcrumb'>
-            <ol className='breadcrumb textoBlanco'>
+            <ol className='breadcrumb textoBlanco amatic'>
               <li className='breadcrumb-item nonActive fs-3'>
                 <Link to='/home'>Home</Link>
               </li>

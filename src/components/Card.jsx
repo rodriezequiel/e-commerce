@@ -27,7 +27,7 @@ export default function Card() {
         .filter(name => name.match(query))
         .map((product, index) => {
           return (
-            <div className="col-lg-4 col-sm-6 pb-4" key={index}>
+            <div className="col-lg-4 col-sm-6 pb-4 amatic" key={index}>
               <Link to={`/shop/${product}`} style={{ textDecoration: "none", color: "black" }}>
                 <div
                   className="card mx-4 shadow-lg mt-3 bg-body rounded"
