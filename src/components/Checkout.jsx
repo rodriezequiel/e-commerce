@@ -12,7 +12,7 @@ import { changeShopState } from "../utils/changeIcons";
 
 function Checkout() {
   const { cart, user } = useSelector(state => state);
-  const [medioDePago, setMedioDePago] = useState("");
+  const [medioDePago, setMedioDePago] = useState("mercadopago");
   const [total, setTotal] = useState(0);
   const [order, setOrder] = useState({});
   const history = useHistory();
@@ -125,10 +125,10 @@ function Checkout() {
                   </div>
                 )}
               </div>
-              {medioDePago !== '' && (
+
               <button type="submit" className="btn btn-dark" onClick={handleSumbit}>
                 Confirmar compra
-              </button>)}
+              </button>
               <Link to="/shop">
                 <button className="btn btn-dark my-5">Volver al shop</button>
               </Link>

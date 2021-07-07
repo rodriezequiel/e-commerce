@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Switch, Route } from "react-router";
 import Navbar from "../components/Navbar";
 import ShopHeader from "../components/ShopHeader";
 import Card from "../components/Card";
@@ -8,17 +9,12 @@ import { getProducts } from "../utils/index";
 
 export default function Shop() {
   const [products, setProducts] = useState([]);
-  const [names, setNames] = useState([]);
   const query = new RegExp(
     useSelector(state => state.query),
     "i"
   );
   useEffect(() => {
-    getProducts().then(products => {
-      const keys = Object.keys(products);
-      setNames(keys);
-      setProducts(products);
-    });
+    getProducts().then(products => setProducts(products));
   }, []);
   return (
     <>
@@ -35,9 +31,20 @@ export default function Shop() {
           </div>
           <div className="col-9 bg-light">
             <div className="row d-flex justify-content-start pt-3 mx-5">
-              {names
-                .filter(name => name.match(query))
-                .map((product, index) => <Card item={product} key={index} products={products} />)}
+              <Switch>
+                <Route
+                  exact
+                  path="/shop"
+                  render={() =>
+                    Object.keys(products)
+                      .filter(names => names.match(query))
+                      .map((product, index) => (
+                        <Card item={product} key={index} products={products} />
+                      ))
+                  }
+                />
+                {/* <Route exact path='/shop/:category' render={({match}) => }/> */}
+              </Switch>
             </div>
           </div>
         </div>
