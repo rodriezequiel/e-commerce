@@ -26,12 +26,10 @@ function SingleProduct() {
           <div className="col-6 text-end px-1 py-3">
             <div className="row">
               <div className="col-3">
-                {[1, 2, 3].map((ele) => (
+                {picture.map((picture, i) => (
                   <div style={{ background: "rgba(0,0,0,0.3)" }}>
                     <img
-                      src={
-                        "https://images.unsplash.com/photo-1551028719-00167b16eac5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"
-                      }
+                      src={picture}
                       class=""
                       style={{ width: "120%", height: "20%" }}
                     />
@@ -40,9 +38,7 @@ function SingleProduct() {
               </div>
               <div className="col-9">
                 <img
-                  src={
-                    "https://images.unsplash.com/photo-1551028719-00167b16eac5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"
-                  }
+                  src={picture[0]}
                   class=""
                   style={{ width: "100%", height: "100%" }}
                 />

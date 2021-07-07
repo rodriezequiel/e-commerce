@@ -1,26 +1,33 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-import Table from '../components/Table'
-import Navbar from './Navbar'
-import { deleteProducFromCart } from '../state/cart'
-import { clearCart } from '../utils/index'
-import { getCart } from '../state/cart'
+import Table from "./Table";
+import Navbar from "./Navbar";
+import { deleteProducFromCart } from "../state/cart";
+import { clearCart } from "../utils/index";
+import { getCart } from "../state/cart";
+import ShopState from "./ShopState";
+import { statusShopClass } from "./../utils/globals";
+import { changeShopState } from "../utils/changeIcons";
 
 function Cart() {
-  let { cart } = useSelector((state) => state)
-  const dispatch = useDispatch()
+  let { cart } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   const deleteProduct = (user, item) => {
     dispatch(deleteProducFromCart({ userId: user, product: item })).then(() =>
       dispatch(getCart())
-    )
-  }
+    );
+  };
 
   useEffect(() => {
-    dispatch(getCart())
-  }, [dispatch])
+    dispatch(getCart());
+    changeShopState({
+      ...statusShopClass,
+      id: "status01",
+    });
+  }, [dispatch]);
 
   return (
     <div>
@@ -28,28 +35,31 @@ function Cart() {
       {cart.Products && !cart.Products.length && (
         <h1>You have no products...</h1>
       )}
-      {cart.Products && (
-        <Table
-          items={cart.Products}
-          user={cart.UserId}
-          deleteItem={deleteProduct}
-        />
+      {cart.Products.length && (
+        <div className="m-5 p-3 text-center">
+          <ShopState />
+          <Table
+            items={cart.Products}
+            user={cart.UserId}
+            deleteItem={deleteProduct}
+          />
+          <div className="d-flex justify-content-evenly my-5">
+            <button
+              className="btn btn-dark fs-4"
+              onClick={() => {
+                clearCart(cart.UserId).then(() => dispatch(getCart()));
+              }}
+            >
+              Vaciar Carrito
+            </button>
+            <Link to="/checkout">
+              <button className="btn btn-warning fs-4">Continuar</button>
+            </Link>
+          </div>
+        </div>
       )}
-      <button
-        disabled={cart.Products && !cart.Products.length}
-        onClick={() => {
-          clearCart(cart.UserId).then(() => dispatch(getCart()))
-        }}
-      >
-        Vaciar Carrito
-      </button>
-      <Link to='/checkout'>
-        <button disabled={cart.Products && !cart.Products.length}>
-          Confirmar Compra
-        </button>
-      </Link>
     </div>
-  )
+  );
 }
 
-export default Cart
+export default Cart;

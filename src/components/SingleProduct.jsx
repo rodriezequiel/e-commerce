@@ -6,6 +6,7 @@ import { getOneProduct } from "../utils/index";
 import { addToCart } from "../state/cart";
 import { addProductToCartBD } from "../utils/index";
 import Navbar from "./Navbar";
+import CounterButton from "./CounterButton";
 
 function SingleProduct() {
   const param = useParams();
@@ -98,80 +99,36 @@ function SingleProduct() {
   return (
     <div>
       <Navbar transparent={false} />
-      <div className="container-fluid">
-        <div className="row my-5 ms-5">
-          <div className="col-5 me-5 ms-2">
-            <div
-              id="carouselExampleIndicators"
-              class="carousel slide"
-              data-bs-ride="carousel"
-            >
-              <div class="carousel-indicators">
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide-to="0"
-                  class="active"
-                  aria-current="true"
-                  aria-label="Slide 1"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide-to="1"
-                  aria-label="Slide 2"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide-to="2"
-                  aria-label="Slide 3"
-                ></button>
-              </div>
-              <div class="carousel-inner mx-5">
-                {picture.map((pic, index) => (
-                  <div class={`carousel-item ${!index ? "active" : ""}`}>
+      <div className="container">
+        <div className="row px-5 m-3 ">
+          <div className="col-7 text-end px-5 py-3">
+            <div className="row">
+              <div className="col-3">
+                {picture.map((picture) => (
+                  <div className="hover-product">
                     <img
-                      src={pic}
-                      class="d-block w-auto"
-                      alt={name}
-                      style={{ width: "auto", height: "80vh" }}
+                      src={picture}
+                      class=""
+                      style={{ width: "100%", height: "100%" }}
                     />
                   </div>
                 ))}
               </div>
-              <button
-                class="carousel-control-prev"
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button
-                class="carousel-control-next"
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Next</span>
-              </button>
+              <div className="col-9">
+                <img
+                  src={picture[0]}
+                  class=""
+                  style={{ width: "100%", height: "100%" }}
+                />
+              </div>
             </div>
           </div>
 
-          <div className="col-6 text-end px-5 py-3">
-            <div className="py-3">
-              <h2>
+          <div className="col-5 text-end  py-3 fs-3">
+            <div>
+              <h3>
                 <strong>{name}</strong>
-              </h2>
+              </h3>
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
@@ -179,15 +136,38 @@ function SingleProduct() {
               <i class="bi bi-star"></i>
             </div>
             <div className="py-3">
-              <h3>
+              <h2>
                 <strong>${price}</strong>
-              </h3>
+              </h2>
             </div>
-
-            <div className="py-2">
-              <p>Size</p>
+            <div className="py-3 d-flex flex-row-reverse">
               <div>
-                {/* {talles.map((talle) => (
+                <p>Color</p>
+                <div>
+                  {/* {colors.map((color) => (
+                  <i
+                    id={color}
+                    class={colorClass.empty}
+                    style={{ color }}
+                    onClick={(e) =>
+                      changeOption(e.target, colors, colorClass, setColor)
+                    }
+                  ></i>
+                ))} */}
+                  <select name="color" onChange={handleChange} id="color">
+                    {color.map((color) => (
+                      <option key={color} value={color}>
+                        {color}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="px-5">
+                <p>Size</p>
+                <div>
+                  {/* {talles.map((talle) => (
                   <i
                     id={talle}
                     class={talleClass.empty}
@@ -198,67 +178,37 @@ function SingleProduct() {
                     {talle}
                   </i>
                 ))} */}
-                <select name="size" onChange={(e) => handleChange(e)} id="size">
-                  {size.map((size) => (
-                    <option key={size} value={size}>
-                      {size}
-                    </option>
-                  ))}
-                </select>
+                  <select
+                    name="size"
+                    onChange={(e) => handleChange(e)}
+                    id="size"
+                  >
+                    {size.map((size) => (
+                      <option key={size} value={size}>
+                        {size}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
-            </div>
-            <div className="py-2">
-              <p>Color</p>
-              <div>
-                {/* {colors.map((color) => (
-                  <i
-                    id={color}
-                    class={colorClass.empty}
-                    style={{ color }}
-                    onClick={(e) =>
-                      changeOption(e.target, colors, colorClass, setColor)
-                    }
-                  ></i>
-                ))} */}
-                <select name="color" onChange={handleChange} id="color">
-                  {color.map((color) => (
-                    <option key={color} value={color}>
-                      {color}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-            <div className="d-flex flex-row-reverse py-3">
-              <button
-                className="btn btn-dark btn-sm px-3"
-                onClick={() => setCounter(counter + 1)}
-              >
-                +
-              </button>
-              <button className="btn btn-outline-dark px-3 disabled fs-5">
-                {counter}
-              </button>
-              <button
-                className="btn btn-dark btn-sm px-3 "
-                onClick={() => (counter !== 1 ? setCounter(counter - 1) : "")}
-              >
-                -
-              </button>
             </div>
 
-            <div>
+            <div className="d-flex flex-row-reverse py-3">
+              <CounterButton setCounter={setCounter} counter={counter} />
+            </div>
+
+            <div className="my-3">
               <button
-                className="btn btn-dark fs-5"
+                className="btn btn-dark fs-5 mx-3"
                 onClick={() => history.goBack()}
               >
                 Go back
               </button>
               <button
-                className="btn btn-dark fs-5"
+                className="btn btn-warning fs-5"
                 onClick={() => addProduct()}
               >
-                Add to car
+                Add to cart
               </button>
             </div>
           </div>
