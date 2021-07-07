@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 
 import navbarChange from '../utils/navbarChange'
 import { removeUser } from '../state/user'
+import { removeCart } from '../state/cart'
 
 export default function Nav({ transparent = true }) {
   const user = useSelector((state) => state.user)
@@ -23,6 +24,7 @@ export default function Nav({ transparent = true }) {
     axios
       .put('/api/auth/logout')
       .then((res) => dispatch(removeUser()))
+      .then(res => dispatch(removeCart()))
       .then((res) => history.push('/home'))
   }
 
