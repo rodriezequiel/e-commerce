@@ -39,7 +39,7 @@ router.post('/checkout', (req, res) => {
     cart,
   } = req.body
 
-  main(user, mailInfo, cart)
+  // main(user, mailInfo, cart)
 
   User.findByPk(userId)
     .then((user) => {
