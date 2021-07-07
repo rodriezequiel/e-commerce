@@ -11,20 +11,27 @@ import { statusShopClass } from "./../utils/globals";
 import { changeShopState } from "../utils/changeIcons";
 
 function Checkout() {
-  const { cart, user } = useSelector((state) => state);
+  const { cart, user } = useSelector(state => state);
   const [medioDePago, setMedioDePago] = useState("");
   const [total, setTotal] = useState(0);
   const [order, setOrder] = useState({});
   const history = useHistory();
 
-  const handlePayment = (e) => {
+  const handlePayment = e => {
     const { value } = e.target;
     setMedioDePago(value);
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { value, name } = e.target;
     setOrder({ ...order, [name]: value });
+  };
+
+  const handleSumbit = e => {
+    e.preventDefault();
+    return confirmOrder({ ...order, userId: user.id })
+      .then(() => history.push("/home"))
+      .then(() => alert("Gracias por su compra"));
   };
 
   useEffect(() => {
@@ -52,12 +59,7 @@ function Checkout() {
             <h1 className="form-label fs-4 text-center py-4">
               <strong>Mis productos</strong>
             </h1>
-            <Table
-              items={cart.Products}
-              user={cart.UserId}
-              total={total}
-              envio={500}
-            />
+            <Table items={cart.Products} user={cart.UserId} total={total} envio={500} />
           </div>
           <div className="col-4 bg-light border px-4">
             <h1 className="form-label  fs-4 text-center py-4">
@@ -72,23 +74,13 @@ function Checkout() {
                 <label htmlFor="telephone" className="form-label  fs-6">
                   Telefono*
                 </label>
-                <input
-                  type="text"
-                  className="form-control  fs-6"
-                  id="telephone"
-                  name="telephone"
-                />
+                <input type="text" className="form-control  fs-6" id="telephone" name="telephone" />
               </div>
               <div className="mb-3">
                 <label htmlFor="address" className="form-label  fs-6">
                   Direccion *
                 </label>
-                <input
-                  type="text"
-                  className="form-control "
-                  id="address"
-                  name="address"
-                />
+                <input type="text" className="form-control " id="address" name="address" />
               </div>
               <div class="mb-3">
                 <label htmlFor="info" className="form-label  fs-6">
@@ -108,7 +100,7 @@ function Checkout() {
                 </label>
 
                 <select
-                  onChange={(e) => {
+                  onChange={e => {
                     handlePayment(e);
                   }}
                   name="paymentMethod"
@@ -132,34 +124,13 @@ function Checkout() {
                     </p>
                   </div>
                 )}
-                {medioDePago === "tarjeta" && (
-                  <button className="btn btn-dark my-4">
-                    Pagar con tarjeta de credito/debito
-                  </button>
-                )}
-                {medioDePago === "mercadopago" && (
-                  <button className="btn btn-dark my-4">
-                    {" "}
-                    Pagar con MercadoPago
-                  </button>
-                )}
               </div>
-
-              <button
-                type="submit"
-                className="btn btn-dark"
-                onClick={(e) =>{
-                  e.preventDefault()
-                  return confirmOrder({ ...order, userId: user.id })
-                    .then(() => history.push("/home"))
-                    .then(() => alert("Gracias por su compra"))
-                }
-                }
-              >
+              {medioDePago !== '' && (
+              <button type="submit" className="btn btn-dark" onClick={handleSumbit}>
                 Confirmar compra
-              </button>
+              </button>)}
               <Link to="/shop">
-                <button className="btn btn-dark my-5">Volver a comprar</button>
+                <button className="btn btn-dark my-5">Volver al shop</button>
               </Link>
             </form>
           </div>

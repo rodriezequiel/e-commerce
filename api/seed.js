@@ -132,7 +132,7 @@ const productSeed = [
     categorys: ['hombre'],
   },
   {
-    name: 'Pantalón chino Sacramento',
+    name: 'Pantalón Chino Sacramento',
 
     description:
       'Pantalon Chino Sacramento achupinado Ripon de gabardina gris con lycra, 97% algodón y 3% spandex',
