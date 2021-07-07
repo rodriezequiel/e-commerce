@@ -12,8 +12,8 @@ function SingleProduct() {
   const param = useParams()
   const history = useHistory()
   //cart from redux
-  const cart = useSelector((state) => state.cart)
-  const dispatch = useDispatch()
+  const cart = useSelector(state => state.cart);
+  const dispatch = useDispatch();
 
   //states
   const [singleProduct, setSingleProduct] = useState([])
@@ -32,33 +32,35 @@ function SingleProduct() {
 
   useEffect(() => {
     getOneProduct(param.name)
-      .then((products) => {
-        setSingleProduct(products)
-        return products
+      .then(products => {
+        setSingleProduct(products);
+        return products;
       })
-      .then((info) => {
-        const { name, description, brand, picture, price } = info[0]
-        setName(name)
-        setDescription(description)
-        setBrand(brand)
-        setPicture(picture)
-        setPrice(price)
-      })
-  }, [])
+      .then(info => {
+        const { name, description, brand, picture, price, color} = info[0];
+        setName(name);
+        setDescription(description);
+        setBrand(brand);
+        setPicture(picture);
+        setPrice(price);
+      });
+  }, []);
+  
   useEffect(() => {
     singleProduct.map((product, index) => {
       if (index === 0) {
         setSelectedColor(product.color)
         setSelectedSize(product.size)
       }
-      setSize((size) => [...size, product.size])
-      setSize((size) => [...new Set(size)])
-      setColor((color) => [...color, product.color])
-      setColor((color) => [...new Set(color)])
-      setStock((stock) => [...stock, product.stock])
-      setStock((stock) => [...new Set(stock)])
-    })
-  }, [singleProduct])
+      setSize(size => [...size, product.size]);
+      setSize(size => [...new Set(size)]);
+      setColor(color => [...color, product.color]);
+      setColor(color => [...new Set(color)]);
+      setStock(stock => [...stock, product.stock]);
+      setStock(stock => [...new Set(stock)]);
+    });
+    console.log(color);
+  }, [singleProduct]);
 
   const addProduct = () => {
     let productToAdd = searchProductId()
@@ -67,17 +69,17 @@ function SingleProduct() {
   }
 
   const searchProductId = () => {
-    const prod = singleProduct.filter((product) => {
-      return product.color === selectedColor && product.size === selectedSize
-    })
-    return prod[0]
-  }
+    const prod = singleProduct.filter(product => {
+      return product.color === selectedColor && product.size === selectedSize;
+    });
+    return prod[0];
+  };
 
   //limpiar esta funcion
-  const handleChange = (e) => {
-    const { value, name } = e.target
-    if (name === 'color') {
-      setSelectedColor(value)
+  const handleChange = e => {
+    const { value, name } = e.target;
+    if (name === "color") {
+      setSelectedColor(value);
       const AvailableSizes = singleProduct.reduce((acum, item) => {
         if (item.color === value) acum.push(item.size)
         return acum
@@ -99,36 +101,26 @@ function SingleProduct() {
   return (
     <div>
       <Navbar transparent={false} />
-      <div className="container">
-        <div className="row px-5 m-3 ">
+      <div className="container mb-5">
+        <div className="row px-5 m-3">
           <div className="col-7 text-end px-5 py-3">
             <div className="row">
               <div className="col-3">
-                {picture.map((picture) => (
+                {picture.map(picture => (
                   <div className="hover-product">
-                    <img
-                      src={picture}
-                      className=""
-                      style={{ width: "100%", height: "100%" }}
-                      alt='prod'
-                    />
+                    <img src={picture} class="" style={{ width: "100%", height: "100%" }} />
                   </div>
                 ))}
               </div>
               <div className="col-9">
-                <img
-                  src={picture[0]}
-                  className=""
-                  style={{ width: "100%", height: "100%" }}
-                  alt='prod'
-                />
+                <img src={picture[0]} class="" style={{ width: "100%", height: "100%" }} />
               </div>
             </div>
           </div>
 
           <div className="col-5 text-end  py-3 fs-3">
             <div>
-              <h3>
+              <h3 className="amatic fs-1">
                 <strong>{name}</strong>
               </h3>
               <i className="bi bi-star-fill"></i>
@@ -142,7 +134,7 @@ function SingleProduct() {
                 <strong>${price}</strong>
               </h2>
             </div>
-            <div className="py-3 d-flex flex-row-reverse">
+            <div className="py-3 d-flex flex-row-reverse fs-5">
               <div>
                 <p>Color</p>
                 <div>
@@ -156,8 +148,8 @@ function SingleProduct() {
                     }
                   ></i>
                 ))} */}
-                  <select name="color" onChange={handleChange} id="color">
-                    {color.map((color) => (
+                  <select name="color" onChange={handleChange} id="color" onLoad={handleChange}>
+                    {color.map(color => (
                       <option key={color} value={color}>
                         {color}
                       </option>
@@ -180,12 +172,8 @@ function SingleProduct() {
                     {talle}
                   </i>
                 ))} */}
-                  <select
-                    name="size"
-                    onChange={(e) => handleChange(e)}
-                    id="size"
-                  >
-                    {size.map((size) => (
+                  <select name="size" onChange={handleChange} id="size">
+                    {size.map(size => (
                       <option key={size} value={size}>
                         {size}
                       </option>
@@ -200,16 +188,10 @@ function SingleProduct() {
             </div>
 
             <div className="my-3">
-              <button
-                className="btn btn-dark fs-5 mx-3"
-                onClick={() => history.goBack()}
-              >
+              <button className="btn btn-dark fs-5 mx-3" onClick={() => history.goBack()}>
                 Go back
               </button>
-              <button
-                className="btn btn-warning fs-5"
-                onClick={() => addProduct()}
-              >
+              <button className="btn btn-warning fs-5" onClick={() => addProduct()}>
                 Add to cart
               </button>
             </div>

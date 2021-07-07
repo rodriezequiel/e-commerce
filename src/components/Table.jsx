@@ -19,7 +19,7 @@ export default function Tables({
         </tr>
       </thead>
       <tbody>
-        {items.map((item) => (
+        {items && items.map((item) => (
           <tr key={item.id}>
             <td>
               <div>
@@ -39,7 +39,7 @@ export default function Tables({
             <td>${item.price}</td>
             {<td>{counter ? <CounterButton /> : item.CartItem.quantity}</td>}
             <td>${item.CartItem.quantity * item.price}</td>
-            {!deleteItem && (
+            {deleteItem && (
               <td scope="col">
                 <i
                   className="bi bi-trash-fill"

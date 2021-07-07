@@ -11,7 +11,7 @@ export default function Shop() {
       <div className='container-fluid bg-dark pt-3'>
         <div className=' d-flex row justify-content-center'>
           <div className='col-3 pt-3 fs-3'>
-            <div className='list-group list-group-flush'>
+            <div className='list-group list-group-flush amatic'>
               <a className='list-group-item bg-dark text-white text-center'>
                 An item
               </a>

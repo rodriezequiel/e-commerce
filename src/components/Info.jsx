@@ -47,7 +47,7 @@ export default function Info() {
                 alt="hoodies"
               />
               <div className="card-img-overlay d-flex justify-content-center align-items-end me-5 ">
-                <h1 className="card-title">Wear</h1>
+                <h1 className="card-title">WEAR</h1>
               </div>
             </div>
           </div>
@@ -63,7 +63,7 @@ export default function Info() {
                 alt="hoodies"
               />
               <div className="card-img-overlay d-flex justify-content-center align-items-end me-5 ">
-                <h1 className="card-title">Skate</h1>
+                <h1 className="card-title">SKATE</h1>
               </div>
             </div>
           </div>

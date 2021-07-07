@@ -21,22 +21,22 @@ function Cart() {
     );
   };
 
+  useEffect(()=> dispatch(getCart()), [])
   useEffect(() => {
-    dispatch(getCart());
-    if (cart.Products.length !== 0)
+    if (cart.Products && cart.Products.length !== 0)
       changeShopState({
         ...statusShopClass,
         id: "status01",
       });
-  }, [dispatch]);
+  }, [dispatch, cart]);
 
   return (
     <div>
       <Navbar transparent={false} />
-      {cart.Products && !cart.Products.length && (
+      {(cart.Products && !cart.Products.length) && (
         <h1>You have no products...</h1>
       )}
-      {cart.Products.length !== 0 && (
+      {cart.Products && cart.Products.length !== 0 && (
         <div className="m-5 p-3 text-center">
           <ShopState />
           <Table
