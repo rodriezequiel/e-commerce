@@ -19,7 +19,7 @@ app.use(cookieParser())
 // app.use(express.urlencoded{extend:})
 app.use('/api', routes)
 
-db.sync({ force: false }).then(() => {
+db.sync({ force: true }).then(() => {
   app.listen(PORT, () => {
     console.log(`server running on  http://localhost:${PORT}`)
   })
