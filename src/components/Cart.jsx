@@ -23,10 +23,11 @@ function Cart() {
 
   useEffect(() => {
     dispatch(getCart());
-    changeShopState({
-      ...statusShopClass,
-      id: "status01",
-    });
+    if (cart.Products.length !== 0)
+      changeShopState({
+        ...statusShopClass,
+        id: "status01",
+      });
   }, [dispatch]);
 
   return (
@@ -35,7 +36,7 @@ function Cart() {
       {cart.Products && !cart.Products.length && (
         <h1>You have no products...</h1>
       )}
-      {cart.Products.length && (
+      {cart.Products.length !== 0 && (
         <div className="m-5 p-3 text-center">
           <ShopState />
           <Table

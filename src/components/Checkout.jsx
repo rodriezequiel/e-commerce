@@ -35,10 +35,11 @@ function Checkout() {
       }, 0);
       setTotal(totalCart);
     }
-    changeShopState({
-      ...statusShopClass,
-      id: "status02",
-    });
+    if (cart.Products.length !== 0)
+      changeShopState({
+        ...statusShopClass,
+        id: "status02",
+      });
   }, [cart]);
   return (
     <>
