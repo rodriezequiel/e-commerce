@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import { useHistory } from "react-router";
-
 import Navbar from "../components/Navbar";
 
 export default function SignUp() {
@@ -74,6 +73,7 @@ export default function SignUp() {
                 name="email"
                 value={input.email}
               />
+              
             </div>
             <div className="mb-2">
               <label htmlFor="InputPassword" className="form-label  fs-6">

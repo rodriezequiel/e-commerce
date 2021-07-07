@@ -28,6 +28,7 @@ export default function SignIn() {
       .catch((err) => alert("datos incorrectos"));
   };
 
+
   return (
     <div>
       <Navbar transparent={false} />

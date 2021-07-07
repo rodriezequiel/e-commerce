@@ -9,26 +9,26 @@ import Navbar from "./Navbar";
 import CounterButton from "./CounterButton";
 
 function SingleProduct() {
-  const param = useParams();
-  const history = useHistory();
+  const param = useParams()
+  const history = useHistory()
   //cart from redux
   const cart = useSelector(state => state.cart);
   const dispatch = useDispatch();
 
   //states
-  const [singleProduct, setSingleProduct] = useState([]);
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [brand, setBrand] = useState("");
-  const [picture, setPicture] = useState([]);
-  const [price, setPrice] = useState("");
-  const [size, setSize] = useState([]);
-  const [color, setColor] = useState([]);
-  const [stock, setStock] = useState([]);
-  const [selectedColor, setSelectedColor] = useState("");
-  const [selectedSize, setSelectedSize] = useState("");
-  const [productToAdd, setProductToAdd] = useState("");
-  const [counter, setCounter] = useState(1);
+  const [singleProduct, setSingleProduct] = useState([])
+  const [name, setName] = useState('')
+  const [description, setDescription] = useState('')
+  const [brand, setBrand] = useState('')
+  const [picture, setPicture] = useState([])
+  const [price, setPrice] = useState('')
+  const [size, setSize] = useState([])
+  const [color, setColor] = useState([])
+  const [stock, setStock] = useState([])
+  const [selectedColor, setSelectedColor] = useState('')
+  const [selectedSize, setSelectedSize] = useState('')
+  const [productToAdd, setProductToAdd] = useState('')
+  const [counter, setCounter] = useState(1)
 
   useEffect(() => {
     getOneProduct(param.name)
@@ -45,11 +45,12 @@ function SingleProduct() {
         setPrice(price);
       });
   }, []);
+  
   useEffect(() => {
     singleProduct.map((product, index) => {
       if (index === 0) {
-        setSelectedColor(product.color);
-        setSelectedSize(product.size);
+        setSelectedColor(product.color)
+        setSelectedSize(product.size)
       }
       setSize(size => [...size, product.size]);
       setSize(size => [...new Set(size)]);
@@ -62,10 +63,10 @@ function SingleProduct() {
   }, [singleProduct]);
 
   const addProduct = () => {
-    let productToAdd = searchProductId();
-    productToAdd = { ...productToAdd, quantity: counter, UserId: cart.UserId };
-    addProductToCartBD(productToAdd);
-  };
+    let productToAdd = searchProductId()
+    productToAdd = { ...productToAdd, quantity: counter, UserId: cart.UserId }
+    addProductToCartBD(productToAdd)
+  }
 
   const searchProductId = () => {
     const prod = singleProduct.filter(product => {
@@ -80,22 +81,22 @@ function SingleProduct() {
     if (name === "color") {
       setSelectedColor(value);
       const AvailableSizes = singleProduct.reduce((acum, item) => {
-        if (item.color === value) acum.push(item.size);
-        return acum;
-      }, []);
+        if (item.color === value) acum.push(item.size)
+        return acum
+      }, [])
 
-      setSize(AvailableSizes);
+      setSize(AvailableSizes)
     }
-    if (name === "size") {
-      setSelectedSize(value);
+    if (name === 'size') {
+      setSelectedSize(value)
       const AvailableColors = singleProduct.reduce((acum, item) => {
-        if (item.size === value) acum.push(item.color);
-        return acum;
-      }, []);
+        if (item.size === value) acum.push(item.color)
+        return acum
+      }, [])
 
-      setColor(AvailableColors);
+      setColor(AvailableColors)
     }
-  };
+  }
 
   return (
     <div>
@@ -122,11 +123,11 @@ function SingleProduct() {
               <h3 className="amatic fs-1">
                 <strong>{name}</strong>
               </h3>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-half"></i>
-              <i class="bi bi-star"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-half"></i>
+              <i className="bi bi-star"></i>
             </div>
             <div className="py-3">
               <h2>
@@ -140,7 +141,7 @@ function SingleProduct() {
                   {/* {colors.map((color) => (
                   <i
                     id={color}
-                    class={colorClass.empty}
+                    className={colorClass.empty}
                     style={{ color }}
                     onClick={(e) =>
                       changeOption(e.target, colors, colorClass, setColor)
@@ -163,7 +164,7 @@ function SingleProduct() {
                   {/* {talles.map((talle) => (
                   <i
                     id={talle}
-                    class={talleClass.empty}
+                    className={talleClass.empty}
                     onClick={(e) =>
                       changeOption(e.target, talles, talleClass, setSize)
                     }
@@ -198,7 +199,7 @@ function SingleProduct() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default SingleProduct;
+export default SingleProduct
