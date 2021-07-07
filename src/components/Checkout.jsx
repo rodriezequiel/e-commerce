@@ -97,7 +97,7 @@ function Checkout() {
                 <textarea
                   className="form-control  "
                   id="info"
-                  name="info"
+                  name="additionalInfo"
                   rows="3"
                 ></textarea>
               </div>
