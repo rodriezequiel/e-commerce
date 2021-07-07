@@ -2,19 +2,22 @@ import React from "react";
 
 export default function Info() {
   return (
-    <div id='aboutUs' className="container-fluid bg-dark pt-5">
+    <div id="aboutUs" className="container-fluid bg-dark pt-5">
       <div className="row justify-content-center">
         <div className="col-10 my-5 bg-dark text-white rounded px-3 py-3">
           <h2 className="tituloAU">About us</h2>
-          <p className="descripcionAU">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus perspiciatis non
-            possimus magnam facilis reiciendis illo quibusdam, earum, aspernatur recusandae officia
-            dolore excepturi quo at! Doloremque eos repellat adipisci iure Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Sunt cumque qui itaque tempora consequuntur,
-            voluptates ut veniam nobis et pariatur dolores! Veniam dicta ab ducimus tempora! Aliquam
-            dicta id repellat. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi
-            facilis totam, odit consequuntur quasi ad dolor, maxime aut fuga cum vero odio debitis!
-            Dolore, suscipit quia. Atque perferendis dignissimos delectus.
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus
+            perspiciatis non possimus magnam facilis reiciendis illo quibusdam,
+            earum, aspernatur recusandae officia dolore excepturi quo at!
+            Doloremque eos repellat adipisci iure Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Sunt cumque qui itaque tempora
+            consequuntur, voluptates ut veniam nobis et pariatur dolores! Veniam
+            dicta ab ducimus tempora! Aliquam dicta id repellat. Lorem ipsum
+            dolor sit amet consectetur, adipisicing elit. Sequi facilis totam,
+            odit consequuntur quasi ad dolor, maxime aut fuga cum vero odio
+            debitis! Dolore, suscipit quia. Atque perferendis dignissimos
+            delectus.
           </p>
         </div>
       </div>
