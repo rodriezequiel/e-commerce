@@ -5,9 +5,8 @@ const categorys = [
   { name: "skate" },
   { name: "hombre" },
   { name: "mujer" },
-  { name: "abrigo"},
-  { name: "remera"},
- 
+  { name: "abrigo" },
+  { name: "remera" },
 ];
 
 const user = [
@@ -36,7 +35,6 @@ const user = [
 
 const product = [
   {
-
     name: "Remera Palawan",
 
     description:
@@ -48,13 +46,11 @@ const product = [
     brand: "Nike",
     picture: [
       "https://underwavebrand.com/wp-content/uploads/2021/01/Palawan-scaled.jpg",
-      "https://underwavebrand.com/wp-content/uploads/2020/07/IMG_8720.jpg"
-      
+      "https://underwavebrand.com/wp-content/uploads/2020/07/IMG_8720.jpg",
     ],
-    categorys: ["hombre", "abrigo"]
+    categorys: ["hombre", "abrigo"],
   },
   {
-
     name: "Remera Palawan",
 
     description:
@@ -65,14 +61,12 @@ const product = [
     color: "negra",
     brand: "Nike",
     picture: [
-     "https://underwavebrand.com/wp-content/uploads/2021/06/DSC02688-scaled.jpg",
-     "https://underwavebrand.com/wp-content/uploads/2021/06/DSC02682-710x1015.jpg"
-      
+      "https://underwavebrand.com/wp-content/uploads/2021/06/DSC02688-scaled.jpg",
+      "https://underwavebrand.com/wp-content/uploads/2021/06/DSC02682-710x1015.jpg",
     ],
-    categorys: ["hombre", "abrigo"]
+    categorys: ["hombre", "abrigo"],
   },
   {
-
     name: "Hoodie Parbat",
 
     description:
@@ -84,13 +78,12 @@ const product = [
     brand: "Nike",
     picture: [
       "https://underwavebrand.com/wp-content/uploads/2021/04/IMG_9745-min-710x1093.jpg",
-      "https://underwavebrand.com/wp-content/uploads/2021/06/WhatsApp-Image-2021-06-01-at-09.58.25-1-710x881.jpeg"
+      "https://underwavebrand.com/wp-content/uploads/2021/06/WhatsApp-Image-2021-06-01-at-09.58.25-1-710x881.jpeg",
     ],
-    categorys: ["mujer", "abrigo"]
+    categorys: ["mujer", "abrigo"],
   },
 
   {
-
     name: "Hoodie Parbat",
 
     description:
@@ -102,12 +95,11 @@ const product = [
     brand: "Nike",
     picture: [
       "https://underwavebrand.com/wp-content/uploads/2021/04/IMG_9745-min-710x1093.jpg",
-      "https://underwavebrand.com/wp-content/uploads/2021/06/WhatsApp-Image-2021-06-01-at-09.58.25-1-710x881.jpeg"
+      "https://underwavebrand.com/wp-content/uploads/2021/06/WhatsApp-Image-2021-06-01-at-09.58.25-1-710x881.jpeg",
     ],
-    categorys: ["mujer", "abrigo"]
+    categorys: ["mujer", "abrigo"],
   },
   {
-
     name: "Camisa Haya",
 
     description:
@@ -119,12 +111,11 @@ const product = [
     brand: "adidas",
     picture: [
       "https://underwavebrand.com/wp-content/uploads/2021/07/DSC04279-710x1065.jpg",
-      "https://underwavebrand.com/wp-content/uploads/2021/07/DSC04277-710x1065.jpg"
+      "https://underwavebrand.com/wp-content/uploads/2021/07/DSC04277-710x1065.jpg",
     ],
-    categorys: ["hombre"]
+    categorys: ["hombre"],
   },
   {
-
     name: "Camisa Haya",
 
     description:
@@ -136,12 +127,11 @@ const product = [
     brand: "adidas",
     picture: [
       "https://underwavebrand.com/wp-content/uploads/2021/07/DSC04279-710x1065.jpg",
-      "https://underwavebrand.com/wp-content/uploads/2021/07/DSC04277-710x1065.jpg"
+      "https://underwavebrand.com/wp-content/uploads/2021/07/DSC04277-710x1065.jpg",
     ],
-    categorys: ["hombre"]
+    categorys: ["hombre"],
   },
   {
-
     name: "Pantalón chino Sacramento",
 
     description:
@@ -153,13 +143,12 @@ const product = [
     brand: "hollyster",
     picture: [
       "https://underwavebrand.com/wp-content/uploads/2021/06/DSC03269-min-500x750.jpg",
-      "https://underwavebrand.com/wp-content/uploads/2021/06/DSC03269-min-710x1065.jpg"
+      "https://underwavebrand.com/wp-content/uploads/2021/06/DSC03269-min-710x1065.jpg",
     ],
-    categorys: ["hombre","skate"]
+    categorys: ["hombre", "skate"],
   },
   {
-
-    name: "Pantalón chino Sacramento",
+    name: "Pantalón Chino Sacramento",
 
     description:
       "Pantalon Chino Sacramento achupinado Ripon de gabardina gris con lycra, 97% algodón y 3% spandex",
@@ -170,12 +159,11 @@ const product = [
     brand: "hollyster",
     picture: [
       "https://underwavebrand.com/wp-content/uploads/2021/06/DSC03269-min-500x750.jpg",
-      "https://underwavebrand.com/wp-content/uploads/2021/06/DSC03269-min-710x1065.jpg"
+      "https://underwavebrand.com/wp-content/uploads/2021/06/DSC03269-min-710x1065.jpg",
     ],
-    categorys: ["hombre","skate"]
+    categorys: ["hombre", "skate"],
   },
   {
-
     name: "Remera Ana Black",
 
     description:
@@ -187,12 +175,11 @@ const product = [
     brand: "hollyster",
     picture: [
       "https://underwavebrand.com/wp-content/uploads/2021/06/DSC02682-710x1015.jpg",
-      "https://underwavebrand.com/wp-content/uploads/2021/06/DSC02688-710x1073.jpg"
+      "https://underwavebrand.com/wp-content/uploads/2021/06/DSC02688-710x1073.jpg",
     ],
-    categorys: ["hombre","skate", "remera"]
+    categorys: ["hombre", "skate", "remera"],
   },
   {
-
     name: "Remera Ana Black",
 
     description:
@@ -204,12 +191,11 @@ const product = [
     brand: "hollyster",
     picture: [
       "https://underwavebrand.com/wp-content/uploads/2021/06/DSC02682-710x1015.jpg",
-      "https://underwavebrand.com/wp-content/uploads/2021/06/DSC02688-710x1073.jpg"
+      "https://underwavebrand.com/wp-content/uploads/2021/06/DSC02688-710x1073.jpg",
     ],
-    categorys: ["hombre","skate", "remera"]
+    categorys: ["hombre", "skate", "remera"],
   },
   {
-
     name: "Hoodie Aconcagua",
 
     description:
@@ -221,12 +207,11 @@ const product = [
     brand: "hollyster",
     picture: [
       "https://underwavebrand.com/wp-content/uploads/2021/04/IMG_9710-min-710x1039.jpg",
-      "https://underwavebrand.com/wp-content/uploads/2021/04/IMG_9792-min-710x1065.jpg"
+      "https://underwavebrand.com/wp-content/uploads/2021/04/IMG_9792-min-710x1065.jpg",
     ],
-    categorys: ["hombre","skate", "abrigo"]
+    categorys: ["hombre", "skate", "abrigo"],
   },
   {
-
     name: "Hoodie Aconcagua",
 
     description:
@@ -238,13 +223,12 @@ const product = [
     brand: "hollyster",
     picture: [
       "https://underwavebrand.com/wp-content/uploads/2021/04/IMG_9710-min-710x1039.jpg",
-      "https://underwavebrand.com/wp-content/uploads/2021/04/IMG_9792-min-710x1065.jpg"
+      "https://underwavebrand.com/wp-content/uploads/2021/04/IMG_9792-min-710x1065.jpg",
     ],
-    categorys: ["hombre","skate", "abrigo"]
+    categorys: ["hombre", "skate", "abrigo"],
   },
   {
-
-    name: "TABLA SLINGSHOT",
+    name: "Tabla Slingshot",
 
     description:
       "The Valley es una tabla exclusiva para parques y, sin duda, la tabla más fácil de manipular  en los obstáculos, brindando una sensación de suavidad  con un mínimo esfuerzo.",
@@ -255,17 +239,14 @@ const product = [
     brand: "aconcagua",
     picture: [
       "https://santatabla.com/shop/img/post/2942/valley-2.jpg",
-      "https://santatabla.com/shop/img/post/2942/tabla-valley-2021-1.jpg"
+      "https://santatabla.com/shop/img/post/2942/tabla-valley-2021-1.jpg",
     ],
-    categorys: ["hombre","mujer","surf"]
+    categorys: ["hombre", "mujer", "surf"],
   },
   {
-
-    name:"tabla de surf ",
-
+    name: "Tabla Aconcagua",
     description:
       "La tabla TRIP es funcional, versátil y duradera. La nueva construcción de tablones proporciona el máximo rendimiento",
-
     price: 9000,
     stock: 19,
     size: "1.30mt",
@@ -273,29 +254,22 @@ const product = [
     brand: "aconcagua",
     picture: [
       "https://i.pinimg.com/236x/d0/42/b8/d042b8e3cba1fe4c809e41af2221bc64--in-style-surf-style.jpg",
-  
     ],
-    categorys: ["hombre","mujer","surf"]
+    categorys: ["hombre", "mujer", "surf"],
   },
   {
-
     name: "tabla de skate",
 
-    description:
-      "tabla de skate echa para el maximo rendimiento del usuario",
+    description: "tabla de skate echa para el maximo rendimiento del usuario",
     price: 5000,
     stock: 19,
     size: "30cm",
     color: "negra",
     brand: "cristobal colon",
-    picture: [
-      "https://image.freepik.com/foto-gratis/tabla-skate-fondo-blanco_110488-881.jpg",
-  
-    ],
-    categorys: ["hombre","mujer","surf"]
+    picture: ["https://image.freepik.com/foto-gratis/tabla-skate-fondo-blanco_110488-881.jpg"],
+    categorys: ["hombre", "mujer", "surf"],
   },
   {
-
     name: "Musculosa Mystic",
 
     description:
@@ -307,13 +281,11 @@ const product = [
     brand: "cristobal colon",
     picture: [
       "https://underwavebrand.com/wp-content/uploads/2021/02/DSC06409-min-1-710x1039.jpg",
-      "https://underwavebrand.com/wp-content/uploads/2021/02/DSC06415-min-1-710x1064.jpg"
-  
+      "https://underwavebrand.com/wp-content/uploads/2021/02/DSC06415-min-1-710x1064.jpg",
     ],
-    categorys: ["hombre"]
+    categorys: ["hombre"],
   },
   {
-
     name: "Musculosa Mystic",
 
     description:
@@ -325,13 +297,11 @@ const product = [
     brand: "cristobal colon",
     picture: [
       "https://underwavebrand.com/wp-content/uploads/2021/02/DSC06409-min-1-710x1039.jpg",
-      "https://underwavebrand.com/wp-content/uploads/2021/02/DSC06415-min-1-710x1064.jpg"
-  
+      "https://underwavebrand.com/wp-content/uploads/2021/02/DSC06415-min-1-710x1064.jpg",
     ],
-    categorys: ["hombre"]
+    categorys: ["hombre"],
   },
   {
-
     name: "Pantalón chino Ripon",
 
     description:
@@ -343,13 +313,11 @@ const product = [
     brand: "cristobal colon",
     picture: [
       "https://underwavebrand.com/wp-content/uploads/2021/06/DSC03317-710x1065.jpg",
-      "https://underwavebrand.com/wp-content/uploads/2021/06/DSC03336-710x1065.jpg"
-  
+      "https://underwavebrand.com/wp-content/uploads/2021/06/DSC03336-710x1065.jpg",
     ],
-    categorys: ["hombre"]
+    categorys: ["hombre"],
   },
   {
-
     name: "Bermuda Gambia",
 
     description:
@@ -361,13 +329,11 @@ const product = [
     brand: "cristobal colon",
     picture: [
       "https://underwavebrand.com/wp-content/uploads/2020/11/DSC04718-min-710x995.jpg",
-      "https://underwavebrand.com/wp-content/uploads/2020/11/DSC04723-min-710x1064.jpg"
-  
+      "https://underwavebrand.com/wp-content/uploads/2020/11/DSC04723-min-710x1064.jpg",
     ],
-    categorys: ["hombre"]
+    categorys: ["hombre"],
   },
   {
-
     name: "Bermuda Gambia",
 
     description:
@@ -379,13 +345,11 @@ const product = [
     brand: "cristobal colon",
     picture: [
       "https://underwavebrand.com/wp-content/uploads/2020/11/DSC04718-min-710x995.jpg",
-      "https://underwavebrand.com/wp-content/uploads/2020/11/DSC04723-min-710x1064.jpg"
-  
+      "https://underwavebrand.com/wp-content/uploads/2020/11/DSC04723-min-710x1064.jpg",
     ],
-    categorys: ["hombre"]
-  }
+    categorys: ["hombre"],
+  },
 ];
-
 
 // const cart = [{ state: "inProgress" }, { state: "inProgress" }];
 // User.bulkCreate(user, { returning: true }).then(
@@ -394,12 +358,12 @@ const product = [
 // )
 
 Product.bulkCreate(product, { returning: true }).then(
-  (product) => console.log("product creados")
+  product => console.log("product creados")
   // process.exit()
 );
 
 Category.bulkCreate(categorys, { returning: true }).then(
-  (product) => console.log("categorys creados")
+  product => console.log("categorys creados")
   // process.exit()
 );
 

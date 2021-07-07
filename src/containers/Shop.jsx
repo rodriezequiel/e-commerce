@@ -13,19 +13,13 @@ export default function Shop() {
           <div className='col-3 pt-3 fs-3'>
             <div className='list-group list-group-flush amatic'>
               <a className='list-group-item bg-dark text-white text-center'>
-                An item
+                Indumentaria
               </a>
               <a className='list-group-item bg-dark text-white text-center'>
-                A second item
+                Tablas urbanas
               </a>
               <a className='list-group-item bg-dark text-white text-center'>
-                A third item
-              </a>
-              <a className='list-group-item bg-dark text-white text-center'>
-                A fourth item
-              </a>
-              <a className='list-group-item bg-dark text-white text-center'>
-                And a fifth one
+                Tablas acuáticas
               </a>
             </div>
           </div>
