@@ -13,6 +13,7 @@ export default function Nav({ transparent = true }) {
   const location = useLocation()
   const history = useHistory()
   const dispatch = useDispatch()
+  console.log(location);
 
   useEffect(() => {
     if (location.pathname === '/home') navbarChange()

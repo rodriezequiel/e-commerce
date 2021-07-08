@@ -44,7 +44,7 @@ function App() {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/home' component={Home} />
-        <Route path='/shop/:name' render={() => <SingleProduct />} />
+        <Route path='/shop/product/:name' render={() => <SingleProduct />} />
         <Route exact path='/signin' component={SignIn} />
         <Route exact path='/signup' component={SignUp} />
         <Route exact path='/cart' component={Cart} />
