@@ -16,6 +16,9 @@ function SingleProduct() {
   //cart from redux
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart)
+  const user = useSelector((state) => state.user)
+  const dispatch = useDispatch()
 
   //states
   const [singleProduct, setSingleProduct] = useState([]);
@@ -97,8 +100,9 @@ function SingleProduct() {
         if (item.color === value) acum.push(item.size);
         return acum;
       }, []);
-
       setSize(AvailableSizes);
+      setSize(AvailableSizes)
+      setSelectedSize(AvailableSizes[0])
     }
     if (name === "size") {
       setSelectedSize(value);
@@ -107,7 +111,8 @@ function SingleProduct() {
         return acum;
       }, []);
 
-      setColor(AvailableColors);
+      setColor(AvailableColors)
+      setSelectedColor(AvailableColors[0])
     }
   };
 
@@ -142,7 +147,7 @@ function SingleProduct() {
 
           <div className="col-6 text-end  py-3 fs-3">
             <div>
-              <h3 className="amatic fs-1">
+              <h3 className='amatic fs-1'>
                 <strong>{name}</strong>
               </h3>
               {/* <i className="bi bi-star-fill"></i>
@@ -156,7 +161,7 @@ function SingleProduct() {
                 <strong>${price}</strong>
               </h2>
             </div>
-            <div className="py-3 d-flex flex-row-reverse fs-5">
+            <div className='py-3 d-flex flex-row-reverse fs-5'>
               <div>
                 <p>Color</p>
                 <div>
@@ -185,7 +190,7 @@ function SingleProduct() {
                 </div>
               </div>
 
-              <div className="px-5">
+              <div className='px-5'>
                 <p>Size</p>
                 <div>
                   {/* {talles.map((talle) => (
@@ -210,7 +215,7 @@ function SingleProduct() {
               </div>
             </div>
 
-            <div className="d-flex flex-row-reverse py-3">
+            <div className='d-flex flex-row-reverse py-3'>
               <CounterButton setCounter={setCounter} counter={counter} />
             </div>
 

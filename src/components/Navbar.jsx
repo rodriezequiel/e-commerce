@@ -4,15 +4,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 
-import navbarChange from "../utils/navbarChange";
-import { removeUser } from "../state/user";
+import navbarChange from '../utils/navbarChange'
+import { removeUser } from '../state/user'
+import { removeCart } from '../state/cart'
 
 export default function Nav({ transparent = true }) {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user)
   const counter = useSelector((state) => state.counter);
-  const location = useLocation();
-  const history = useHistory();
-  const dispatch = useDispatch();
+  const location = useLocation()
+  const history = useHistory()
+  const dispatch = useDispatch()
+  console.log(location);
 
   useEffect(() => {
     if (location.pathname === "/home") navbarChange();
@@ -24,8 +26,9 @@ export default function Nav({ transparent = true }) {
     axios
       .put("/api/auth/logout")
       .then((res) => dispatch(removeUser()))
-      .then((res) => history.push("/home"));
-  };
+      .then(res => dispatch(removeCart()))
+      .then((res) => history.push('/home'))
+  }
 
   return (
     <div>
@@ -66,41 +69,42 @@ export default function Nav({ transparent = true }) {
           >
             <ul className="navbar-nav mt-2">
               <li className="nav-item nav-option mx-4 fs-3">
-                <Link className="nav-link active " to="/home">
+                <Link className="nav-link active " to="/home" onClick={()=>window.scrollTo(0,0)}>
                   Home
                 </Link>
               </li>
-              <li className="nav-item nav-option mx-4 my-auto fs-3">
-                <a className="nav-link active " href="/home#aboutUs">
+              <li className='nav-item nav-option mx-4 my-auto fs-3'>
+                <a className='nav-link active ' href='/home#aboutUs'>
                   About Us
                 </a>
               </li>
               <li className="nav-item nav-option mx-4 my-auto fs-3">
                 <Link
-                  style={{ color: "red" }}
-                  className="nav-link active"
-                  to="/shop"
+                  style={{ color: 'red' }}
+                  className='nav-link active'
+                  to='/shop'
+                  onClick={()=>window.scrollTo(0,0)}
                 >
                   Shop
                 </Link>
               </li>
               {user.isAdmin && (
-                <li className="nav-item nav-option mx-4 my-auto fs-3">
-                  <Link className="nav-link active" to="/admin">
+                <li className='nav-item nav-option mx-4 my-auto fs-3'>
+                  <Link className='nav-link active' to='/admin' onClick={()=>window.scrollTo(0,0)}>
                     ADMIN
                   </Link>
                 </li>
               )}
               {user.id && !user.isAdmin && (
-                <li className="nav-item nav-option mx-4 my-auto fs-3">
-                  <Link className="nav-link active" to="/orders">
+                <li className='nav-item nav-option mx-4 my-auto fs-3'>
+                  <Link className='nav-link active' to='/orders' onClick={()=>window.scrollTo(0,0)}>
                     My orders
                   </Link>
                 </li>
               )}
               {!user.id ? (
-                <li className="nav-item nav-option mx-4 my-auto fs-3">
-                  <Link className="nav-link active" to="/signin">
+                <li className='nav-item nav-option mx-4 my-auto fs-3'>
+                  <Link className='nav-link active' to='/signin' onClick={()=>window.scrollTo(0,0)}>
                     Sign In
                   </Link>
                 </li>
@@ -115,10 +119,19 @@ export default function Nav({ transparent = true }) {
                   </Link>
                 </li>
               )}
-              <li className="nav-item nav-option ms-5 my-auto fs-3 text-center">
+              {user.firstName && (
+                <li
+                  className='nav-item nav-option ms-5 my-auto fs-3'
+                  style={{ color: 'white' }}
+                >
+                  Hello {user.firstName}
+                </li>
+              )}
+              <li className='nav-item nav-option ms-5 my-auto fs-3'>
                 <Link
-                  className="nav-link active"
-                  to={`${user.id ? "/cart" : "/signin"}`}
+                  className='nav-link active'
+                  to={`${user.id ? '/cart' : '/signin'}`}
+                  onClick={()=>window.scrollTo(0,0)}
                 >
                   <div className="shop-counter d-flex flex-row-reverse">
                     {counter ? (

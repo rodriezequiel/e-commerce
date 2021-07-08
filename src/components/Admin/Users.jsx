@@ -10,8 +10,10 @@ import {
 } from '../../utils/index'
 import AddNewItem from './AddNewItem'
 import AddUser from './AddUser'
+import { useSelector } from 'react-redux'
 
 function Users() {
+  const user = useSelector((state) => state.user)
   const columns = React.useMemo(
     () => [
       {
@@ -69,7 +71,10 @@ function Users() {
   const [updatedData, setUpdatedData] = useState([])
 
   useEffect(() => {
-    getAllUsersfromBD().then((products) => setData(products))
+    getAllUsersfromBD().then((users) => {
+      const filteredUsers = users.filter((BDUSER) => BDUSER.id !== user.id)
+      return setData(filteredUsers)
+    })
   }, [])
 
   const history = useHistory()

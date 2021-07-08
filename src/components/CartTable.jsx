@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function CartTable({ data }) {
+  const [total, setTotal] = useState(0)
+
+  useEffect(() => {
+    const TotalReduce = data.reduce((acum, item) => {
+      acum += item.CartItem.quantity * item.price
+      return acum
+    }, 0)
+    setTotal(TotalReduce)
+  }, [data])
   return (
     <>
       <h1>Mi compra</h1>
@@ -36,6 +45,7 @@ function CartTable({ data }) {
           })}
         </tbody>
       </table>
+      <h1>Total compra: $ {total}</h1>
     </>
   )
 }

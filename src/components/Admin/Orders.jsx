@@ -51,8 +51,8 @@ function Orders() {
             accessor: 'additionalInfo',
           },
           {
-            Header: 'PRODUCTS???',
-            accessor: 'Products',
+            Header: 'Fecha',
+            accessor: 'date',
           },
         ],
       },
@@ -81,7 +81,10 @@ function Orders() {
   const [updatedData, setUpdatedData] = useState([])
 
   useEffect(() => {
-    getOrdersFromBD().then((products) => setData(products))
+    getOrdersFromBD().then((orders) => {
+      console.log(orders)
+      setData(orders)
+    })
   }, [])
 
   const history = useHistory()
@@ -101,7 +104,7 @@ function Orders() {
         updateMyData={updateMyData}
         handleUpdate={updateOrderfromBD}
         handleDelete={removeOrderfromBD}
-      />{' '}
+      />
       <button onClick={() => history.goBack()}>Volver</button>
     </div>
   )

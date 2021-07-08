@@ -30,4 +30,20 @@ router.get('/single/:name', (req, res) => {
   )
 })
 
+router.get('/:category', (req, res) =>{
+  const filteredProducts = {}
+  Category.findOne({where:{name: req.params.category}, include: Product})
+    .then(resul => resul.Products.map(product => product.dataValues))
+    .then((products) => {
+      products.map((product) => {
+        if (filteredProducts[product.name]){
+          filteredProducts[product.name].push(product)}
+        else {
+          filteredProducts[product.name] = [product]
+        }
+      })
+    })
+    .then(()=>res.send(filteredProducts))
+})
+
 module.exports = router

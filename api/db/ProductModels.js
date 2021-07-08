@@ -31,12 +31,13 @@ Product.init(
     },
     picture: {
       type: DataTypes.ARRAY(DataTypes.TEXT),
+      defaultValue: ['https://cdn.browshot.com/static/images/not-found.png'],
     },
   },
   {
     sequelize: db, // We need to pass the connection instance
     modelName: 'Product', // We need to choose the model name
   }
-) 
+)
 
 module.exports = Product
