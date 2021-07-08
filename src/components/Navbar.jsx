@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
-import axios from 'axios'
-import { useSelector, useDispatch } from 'react-redux'
-import { useHistory, useLocation } from 'react-router'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from "react";
+import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory, useLocation } from "react-router";
+import { Link } from "react-router-dom";
 
 import navbarChange from '../utils/navbarChange'
 import { removeUser } from '../state/user'
@@ -10,20 +10,21 @@ import { removeCart } from '../state/cart'
 
 export default function Nav({ transparent = true }) {
   const user = useSelector((state) => state.user)
+  const counter = useSelector((state) => state.counter);
   const location = useLocation()
   const history = useHistory()
   const dispatch = useDispatch()
   console.log(location);
 
   useEffect(() => {
-    if (location.pathname === '/home') navbarChange()
+    if (location.pathname === "/home") navbarChange();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   const signOut = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     axios
-      .put('/api/auth/logout')
+      .put("/api/auth/logout")
       .then((res) => dispatch(removeUser()))
       .then(res => dispatch(removeCart()))
       .then((res) => history.push('/home'))
@@ -36,33 +37,36 @@ export default function Nav({ transparent = true }) {
           transparent ? `bg-trasparent fixed-top` : `bg-dark shadow`
         }`}
       >
-        <div className='container-fluid'>
+        <div className="container-fluid">
           <img
-            className='ms-4 mt-3'
-            src='https://i0.wp.com/www.ecoledesurfmoliets.com/wp-content/uploads/2018/01/logo-surf.png?fit=288%2C288&ssl=1'
-            alt='logo'
-            width='60'
-            height='60'
+            className="ms-4 mt-3"
+            src="https://i0.wp.com/www.ecoledesurfmoliets.com/wp-content/uploads/2018/01/logo-surf.png?fit=288%2C288&ssl=1"
+            alt="logo"
+            width="60"
+            height="60"
           />
-          <Link className='nav-link active' to='/home'>
-            <h2 className='navbar-brand ms-1 my-0 fs-1'>
-              board<span style={{ color: 'red', fontSize: '3.2rem' }}>4</span>
+          <Link className="nav-link active" to="/home">
+            <h2 className="navbar-brand ms-1 my-0 fs-1">
+              board<span style={{ color: "red", fontSize: "3.2rem" }}>4</span>
               life
             </h2>
           </Link>
           <button
-            className='navbar-toggler'
-            type='button'
-            data-bs-toggle='collapse'
-            data-bs-target='#navbarNav'
-            aria-controls='navbarNav'
-            aria-expanded='false'
-            aria-label='Toggle navigation'
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
           >
-            <span className='navbar-toggler-icon'></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div className="collapse navbar-collapse justify-content-end me-5 " id="navbarNav">
+          <div
+            className="collapse navbar-collapse justify-content-end me-5 "
+            id="navbarNav"
+          >
             <ul className="navbar-nav mt-2">
               <li className="nav-item nav-option mx-4 fs-3">
                 <Link className="nav-link active " to="/home" onClick={()=>window.scrollTo(0,0)}>
@@ -74,7 +78,7 @@ export default function Nav({ transparent = true }) {
                   About Us
                 </a>
               </li>
-              <li className='nav-item nav-option mx-4 my-auto fs-3'>
+              <li className="nav-item nav-option mx-4 my-auto fs-3">
                 <Link
                   style={{ color: 'red' }}
                   className='nav-link active'
@@ -105,11 +109,11 @@ export default function Nav({ transparent = true }) {
                   </Link>
                 </li>
               ) : (
-                <li className='nav-item nav-option mx-4 my-auto fs-3'>
+                <li className="nav-item nav-option mx-4 my-auto fs-3">
                   <Link
-                    className='nav-link active'
+                    className="nav-link active"
                     onClick={signOut}
-                    to='/home'
+                    to="/home"
                   >
                     Sign Out
                   </Link>
@@ -129,7 +133,12 @@ export default function Nav({ transparent = true }) {
                   to={`${user.id ? '/cart' : '/signin'}`}
                   onClick={()=>window.scrollTo(0,0)}
                 >
-                  <i className='bi bi-cart3'></i>
+                  <div className="shop-counter d-flex flex-row-reverse">
+                    {counter ? (
+                      <div className="numberCircle">{counter}</div>
+                    ) : null}
+                    <i className="bi bi-cart3"></i>
+                  </div>
                 </Link>
               </li>
             </ul>
@@ -137,5 +146,5 @@ export default function Nav({ transparent = true }) {
         </div>
       </nav>
     </div>
-  )
+  );
 }
