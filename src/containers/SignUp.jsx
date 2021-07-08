@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import { useHistory } from "react-router";
+import { message } from "antd";
 import Navbar from "../components/Navbar";
 
 export default function SignUp() {
@@ -71,8 +72,9 @@ export default function SignUp() {
     event.preventDefault();
     return axios
       .post("/api/auth/register", input)
+      .then(() => message.success('Succesfully Registered', 1))
       .then((res) => history.push("/signin"))
-      .catch((err) => alert("error al crear el usuario, revise los datos"));
+      .catch((err) => message.error("email already in use", 1 ));
   };
 
   return (

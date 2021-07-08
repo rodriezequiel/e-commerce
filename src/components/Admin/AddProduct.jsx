@@ -39,7 +39,7 @@ function AddProduct({ setNewProduct }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(' PRODUCTOS  CREADOOOO-->>', product)
-    product.addProduct(product).then(() => setNewProduct(false))
+    addProduct(product).then(() => setNewProduct(false))
   }
   return (
     <div>

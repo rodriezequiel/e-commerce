@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import { Link } from 'react-router-dom'
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { confirmOrder } from '../utils/index'
 import Navbar from './Navbar'
 import Table from './Table'
@@ -10,9 +10,11 @@ import ShopState from './ShopState'
 import { statusShopClass } from './../utils/globals'
 import { changeShopState } from '../utils/changeIcons'
 import main from '../utils/emailSent'
+import { counterProducts } from '../state/Counter'
 
 function Checkout() {
-  const { cart, user } = useSelector(state => state);
+  const { cart, user, counter } = useSelector(state => state);
+  const dispatch = useDispatch()
   const [medioDePago, setMedioDePago] = useState("mercadopago");
   const [total, setTotal] = useState(0);
   const [order, setOrder] = useState({});
@@ -31,6 +33,7 @@ function Checkout() {
   const handleSumbit = e => {
     e.preventDefault();
     return confirmOrder({ ...order, userId: user.id })
+      .then(()=> dispatch(counterProducts(0)))
       .then(() => history.push("/home"))
       .then(() => alert("Gracias por su compra"));
   };

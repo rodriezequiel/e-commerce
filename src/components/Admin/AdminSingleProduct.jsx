@@ -69,7 +69,10 @@ function AdminSingleProduct() {
           return product;
         });
       })
-      .then((filteredProducts) => setData(filteredProducts));
+      .then((filteredProducts) => {
+        console.log(filteredProducts);
+       return setData(filteredProducts)
+      });
   }, []);
 
   /// PREGUNTAR
@@ -92,7 +95,7 @@ function AdminSingleProduct() {
   };
 
   return (
-    <>
+    <div style={{overflowX:'auto'}}>
       <Styles>
         <AddNewItem
           handleRemoveFilter={getAllProducts}
@@ -110,7 +113,7 @@ function AdminSingleProduct() {
           handleDelete={removeProductFromBD}
         />
       </Styles>
-    </>
+    </ div>
   );
 }
 
