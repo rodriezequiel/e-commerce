@@ -26,9 +26,9 @@ export default function Shop() {
     <>
       <Navbar transparent={false} />
       <ShopHeader />
-      <div className="container-fluid bg-dark pt-3">
-        <div className=" d-flex row justify-content-center">
-          <div className="col-3 pt-3 fs-3">
+      <div className="container-fluid bg-dark pt-3 pb-5">
+        <div className=" d-flex row justify-content-center pb-5">
+          <div className="col-3 pt-3 fs-3 pb-5">
             <div className="list-group list-group-flush amatic">
               {cats.map(cat => {
                 return (
@@ -42,7 +42,7 @@ export default function Shop() {
               })}
             </div>
           </div>
-          <div className="col-9 bg-light">
+          <div className="col-9 bg-light pb-5">
             <div className="row d-flex justify-content-start pt-3 mx-5">
               <Switch>
                 <Route
