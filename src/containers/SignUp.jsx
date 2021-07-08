@@ -14,6 +14,54 @@ export default function SignUp() {
   });
   const history = useHistory();
 
+  const [err, setErr] = useState({
+    messengerPassWord: "",
+    messengerEmail: "",
+    messengerName: "",
+    messengerLastName: "",
+    value: false,
+  });
+
+  console.log(err);
+
+  //// VALIDACIONES ///////////////////
+
+  const validationPass = () => {
+    if (input.password.length < 8) {
+      setErr({
+        ...err,
+        messengerPassWord: "the password must be 8 characters",
+        value: true,
+      });
+    } else {
+      setErr({
+        ...err,
+        messengerPassWord: "",
+        value: false,
+      });
+    }
+  };
+
+  // const validatorName = () => {
+  //   if (input.firstName.length == 0) {
+  //     setErr({ ...err, messengerName: "ingresa su nombre" });
+  //   } else {
+  //     setErr({ ...err, messengerName: "" });
+  //   }
+  // };
+
+  // const validatorLastName = () => {
+  //   if (input.lastName.length == 0) {
+  //     setErr({
+  //       ...err,
+  //       messengerLastName: "ingresa su apellido ",
+  //       value: true,
+  //     });
+  //   } else {
+  //     setErr({ ...err, messengerLastName: "" });
+  //   }
+  // };
+
   const changeHandler = (event) => {
     const { target } = event;
     setInput({ ...input, [target.name]: target.value });
@@ -48,7 +96,11 @@ export default function SignUp() {
                 id="firstname"
                 name="firstName"
                 value={input.fisrtName}
+                required
+                // onBlur={validatorName}
+                // onKeyUp={validatorName}
               />
+              {err.messengerName ? <p>{err.messengerName}</p> : null}
             </div>
             <div className="mb-2">
               <label htmlFor="lastName" className="form-label  fs-6">
@@ -60,7 +112,11 @@ export default function SignUp() {
                 id="lastName"
                 name="lastName"
                 value={input.lastName}
+                required
+                // onBlur={validatorLastName}
+                // onKeyUp={validatorLastName}
               />
+              {err.messengerLastName ? <p>{err.messengerLastName}</p> : null}
             </div>
             <div className="mb-2">
               <label htmlFor="email" className="form-label  fs-6">
@@ -72,8 +128,8 @@ export default function SignUp() {
                 id="email"
                 name="email"
                 value={input.email}
+                required
               />
-              
             </div>
             <div className="mb-2">
               <label htmlFor="InputPassword" className="form-label  fs-6">
@@ -85,9 +141,21 @@ export default function SignUp() {
                 id="InputPassword"
                 name="password"
                 value={input.password}
+                onBlur={validationPass}
+                onKeyUp={validationPass}
+                required
               />
+              {err.messengerPassWord ? (
+                <p className="fs-5" style={{ color: "#F34423" }}>
+                  {err.messengerPassWord}
+                </p>
+              ) : null}
             </div>
-            <button type="submit" className="btn btn-dark mt-4">
+            <button
+              type="submit"
+              className="btn btn-dark mt-4"
+              disabled={err.value}
+            >
               Submit
             </button>
             <Link
