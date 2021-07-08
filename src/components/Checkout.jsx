@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router'
+import { Link } from 'react-router-dom'
 
-import { useSelector } from "react-redux";
-import { confirmOrder } from "../utils/index";
-import Navbar from "./Navbar";
-import Table from "./Table";
-import ShopState from "./ShopState";
-import { statusShopClass } from "./../utils/globals";
-import { changeShopState } from "../utils/changeIcons";
+import { useSelector } from 'react-redux'
+import { confirmOrder } from '../utils/index'
+import Navbar from './Navbar'
+import Table from './Table'
+import ShopState from './ShopState'
+import { statusShopClass } from './../utils/globals'
+import { changeShopState } from '../utils/changeIcons'
+import main from '../utils/emailSent'
 
 function Checkout() {
   const { cart, user } = useSelector(state => state);
@@ -37,65 +38,66 @@ function Checkout() {
   useEffect(() => {
     if (cart.Products) {
       const totalCart = cart.Products.reduce((acum, item) => {
-        acum += item.price * item.CartItem.quantity;
-        return acum;
-      }, 0);
-      setTotal(totalCart);
+        acum += item.price * item.CartItem.quantity
+        return acum
+      }, 0)
+      setTotal(totalCart)
     }
     if (cart.Products && cart.Products.length !== 0)
       changeShopState({
         ...statusShopClass,
-        id: "status02",
-      });
-  }, [cart]);
+        id: 'status02',
+      })
+  }, [cart])
   return (
     <>
       <Navbar transparent={false} />
 
-      <div className="container-fluid">
-        <div className="row mx-3 my-5">
+      <div className='container-fluid'>
+        <div className='row mx-3 my-5'>
           <ShopState />
-          <div className="col-8 bg-light border px-4">
-            <h1 className="form-label fs-4 text-center py-4">
+          <div className='col-8 bg-light border px-4'>
+            <h1 className='form-label fs-4 text-center py-4'>
               <strong>Mis productos</strong>
             </h1>
             <Table items={cart.Products} user={cart.UserId} total={total} envio={500} />
           </div>
-          <div className="col-4 bg-light border px-4">
-            <h1 className="form-label  fs-4 text-center py-4">
+          <div className='col-4 bg-light border px-4'>
+            <h1 className='form-label  fs-4 text-center py-4'>
               <strong>Informacion del pedido</strong>
             </h1>
             <form
-              className="form-style justify-content-between"
+              className='form-style justify-content-between'
               onChange={handleChange}
               // onSubmit={submitHandler}
             >
-              <div className="mb-3">
-                <label htmlFor="telephone" className="form-label  fs-6">
+              <div className='mb-3'>
+                <label htmlFor='telephone' className='form-label  fs-6'>
                   Telefono*
                 </label>
+
                 <input type="text" className="form-control  fs-6" id="telephone" name="telephone" />
               </div>
-              <div className="mb-3">
-                <label htmlFor="address" className="form-label  fs-6">
+              <div className='mb-3'>
+                <label htmlFor='address' className='form-label  fs-6'>
                   Direccion *
                 </label>
                 <input type="text" className="form-control " id="address" name="address" />
               </div>
-              <div class="mb-3">
-                <label htmlFor="info" className="form-label  fs-6">
+              <div class='mb-3'>
+                <label htmlFor='info' className='form-label  fs-6'>
                   Informacion adicional
                 </label>
                 <textarea
-                  className="form-control  "
-                  id="info"
-                  name="additionalInfo"
-                  rows="3"
+                  className='form-control  '
+                  id='info'
+                  name='additionalInfo'
+                  rows='3'
                 ></textarea>
               </div>
 
-              <div class="mb-3">
-                <label htmlFor="info" className="form-label  fs-6 mx-2">
+              <div class='mb-3'>
+                <label htmlFor='info' className='form-label  fs-6 mx-2'>
                   Elegi un metodo de pago
                 </label>
 
@@ -103,16 +105,16 @@ function Checkout() {
                   onChange={e => {
                     handlePayment(e);
                   }}
-                  name="paymentMethod"
-                  className="form-label  fs-6"
+                  name='paymentMethod'
+                  className='form-label  fs-6'
                 >
-                  <option value="mercadopago">MercadoPago</option>
-                  <option value="tarjeta">Tarjeta</option>
-                  <option value="contado">Efectivo/Transferencia</option>
+                  <option value='mercadopago'>MercadoPago</option>
+                  <option value='tarjeta'>Tarjeta</option>
+                  <option value='contado'>Efectivo/Transferencia</option>
                 </select>
-                {medioDePago === "contado" && (
-                  <div className=" fs-6 rounded bg-info text-white p-3 my-3">
-                    <h5 className="text-center">Datos bancarios</h5>
+                {medioDePago === 'contado' && (
+                  <div className=' fs-6 rounded bg-info text-white p-3 my-3'>
+                    <h5 className='text-center'>Datos bancarios</h5>
                     <p>
                       <strong>CBU:</strong> 129312498438294392
                     </p>
@@ -137,7 +139,7 @@ function Checkout() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default Checkout;
+export default Checkout

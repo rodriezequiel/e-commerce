@@ -1,4 +1,5 @@
 const { User, Product, Category } = require('./db/index')
+const axios = require('axios')
 
 const categorys = [
   { name: 'Surf' },
@@ -637,12 +638,6 @@ const productSeed = [
   },
 ]
 
-// const cart = [{ state: "inProgress" }, { state: "inProgress" }];
-// User.bulkCreate(user, { returning: true }).then(
-//   (user) => console.log('usuarios creados')
-// process.exit()
-// )
-
 Category.bulkCreate(categorys, { returning: true })
   .then(() => {
     productSeed.map((product) =>
@@ -659,11 +654,22 @@ Category.bulkCreate(categorys, { returning: true })
   })
   .then(() => console.log('categorias y productos creados'))
 
-// Product.bulkCreate(product, { returning: true }).then(
-//   (product) => console.log('product creados')
-//   // process.exit()
-// )
+axios
+  .post('http://localhost:3001/api/auth/register', {
+    firstName: 'Admin',
+    lastName: 'Admin',
+    email: 'admin@admin.com',
+    password: 'admin',
+    isAdmin: true,
+  })
+  .then((data) => console.log('Usuario admin creado'))
 
-// Cart.bulkCreate(cart, { returning: true }).then((cart) =>
-//   console.log('carritos creados ok')
-// )
+axios
+  .post('http://localhost:3001/api/auth/register', {
+    firstName: 'UserExample',
+    lastName: 'UserExample',
+    email: 'user@user.com',
+    password: 'user',
+    isAdmin: false,
+  })
+  .then((data) => console.log('Usuario user@user.com con pass user creado'))

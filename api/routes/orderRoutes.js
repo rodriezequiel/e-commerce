@@ -4,6 +4,7 @@ const Cart = require('../db/CartModels')
 const Order = require('../db/OrderModels')
 const User = require('../db/UserModels')
 const Product = require('../db/ProductModels')
+const main = require('../../src/utils/emailSent')
 
 // router.get('/', (req, res) => {
 //   Order.findAll({ include: Cart }).then((order) => res.send(order))
@@ -33,7 +34,12 @@ router.post('/checkout', (req, res) => {
     shipCost,
     paymentMethod,
     additionalInfo,
+    user,
+    mailInfo,
+    cart,
   } = req.body
+
+  // main(user, mailInfo, cart)
 
   User.findByPk(userId)
     .then((user) => {

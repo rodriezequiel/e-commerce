@@ -69,8 +69,8 @@ export default function Nav({ transparent = true }) {
                   Home
                 </Link>
               </li>
-              <li className="nav-item nav-option mx-4 my-auto fs-3">
-                <a className="nav-link active " href="/home#aboutUs">
+              <li className='nav-item nav-option mx-4 my-auto fs-3'>
+                <a className='nav-link active ' href='/home#aboutUs'>
                   About Us
                 </a>
               </li>
@@ -113,6 +113,14 @@ export default function Nav({ transparent = true }) {
                   >
                     Sign Out
                   </Link>
+                </li>
+              )}
+              {user.firstName && (
+                <li
+                  className='nav-item nav-option ms-5 my-auto fs-3'
+                  style={{ color: 'white' }}
+                >
+                  Hello {user.firstName}
                 </li>
               )}
               <li className='nav-item nav-option ms-5 my-auto fs-3'>
