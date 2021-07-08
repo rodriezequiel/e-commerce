@@ -17,6 +17,8 @@ export const getCart = createAsyncThunk("getCart", (id, thunkAPI) => {
   
 });
 
+export const removeCart = createAction('removeCart');
+
 export const addToCart = createAction("addToCart", (product) => {
   return {
     payload: product,
@@ -55,6 +57,7 @@ export const cartReducer = createReducer(initialState, {
     state.Products.push(action.payload);
     return state;
   },
+  [removeCart]: (state, action) => {return {}}
   // [deleteProducFromCart.fulfilled]: (state, action) => {
   //   console.log("Products actuales: ", state.Products);
   //   state.Products = [...state.Products].filter(!action.payload);

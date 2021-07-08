@@ -6,12 +6,14 @@ import { Link } from 'react-router-dom'
 
 import navbarChange from '../utils/navbarChange'
 import { removeUser } from '../state/user'
+import { removeCart } from '../state/cart'
 
 export default function Nav({ transparent = true }) {
   const user = useSelector((state) => state.user)
   const location = useLocation()
   const history = useHistory()
   const dispatch = useDispatch()
+  console.log(location);
 
   useEffect(() => {
     if (location.pathname === '/home') navbarChange()
@@ -23,6 +25,7 @@ export default function Nav({ transparent = true }) {
     axios
       .put('/api/auth/logout')
       .then((res) => dispatch(removeUser()))
+      .then(res => dispatch(removeCart()))
       .then((res) => history.push('/home'))
   }
 
@@ -59,13 +62,10 @@ export default function Nav({ transparent = true }) {
             <span className='navbar-toggler-icon'></span>
           </button>
 
-          <div
-            className='collapse navbar-collapse justify-content-end me-5 '
-            id='navbarNav'
-          >
-            <ul className='navbar-nav mt-2'>
-              <li className='nav-item nav-option mx-4 fs-3'>
-                <Link className='nav-link active ' to='/home'>
+          <div className="collapse navbar-collapse justify-content-end me-5 " id="navbarNav">
+            <ul className="navbar-nav mt-2">
+              <li className="nav-item nav-option mx-4 fs-3">
+                <Link className="nav-link active " to="/home" onClick={()=>window.scrollTo(0,0)}>
                   Home
                 </Link>
               </li>
@@ -79,27 +79,28 @@ export default function Nav({ transparent = true }) {
                   style={{ color: 'red' }}
                   className='nav-link active'
                   to='/shop'
+                  onClick={()=>window.scrollTo(0,0)}
                 >
                   Shop
                 </Link>
               </li>
               {user.isAdmin && (
                 <li className='nav-item nav-option mx-4 my-auto fs-3'>
-                  <Link className='nav-link active' to='/admin'>
+                  <Link className='nav-link active' to='/admin' onClick={()=>window.scrollTo(0,0)}>
                     ADMIN
                   </Link>
                 </li>
               )}
               {user.id && !user.isAdmin && (
                 <li className='nav-item nav-option mx-4 my-auto fs-3'>
-                  <Link className='nav-link active' to='/orders'>
+                  <Link className='nav-link active' to='/orders' onClick={()=>window.scrollTo(0,0)}>
                     My orders
                   </Link>
                 </li>
               )}
               {!user.id ? (
                 <li className='nav-item nav-option mx-4 my-auto fs-3'>
-                  <Link className='nav-link active' to='/signin'>
+                  <Link className='nav-link active' to='/signin' onClick={()=>window.scrollTo(0,0)}>
                     Sign In
                   </Link>
                 </li>
@@ -126,6 +127,7 @@ export default function Nav({ transparent = true }) {
                 <Link
                   className='nav-link active'
                   to={`${user.id ? '/cart' : '/signin'}`}
+                  onClick={()=>window.scrollTo(0,0)}
                 >
                   <i className='bi bi-cart3'></i>
                 </Link>

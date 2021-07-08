@@ -7,6 +7,12 @@ export const getProducts = () => {
     .then((products) => products)
 }
 
+export const getCatProd = (cat) => {
+  return axios.get(`/api/products/${cat}`)
+  .then((res) => res.data)
+  .then((products) => products);
+}
+
 export const getOneProduct = (name) => {
   return axios
     .get(`/api/products/single/${name}`)
@@ -156,21 +162,21 @@ export const addOrderToBD = (order) => {
 
 export const addCategoryToBD = (categoryName) => {
   return axios
-    .post(`http://localhost:3001/api/category`, { name: categoryName })
+    .post(`/api/category`, { name: categoryName })
     .then((res) => res.data)
     .then((response) => response)
 }
 
 export const getAllCategoriesfromBD = () => {
   return axios
-    .get(`http://localhost:3001/api/category`)
+    .get(`/api/category`)
     .then((res) => res.data)
     .then((response) => response)
 }
 
 export const removeCategoryfromBD = (namesCategories) => {
   return axios
-    .delete(`http://localhost:3001/api/category`, { data: namesCategories })
+    .delete(`/api/category`, { data: namesCategories })
     .then((res) => res.data)
     .then((response) => response)
 }
@@ -179,8 +185,8 @@ export const removeCategoryfromBD = (namesCategories) => {
 //esta axios le pega a  api/routers/categoryRoute a la ruta de put
 export const updateCategoryfromBD = (categories) => {
   const updateCategories = categories.map((category) =>
-    axios.put(`http://localhost:3001/api/category`, category)
-  )
+    axios.put(`/api/category`, category)
+  );
   return Promise.all(updateCategories)
     .then((res) => res.data)
     .then((updateCategories) => updateCategories)

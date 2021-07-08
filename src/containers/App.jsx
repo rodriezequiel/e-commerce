@@ -44,8 +44,7 @@ function App() {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/home' component={Home} />
-        <Route path='/shop/:name' render={() => <SingleProduct />} />
-        <Route exct path='/shop' component={Shop} />
+        <Route path='/shop/product/:name' render={() => <SingleProduct />} />
         <Route exact path='/signin' component={SignIn} />
         <Route exact path='/signup' component={SignUp} />
         <Route exact path='/cart' component={Cart} />
@@ -56,7 +55,8 @@ function App() {
         <Route exact path='/admin/users' component={Users} />
         <Route exact path='/admin/orders' component={Orders} />
         <Route exact path='/admin/categories' component={Category} />
-        <Route exact='/orders/cart/:cartID' render={() => <CartProducts />} />
+        <Route exact path='/orders/cart/:cartID' render={() => <CartProducts />} />
+        <Route path='/shop' component={Shop} />
 
         <Redirect from='/' to='/home' />
 
