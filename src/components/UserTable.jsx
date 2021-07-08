@@ -35,10 +35,10 @@ function UserTable({ data }) {
               <td>{id}</td>
               <td>{telephone}</td>
               <td>{address}</td>
-              <td>{date}</td>
+              <td>{date.slice(0, 10)}</td>
               <td>{state}</td>
-              <td>{paymentMethod}</td>
               <td>{shipCost}</td>
+              <td>{paymentMethod}</td>
               <td>{additionalInfo}</td>
               <td>
                 <Link to={`/orders/cart/${CartId}`}>ver productos</Link>

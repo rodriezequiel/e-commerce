@@ -59,15 +59,18 @@ export default function Nav({ transparent = true }) {
             <span className='navbar-toggler-icon'></span>
           </button>
 
-          <div className="collapse navbar-collapse justify-content-end me-5 " id="navbarNav">
-            <ul className="navbar-nav mt-2">
-              <li className="nav-item nav-option mx-4 fs-3">
-                <Link className="nav-link active " to="/home">
+          <div
+            className='collapse navbar-collapse justify-content-end me-5 '
+            id='navbarNav'
+          >
+            <ul className='navbar-nav mt-2'>
+              <li className='nav-item nav-option mx-4 fs-3'>
+                <Link className='nav-link active ' to='/home'>
                   Home
                 </Link>
               </li>
-              <li className="nav-item nav-option mx-4 my-auto fs-3">
-                <a className="nav-link active " href="/home#aboutUs">
+              <li className='nav-item nav-option mx-4 my-auto fs-3'>
+                <a className='nav-link active ' href='/home#aboutUs'>
                   About Us
                 </a>
               </li>
@@ -109,6 +112,14 @@ export default function Nav({ transparent = true }) {
                   >
                     Sign Out
                   </Link>
+                </li>
+              )}
+              {user.firstName && (
+                <li
+                  className='nav-item nav-option ms-5 my-auto fs-3'
+                  style={{ color: 'white' }}
+                >
+                  Hello {user.firstName}
                 </li>
               )}
               <li className='nav-item nav-option ms-5 my-auto fs-3'>

@@ -18,7 +18,11 @@ export default function UserOrders() {
   return (
     <div>
       <Navbar transparent={false} />
-      {orders.length && <UserTable data={orders} />}
+      {orders.length ? (
+        <UserTable data={orders} />
+      ) : (
+        <h1>You have no orders...</h1>
+      )}
     </div>
   )
 }

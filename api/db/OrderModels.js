@@ -16,12 +16,12 @@ Order.init(
       // allowNull: false,
     },
     state: {
-      type: DataTypes.ENUM('pendingShipping', 'delivered', 'canceled'),
+      type: DataTypes.STRING,
       defaultValue: 'pendingShipping',
     },
     shipCost: {
       type: DataTypes.INTEGER,
-      defaultValue: 0,
+      defaultValue: 500,
     },
     paymentMethod: {
       type: DataTypes.STRING,
