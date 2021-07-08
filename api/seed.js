@@ -43,7 +43,7 @@ const productSeed = [
     stock: 40,
     size: 'm',
     color: 'gris',
-    brand: 'Nike',
+    brand: 'Underwave',
     picture: [
       'https://underwavebrand.com/wp-content/uploads/2021/01/Palawan-scaled.jpg',
       'https://underwavebrand.com/wp-content/uploads/2020/07/IMG_8720.jpg',
@@ -59,10 +59,78 @@ const productSeed = [
     stock: 50,
     size: 'l',
     color: 'negra',
-    brand: 'Nike',
+    brand: 'Underwave',
     picture: [
       'https://underwavebrand.com/wp-content/uploads/2021/06/DSC02688-scaled.jpg',
       'https://underwavebrand.com/wp-content/uploads/2021/06/DSC02682-710x1015.jpg',
+    ],
+    categorys: ['Shirts'],
+  },
+  {
+    name: 'Remera Do Rosa',
+
+    description:
+      'Remera DO ROSA (algodón) fino color vino tinto lavado vintage con estampado 3D UNDERWAVE y la ola atrás en serigrafía.',
+    price: 2599,
+    stock: 35,
+    size: 'l',
+    color: 'rosa',
+    brand: 'Underwave',
+    picture: [
+      'https://underwavebrand.com/wp-content/uploads/2021/03/IMG_7315-min-scaled.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/WhatsApp-Image-2021-06-01-at-09.58.25-710x1067.jpeg',
+      'https://underwavebrand.com/wp-content/uploads/2021/03/IMG_7317-min-710x1065.jpg',
+    ],
+    categorys: ['Shirts'],
+  },
+  {
+    name: 'Remera Do Rosa',
+
+    description:
+      'Remera DO ROSA (algodón) fino color vino tinto lavado vintage con estampado 3D UNDERWAVE y la ola atrás en serigrafía.',
+    price: 2599,
+    stock: 35,
+    size: 's',
+    color: 'rosa',
+    brand: 'Underwave',
+    picture: [
+      'https://underwavebrand.com/wp-content/uploads/2021/03/IMG_7315-min-scaled.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/WhatsApp-Image-2021-06-01-at-09.58.25-710x1067.jpeg',
+      'https://underwavebrand.com/wp-content/uploads/2021/03/IMG_7317-min-710x1065.jpg',
+    ],
+    categorys: ['Shirts'],
+  },
+  {
+    name: 'Remera Do Rosa',
+
+    description:
+      'Remera DO ROSA (algodón) fino color vino tinto lavado vintage con estampado 3D UNDERWAVE y la ola atrás en serigrafía.',
+    price: 2599,
+    stock: 35,
+    size: 'm',
+    color: 'rosa',
+    brand: 'Underwave',
+    picture: [
+      'https://underwavebrand.com/wp-content/uploads/2021/03/IMG_7315-min-scaled.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/WhatsApp-Image-2021-06-01-at-09.58.25-710x1067.jpeg',
+      'https://underwavebrand.com/wp-content/uploads/2021/03/IMG_7317-min-710x1065.jpg',
+    ],
+    categorys: ['Shirts'],
+  },
+  {
+    name: 'Remera Do Rosa',
+
+    description:
+      'Remera DO ROSA (algodón) fino color vino tinto lavado vintage con estampado 3D UNDERWAVE y la ola atrás en serigrafía.',
+    price: 2599,
+    stock: 35,
+    size: 'xl',
+    color: 'rosa',
+    brand: 'Underwave',
+    picture: [
+      'https://underwavebrand.com/wp-content/uploads/2021/03/IMG_7315-min-scaled.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/WhatsApp-Image-2021-06-01-at-09.58.25-710x1067.jpeg',
+      'https://underwavebrand.com/wp-content/uploads/2021/03/IMG_7317-min-710x1065.jpg',
     ],
     categorys: ['Shirts'],
   },
@@ -82,7 +150,6 @@ const productSeed = [
     ],
     categorys: ['Hoodies'],
   },
-
   {
     name: 'Hoodie Parbat',
 
@@ -96,6 +163,70 @@ const productSeed = [
     picture: [
       'https://underwavebrand.com/wp-content/uploads/2021/04/IMG_9745-min-710x1093.jpg',
       'https://underwavebrand.com/wp-content/uploads/2021/06/WhatsApp-Image-2021-06-01-at-09.58.25-1-710x881.jpeg',
+    ],
+    categorys: ['Hoodies'],
+  },
+  {
+    name: 'Hoodie Aneto',
+    description:
+      '-Buzo con capucha Aneto de frisa invisible negra con estampado box en el frente pecho izq y espalda. Cordón de polyester con puntera de acero “underwave”. Bolsillo tipo canguro en la panza. Cuello y puños al tono. Etiqueta bordada de talle.',
+    price: 5499,
+    stock: 30,
+    size: 'l',
+    color: 'negro',
+    brand: 'Underwave',
+    picture: [
+      'https://underwavebrand.com/wp-content/uploads/2021/04/IMG_9677-min-710x1059.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/04/IMG_9785-min-710x1065.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/aneto.jpg',
+    ],
+    categorys: ['Hoodies'],
+  },
+  {
+    name: 'Hoodie Aneto',
+    description:
+      '-Buzo con capucha Aneto de frisa invisible negra con estampado box en el frente pecho izq y espalda. Cordón de polyester con puntera de acero “underwave”. Bolsillo tipo canguro en la panza. Cuello y puños al tono. Etiqueta bordada de talle.',
+    price: 5499,
+    stock: 30,
+    size: 's',
+    color: 'negro',
+    brand: 'Underwave',
+    picture: [
+      'https://underwavebrand.com/wp-content/uploads/2021/04/IMG_9677-min-710x1059.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/04/IMG_9785-min-710x1065.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/aneto.jpg',
+    ],
+    categorys: ['Hoodies'],
+  },
+  {
+    name: 'Hoodie Aneto',
+    description:
+      '-Buzo con capucha Aneto de frisa invisible negra con estampado box en el frente pecho izq y espalda. Cordón de polyester con puntera de acero “underwave”. Bolsillo tipo canguro en la panza. Cuello y puños al tono. Etiqueta bordada de talle.',
+    price: 5499,
+    stock: 30,
+    size: 'm',
+    color: 'negro',
+    brand: 'Underwave',
+    picture: [
+      'https://underwavebrand.com/wp-content/uploads/2021/04/IMG_9677-min-710x1059.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/04/IMG_9785-min-710x1065.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/aneto.jpg',
+    ],
+    categorys: ['Hoodies'],
+  },
+  {
+    name: 'Hoodie Aneto',
+    description:
+      '-Buzo con capucha Aneto de frisa invisible negra con estampado box en el frente pecho izq y espalda. Cordón de polyester con puntera de acero “underwave”. Bolsillo tipo canguro en la panza. Cuello y puños al tono. Etiqueta bordada de talle.',
+    price: 5499,
+    stock: 30,
+    size: 'xl',
+    color: 'negro',
+    brand: 'Underwave',
+    picture: [
+      'https://underwavebrand.com/wp-content/uploads/2021/04/IMG_9677-min-710x1059.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/04/IMG_9785-min-710x1065.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/aneto.jpg',
     ],
     categorys: ['Hoodies'],
   },
@@ -176,6 +307,159 @@ const productSeed = [
     picture: [
       'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03317-710x1065.jpg',
       'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03336-710x1065.jpg',
+    ],
+    categorys: ['Pants'],
+  },
+  {
+    name: 'Pantalón chino Santa Mónica',
+
+    description:
+      'Pantalon Chino Santa Mónica achupinado Ripon de gabardina negra con lycra, 97% algodón y 3% spandex.Cintura con botón y cierre. Bolsillos laterales y traseros. Cuero logo atrás. Lavado suavizado.',
+    price: 5499,
+    stock: 19,
+    size: '36',
+    color: 'negro',
+    brand: 'Underwave',
+    picture: [
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03284-710x1065.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03296-1-710x1065.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/WhatsApp-Image-2021-06-16-at-18.37.49-710x1262.jpeg',
+    ],
+    categorys: ['Pants'],
+  },
+  {
+    name: 'Pantalón chino Santa Mónica',
+
+    description:
+      'Pantalon Chino Santa Mónica achupinado Ripon de gabardina negra con lycra, 97% algodón y 3% spandex.Cintura con botón y cierre. Bolsillos laterales y traseros. Cuero logo atrás. Lavado suavizado.',
+    price: 5499,
+    stock: 19,
+    size: '34',
+    color: 'negro',
+    brand: 'Underwave',
+    picture: [
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03284-710x1065.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03296-1-710x1065.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/WhatsApp-Image-2021-06-16-at-18.37.49-710x1262.jpeg',
+    ],
+    categorys: ['Pants'],
+  },
+  {
+    name: 'Pantalón chino Santa Mónica',
+
+    description:
+      'Pantalon Chino Santa Mónica achupinado Ripon de gabardina negra con lycra, 97% algodón y 3% spandex.Cintura con botón y cierre. Bolsillos laterales y traseros. Cuero logo atrás. Lavado suavizado.',
+    price: 5499,
+    stock: 19,
+    size: '32',
+    color: 'negro',
+    brand: 'Underwave',
+    picture: [
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03284-710x1065.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03296-1-710x1065.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/WhatsApp-Image-2021-06-16-at-18.37.49-710x1262.jpeg',
+    ],
+    categorys: ['Pants'],
+  },
+  {
+    name: 'Pantalón chino Santa Mónica',
+
+    description:
+      'Pantalon Chino Santa Mónica achupinado Ripon de gabardina negra con lycra, 97% algodón y 3% spandex.Cintura con botón y cierre. Bolsillos laterales y traseros. Cuero logo atrás. Lavado suavizado.',
+    price: 5499,
+    stock: 19,
+    size: '30',
+    color: 'negro',
+    brand: 'Underwave',
+    picture: [
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03284-710x1065.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03296-1-710x1065.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/WhatsApp-Image-2021-06-16-at-18.37.49-710x1262.jpeg',
+    ],
+    categorys: ['Pants'],
+  },
+  {
+    name: 'Pantalón chino Venice',
+
+    description:
+      'Pantalon Chino Venice achupinado Ripon de gabardina negra con lycra, 97% algodón y 3% spandex.Cintura con botón y cierre. Bolsillos laterales y traseros. Cuero logo atrás. Lavado suavizado.',
+    price: 5499,
+    stock: 19,
+    size: '30',
+    color: 'verde',
+    brand: 'Underwave',
+    picture: [
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03297-scaled.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03302-scaled.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03308-scaled.jpg',
+    ],
+    categorys: ['Pants'],
+  },
+  {
+    name: 'Pantalón chino Venice',
+
+    description:
+      'Pantalon Chino Venice achupinado Ripon de gabardina negra con lycra, 97% algodón y 3% spandex.Cintura con botón y cierre. Bolsillos laterales y traseros. Cuero logo atrás. Lavado suavizado.',
+    price: 5499,
+    stock: 19,
+    size: '32',
+    color: 'verde',
+    brand: 'Underwave',
+    picture: [
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03297-scaled.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03302-scaled.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03308-scaled.jpg',
+    ],
+    categorys: ['Pants'],
+  },
+  {
+    name: 'Pantalón chino Venice',
+
+    description:
+      'Pantalon Chino Venice achupinado Ripon de gabardina negra con lycra, 97% algodón y 3% spandex.Cintura con botón y cierre. Bolsillos laterales y traseros. Cuero logo atrás. Lavado suavizado.',
+    price: 5499,
+    stock: 19,
+    size: '34',
+    color: 'verde',
+    brand: 'Underwave',
+    picture: [
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03297-scaled.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03302-scaled.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03308-scaled.jpg',
+    ],
+    categorys: ['Pants'],
+  },
+  {
+    name: 'Pantalón chino Venice',
+
+    description:
+      'Pantalon Chino Venice achupinado Ripon de gabardina negra con lycra, 97% algodón y 3% spandex.Cintura con botón y cierre. Bolsillos laterales y traseros. Cuero logo atrás. Lavado suavizado.',
+    price: 5499,
+    stock: 19,
+    size: '36',
+    color: 'verde',
+    brand: 'Underwave',
+    picture: [
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03297-scaled.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03302-scaled.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03308-scaled.jpg',
+    ],
+    categorys: ['Pants'],
+  },
+  {
+    name: 'Pantalón chino Venice',
+
+    description:
+      'Pantalon Chino Venice achupinado Ripon de gabardina negra con lycra, 97% algodón y 3% spandex.Cintura con botón y cierre. Bolsillos laterales y traseros. Cuero logo atrás. Lavado suavizado.',
+    price: 5499,
+    stock: 19,
+    size: '38',
+    color: 'verde',
+    brand: 'Underwave',
+    picture: [
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03297-scaled.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03302-scaled.jpg',
+      'https://underwavebrand.com/wp-content/uploads/2021/06/DSC03308-scaled.jpg',
     ],
     categorys: ['Pants'],
   },

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Card({ item, products }) {
   return (
     <div className="col-lg-4 col-sm-6 pb-4 ">
-      <Link to={`/shop/product/${item}`} style={{ textDecoration: "none", color: "black" }}>
+      <Link to={`/shop/product/${item}`} style={{ textDecoration: "none", color: "black" }} onClick={()=>window.scrollTo(0,0)}>
         <div
           className="card mx-4 shadow-lg mt-3 bg-body rounded"
           style={{ width: "auto", minWidth: "auto", maxWidth: "350px" }}
