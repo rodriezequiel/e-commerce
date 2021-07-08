@@ -72,10 +72,13 @@ function Users() {
 
   useEffect(() => {
     getAllUsersfromBD().then((users) => {
-      const filteredUsers = users.filter((BDUSER) => BDUSER.id !== user.id)
-      return setData(filteredUsers)
+      return users.filter((BDUSER) => BDUSER.id !== user.id)
+      
+    }).then((filteredUsers) => {
+      console.log(filteredUsers);
+      setData(filteredUsers)
     })
-  }, [])
+  }, [user])
 
   const history = useHistory()
   return (

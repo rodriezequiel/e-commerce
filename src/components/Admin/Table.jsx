@@ -118,7 +118,7 @@ function Table({ columns, data, updateMyData, handleUpdate, handleDelete }) {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {rows.slice(0, 10).map((row, i) => {
+          {rows.slice(0, rows.length).map((row, i) => {
             prepareRow(row)
             return (
               <tr {...row.getRowProps()}>

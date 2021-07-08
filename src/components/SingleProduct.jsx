@@ -71,14 +71,7 @@ function SingleProduct() {
     let productToAdd = searchProductId();
     productToAdd = { ...productToAdd, quantity: counter, UserId: cart.UserId };
     addProductToCartBD(productToAdd).then((data) => {
-      let contador = 0;
-      if (data.lengh !== 0) {
-        contador = data.reduce((aux, ele) => {
-          aux = aux + ele.CartItem.quantity;
-          return aux;
-        }, 0);
-      }
-      dispatch(counterProducts(contador));
+      dispatch(counterProducts(cart.Products.length+1));
     });
   };
 

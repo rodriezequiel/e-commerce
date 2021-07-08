@@ -2,6 +2,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { useState } from "react";
+import { message } from "antd";
 import Navbar from "../components/Navbar";
 import { getUser } from "../state/user";
 
@@ -24,9 +25,13 @@ export default function SignIn() {
     return axios
       .post("/api/auth/login", input)
       .then((res) => res.data)
-      .then((user) => dispatch(getUser(user)))
+      .then((user) => {
+        dispatch(getUser(user))
+        return user;
+      })
+      .then( (user) => message.success(`Welcome back ${user.firstName}`, 2))
       .then((res) => history.push("/home"))
-      .catch((err) => alert("datos incorrectos"));
+      .catch((err) => message.error({content:"email or password incorrect"}, 1));
   };
 
   return (

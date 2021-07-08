@@ -25,7 +25,6 @@ export const addProductToCartBD = (products) => {
     .post(`/api/cart/add`, products)
     .then((res) => res.data)
     .then((response) => {
-      alert('producto agregado al carrito')
       return response
     })
 }
@@ -122,7 +121,7 @@ export const removeUserfromBD = (users) => {
 
 export const addUserToBD = (user) => {
   return axios
-    .post(`/api/admin/adduser`, user)
+    .post(`/api/auth/register`, user)
     .then((res) => res.data)
     .then((response) => response)
 }

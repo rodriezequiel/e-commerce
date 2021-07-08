@@ -18,6 +18,7 @@ import Users from '../components/Admin/Users'
 import Orders from '../components/Admin/Orders'
 import Category from '../components/Admin/AdminCategory'
 import CartProducts from '../components/CartProducts'
+import 'antd/dist/antd.css'
 
 import UserOrders from './UserOrders'
 
