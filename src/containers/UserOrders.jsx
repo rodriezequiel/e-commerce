@@ -19,7 +19,9 @@ export default function UserOrders() {
     <div>
       <Navbar transparent={false} />
       {orders.length ? (
-        <UserTable data={orders} />
+        <div className='py-5 mx-2'>
+        <UserTable data={orders}/>
+        </div>
       ) : (
         <h1>You have no orders...</h1>
       )}
