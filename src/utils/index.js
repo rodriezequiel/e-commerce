@@ -2,7 +2,7 @@ import axios from "axios";
 /// preguntar  por getPTofucts
 export const getProducts = () => {
   return axios
-    .get('/api/products/all')
+    .get("/api/products/all")
     .then((res) => res.data)
     .then((products) => products);
 };
@@ -18,10 +18,7 @@ export const addProductToCartBD = (products) => {
   return axios
     .post(`/api/cart/add`, products)
     .then((res) => res.data)
-    .then((response) => {
-      alert("producto agregado al carrito");
-      return response;
-    });
+    .then((response) => response);
 };
 
 export const clearCart = (userId) => {
@@ -67,7 +64,7 @@ export const getAllProducts = () => {
 export const updateProduct = (products) => {
   const updatedProducts = products.map((product) =>
     axios.put(`/api/admin/update`, product)
-  )
+  );
 
   return Promise.all(updatedProducts)
     .then((res) => res.data)
@@ -99,7 +96,7 @@ export const getAllUsersfromBD = () => {
 export const updateUserfromBD = (users) => {
   const updatedusers = users.map((user) =>
     axios.put(`/api/admin/updateuser`, user)
-  )
+  );
 
   return Promise.all(updatedusers)
     .then((res) => res.data)
@@ -141,7 +138,7 @@ export const removeOrderfromBD = (orders) => {
 export const updateOrderfromBD = (orders) => {
   const updatedOrder = orders.map((order) =>
     axios.put(`/api/admin/updateorder`, order)
-  )
+  );
 
   return Promise.all(updatedOrder)
     .then((res) => res.data)
