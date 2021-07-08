@@ -10,6 +10,7 @@ export default function SignIn() {
     password: "",
     email: "",
   });
+
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -27,7 +28,6 @@ export default function SignIn() {
       .then((res) => history.push("/home"))
       .catch((err) => alert("datos incorrectos"));
   };
-
 
   return (
     <div>
@@ -49,6 +49,7 @@ export default function SignIn() {
                 className="form-control  fs-7"
                 id="email"
                 name="email"
+                required
               />
             </div>
             <div className="mb-3">
@@ -60,18 +61,11 @@ export default function SignIn() {
                 className="form-control"
                 id="password"
                 name="password"
+                onBlur
+                required
               />
             </div>
-            <div className="mb-3 form-check">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="exampleCheck1"
-              />
-              <label className="form-check-label fs-6" htmlFor="exampleCheck1">
-                Check me out
-              </label>
-            </div>
+            <div className="mb-3 form-check"></div>
             <button type="submit" className="btn btn-dark">
               Submit
             </button>
