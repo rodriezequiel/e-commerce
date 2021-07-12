@@ -9,6 +9,7 @@ import { addProductToCartBD } from "../utils/index";
 import Navbar from "./Navbar";
 import CounterButton from "./CounterButton";
 import NavbarDescrip from "./../components/NavbarOfDescription";
+import {message} from 'antd'
 
 function SingleProduct() {
   const param = useParams();
@@ -68,11 +69,13 @@ function SingleProduct() {
   }, [singleProduct, selectImg, selectInfo]);
 
   const addProduct = () => {
+    if(user.id){
     let productToAdd = searchProductId();
     productToAdd = { ...productToAdd, quantity: counter, UserId: cart.UserId };
     addProductToCartBD(productToAdd).then((data) => {
       dispatch(counterProducts(cart.Products.length+1));
     });
+  }else message.error('You must be logged in to add products', 1)
   };
 
   const searchProductId = () => {

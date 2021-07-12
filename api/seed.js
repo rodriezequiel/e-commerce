@@ -1,4 +1,5 @@
-const { User, Product, Category } = require('./db/index')
+/* eslint-disable array-callback-return */
+const { Product, Category } = require('./db/index')
 const axios = require('axios')
 
 const categorys = [
@@ -10,29 +11,6 @@ const categorys = [
   { name: 'Shorts'},
 ]
 
-const user = [
-  {
-    firstName: 'Julian',
-    lastName: 'Perez',
-    email: 'julian@test.com',
-    password: '1234',
-    isAdmin: false,
-  },
-  {
-    firstName: 'admin',
-    lastName: 'Moroni',
-    email: 'admin@test.com',
-    password: 'asdasd',
-    isAdmin: true,
-  },
-  {
-    firstName: 'Rodri',
-    lastName: 'Bacigalupo',
-    email: 'rodri@test.com',
-    password: 'rodri',
-    isAdmin: true,
-  },
-]
 
 const productSeed = [
   {

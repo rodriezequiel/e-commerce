@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 const express = require('express')
 const router = express.Router()
 const Cart = require('../db/CartModels')
@@ -27,6 +28,7 @@ router.get('/misordenes/:id', (req, res) => {
 router.post('/checkout', (req, res) => {
   let date = new Date()
   let currentUser
+  console.log(req.body);
   const {
     userId,
     telephone,
@@ -39,7 +41,7 @@ router.post('/checkout', (req, res) => {
     cart,
   } = req.body
 
-  // main(user, mailInfo, cart)
+  main(user, mailInfo, cart)
 
   User.findByPk(userId)
     .then((user) => {

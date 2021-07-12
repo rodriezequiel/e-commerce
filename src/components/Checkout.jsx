@@ -11,6 +11,7 @@ import { statusShopClass } from './../utils/globals'
 import { changeShopState } from '../utils/changeIcons'
 import main from '../utils/emailSent'
 import { counterProducts } from '../state/Counter'
+import {message} from 'antd'
 
 function Checkout() {
   const { cart, user, counter } = useSelector(state => state);
@@ -32,10 +33,10 @@ function Checkout() {
 
   const handleSumbit = e => {
     e.preventDefault();
-    return confirmOrder({ ...order, userId: user.id })
+    return confirmOrder({ ...order, userId: user.id, mailInfo: user.email, user, cart })
       .then(()=> dispatch(counterProducts(0)))
       .then(() => history.push("/home"))
-      .then(() => alert("Gracias por su compra"));
+      .then(() => message.success("Order tramited succesfully"));
   };
 
   useEffect(() => {

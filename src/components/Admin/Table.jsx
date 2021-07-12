@@ -1,8 +1,5 @@
-import React, { useState } from 'react'
-import { useLocation } from 'react-router'
+import React from 'react'
 import { useTable, useRowSelect } from 'react-table'
-import { Redirect } from 'react-router-dom'
-import axios from 'axios'
 
 const IndeterminateCheckbox = React.forwardRef(
   ({ indeterminate, ...rest }, ref) => {
@@ -92,8 +89,6 @@ function Table({ columns, data, updateMyData, handleUpdate, handleDelete }) {
       ])
     }
   )
-
-  const { pathname } = useLocation()
 
   const confirmUpdate = (funcUpdate) => {
     const updatedProducts = selectedFlatRows.map((d) => d.original)

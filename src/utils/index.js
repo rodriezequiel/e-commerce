@@ -54,7 +54,6 @@ export const confirmOrder = (orderInfo) => {
     .post(`/api/order/checkout`, orderInfo)
     .then((res) => res.data)
     .then((response) => {
-      alert('Orden de compra creada ok')
       return response
     })
 }

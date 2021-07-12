@@ -22,7 +22,7 @@ function AddProduct({ setNewProduct }) {
   }
 
   const handleOnclick = (e) => {
-    const { value, name } = e.target
+    const { value} = e.target
     if (arr.includes(value)) {
       for (var i = arr.length; i--; ) {
         if (arr[i] === value) {

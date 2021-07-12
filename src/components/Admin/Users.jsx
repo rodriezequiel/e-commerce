@@ -77,7 +77,7 @@ function Users() {
     }).then((filteredUsers) => {
       console.log(filteredUsers);
       setData(filteredUsers)
-    })
+    }).then(() => (!false))
   }, [user])
 
   const history = useHistory()
